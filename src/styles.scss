@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+.icon-gradient{
+    .fa{
+
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(25%, #ad5beb), color-stop(50%, #c678db), color-stop(75%, #da6ea9), to(#e76e92));
+        background: linear-gradient(180deg, #ad5beb 25%, #c678db 50%, #da6ea9 75%, #e76e92 100%);
+        background-clip: text;
+        text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+  
+}

@@ -1,0 +1,44 @@
+
+  main-content works!
+
+  <!-- <form method="post" enctype="multipart/form-data"
+   >
+
+    <div class="col-md-5">
+        <input type="file" class="browseFile" name="file">
+    </div>
+    <div class="col-md-4">
+        <input type="submit" class="btn btn-success btn-md" 
+               value="Upload" ng-click="uploadFile()" >
+    </div> -->
+    <!-- <input type="file" name="file" id="fileUpload" file-model="myFile" 
+    title="ChooseYour file" onchange="return ValidateExtension()" 
+    required="required" />
+   <button value="Upload" name="submit" class="btn btn-success" ng-
+    click="UploadCompanyContact()"></button> -->
+
+
+    <!-- <input type="file" ng2FileSelect [uploader]="uploader" />
+
+    <p>Queue length: {{ uploader?.queue?.length }}  {{uploader?.queue }}</p>
+
+    <button type="button" class="btn btn-success btn-xs"
+                                (click)="uploader?.queue[1]?.upload()" [disabled]="uploader?.queue[1]?.isReady || uploader.queue.isUploading || uploader.queue.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button> -->
+<!-- </form> -->
+
+<!-- 
+<input type="file" name="photo" ng2FileSelect [uploader]="uploader" />
+
+<button type="button" class="btn btn-success btn-s" 
+  (click)="uploader.uploadAll()" 
+  [disabled]="!uploader.getNotUploadedItems().length" >
+      Upload an Image
+</button> -->
+
+<input type="file" (change)="onFileChanged($event)" #fileInput>
+
+<button (click)="fileInput.click()">Select File</button>
+
+<button (click)="onUpload()">Upload!</button>

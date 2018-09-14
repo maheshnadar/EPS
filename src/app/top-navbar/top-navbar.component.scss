@@ -1,0 +1,118 @@
+.navbar-theme {
+  padding: 0px;
+height: 70px;
+  .navbar-brand {
+    background: #282a3c;
+    
+    height: 100%;
+    width: 285px;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+    margin: 0;
+  }
+
+
+  li.nav-item{
+    display: flex;
+    align-items: center;
+    padding: 0px 15px;
+cursor: pointer;
+    
+  }
+  .profile{
+    width: 2.5em;
+    height: 2.5em;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.m-brand__toggler {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  width: 26px;
+  height: 26px;
+  font-size: 0;
+  text-indent: -9999px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-radius: none;
+  border: none;
+  cursor: pointer;
+  background: none;
+  outline: none !important;
+  -webkit-transition: all .4s ease;
+  transition: all .4s ease;
+
+  span {
+      width: 26px;
+      height: 26px;
+   i{
+    background: #5d5f77;
+    display: block;
+    position: absolute;
+    top: 13px;
+    height: 1px;
+    min-height: 1px;
+    width: 100%;
+    border-radius: 0px;
+    -webkit-transition: all .4s ease;
+    transition: all .4s ease;
+   } 
+
+    i:nth-child(1) {
+       
+      -webkit-transition: all .4s ease;
+      transition: all .4s ease;
+      left: auto;
+      right: 0px;
+      width: 50%;
+      top: 4px;
+    }
+    i:nth-child(2) {
+        top: 13px;
+        height: 1px;
+        min-height: 1px;
+        width: 100%;
+        border-radius: 0px;
+      }
+  
+     i:nth-child(3) {
+       
+      transition: all .4s ease;
+      left: auto;
+      right: 0px;
+      width: 75%;
+      bottom: 4px;
+      top:unset;
+    }
+  
+  }
+
+  &:hover{
+    i{
+        width: 100% !important;
+        background: #716aca;
+    }
+}
+}
