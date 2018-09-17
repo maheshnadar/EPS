@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 
 //extra
@@ -15,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { FileSelectDirective } from 'ng2-file-upload';
 import { FileUploadModule } from 'ng2-file-upload';
+import { ExceptionsComponent } from './exceptions/exceptions.component';
 
 
 
@@ -24,6 +26,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     SideMenuComponent,
     TopNavbarComponent,
     MainContentComponent,
+    ExceptionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -31,6 +34,7 @@ import { FileUploadModule } from 'ng2-file-upload';
     AppRoutingModule,
     FileUploadModule,
     FormsModule,
+    HttpModule,
     TooltipModule.forRoot(),
      
   ],

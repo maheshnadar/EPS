@@ -1,5 +1,6 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="wf-poppins-n3-active wf-poppins-n4-active wf-poppins-n5-active wf-poppins-n6-active wf-poppins-n7-active wf-roboto-n3-active wf-roboto-n4-active wf-roboto-n5-active wf-roboto-n6-active wf-roboto-n7-active wf-active">
+	
 <head>
   <meta charset="utf-8">
   <title>EPS</title>
@@ -8,8 +9,406 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="icon" type="" href="favicon.ico">
+
+  
+<!--begin::Web font -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700%7CRoboto:300,400,500,600,700" media="all">
+<script>
+	WebFont.load({
+		google: {
+			"families": ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"]
+		},
+		active: function() {
+			sessionStorage.fonts = true;
+		}
+	});
+</script>
+<!-- begin::Page Vendors Styles --> 
+<link href="assets/theme/fullcalendar.bundle.css" rel="stylesheet" type="text/css">
+<!--end::Web font -->
+
+<!--begin::Base Styles -->
+<link href="assets/theme/vendors.bundle.css" rel="stylesheet" type="text/css">
+
+
+
+<!--RTL version:<link href="assets/vendors/custom/fullcalendar/fullcalendar.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
+<link href="assets/theme/style.bundle.css" rel="stylesheet" type="text/css">
+<!--end::Page Vendors Styles -->
+<link href="assets/theme/datatables.bundle.css" rel="stylesheet" type="text/css">
+<style type="text/css">span.im-caret {
+	-webkit-animation: 1s blink step-end infinite;
+	animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+	from, to {
+			border-right-color: black;
+	}
+	50% {
+			border-right-color: transparent;
+	}
+}
+
+@-webkit-keyframes blink {
+	from, to {
+			border-right-color: black;
+	}
+	50% {
+			border-right-color: transparent;
+	}
+}
+
+span.im-static {
+	color: grey;
+}
+
+div.im-colormask {
+	display: inline-block;
+	border-style: inset;
+	border-width: 2px;
+	-webkit-appearance: textfield;
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+div.im-colormask > input {
+	position: absolute;
+	display: inline-block;
+	background-color: transparent;
+	color: transparent;
+	-webkit-appearance: caret;
+	-moz-appearance: caret;
+	appearance: caret;
+	border-style: none;
+	left: 0; /*calculated*/
+}
+
+div.im-colormask > input:focus {
+	outline: none;
+}
+
+div.im-colormask > input::-moz-selection{
+	background: none;
+}
+
+div.im-colormask > input::selection{
+	background: none;
+}
+div.im-colormask > input::-moz-selection{
+	background: none;
+}
+
+div.im-colormask > div {
+	color: black;
+	display: inline-block;
+	width: 100px; /*calculated*/
+}</style>
+
+<style type="text/css">/* Chart.js */
+	@-webkit-keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}@keyframes chartjs-render-animation{from{opacity:0.99}to{opacity:1}}.chartjs-render-monitor{-webkit-animation:chartjs-render-animation 0.001s;animation:chartjs-render-animation 0.001s;}
+	</style>
 </head>
-<body>
-  <app-root></app-root>
+<body >
+	<app-root></app-root>
+	<script src="assets/theme/vendors.bundle.js" type="text/javascript"></script>
+	<script src="assets/theme/scripts.bundle.js" type="text/javascript"></script>
+	<!-- <script type="text/javascript">
+		//== Class definition
+
+		var DatatableData_ATMS = function () {
+			//== Private functions
+
+			// demo initializer
+			var atms = function () {
+
+				var dataJSONArray = JSON.parse('[{"RecordID":1,"ExceptionID":"54473-251","RelatedTo":"C3R Report","Subject":"Some help text goes here","CreatedBy":"Hitesh Thakkar","AssignedTo":"Jhon Doe","CreatedDate":"5/21/2018","LastUpdatedDate":"5/21/2018","Status":1}]');
+				
+				var datatable = $('.m_datatable').mDatatable({
+					// datasource definition
+					data: {
+						type: 'local',
+						source: dataJSONArray,
+						pageSize: 10
+					},
+
+					// layout definition
+					layout: {
+						theme: 'default', // datatable theme
+						class: '', // custom wrapper class
+						scroll: true, // enable/disable datatable scroll both horizontal and vertical when needed.
+						// height: 450, // datatable's body's fixed height
+						footer: false // display/hide footer
+					},
+
+					// column sorting
+					sortable: true,
+
+					pagination: true,
+
+					search: {
+						input: $('#generalSearch')
+					},
+
+					// inline and bactch editing(cooming soon)
+					// editable: false,
+
+					// columns definition
+					columns: [{
+						field: "RecordID",
+						title: "#",
+						width: 50,
+						sortable: false,
+						textAlign: 'center',
+						// locked: {left: 'xl'},
+		        		selector: {class: 'm-checkbox--solid m-checkbox--brand'}
+					}, {
+						field: "ExceptionID",
+						title: "ID",
+						// locked: {left: 'xl'},
+					}, {
+						field: "RelatedTo",
+						title: "Related To",
+						// locked: {left: 'xl'},
+					}, {
+						field: "Subject",
+						title: "Subject",
+						width: 400,
+						// locked: {left: 'xl'},
+					}, {
+						field: "CreatedBy",
+						title: "Created By",
+					}, {
+						field: "AssignedTo",
+						title: "Assigned To",
+					}, {
+						field: "CreatedDate",
+						title: "Created Date",
+					}, {
+						field: "LastUpdatedDate",
+						title: "Last Updated Date",
+					}, {
+						field: "Status",
+						title: "Status",
+						// locked: {right: 'xl'},
+						width: 100,
+						// callback function support for column rendering
+						template: function (row) {
+							var status = {
+								1: {'title': 'Open', 'class': 'm-badge--metal'},
+								2: {'title': 'Closed', 'class': ' m-badge--success'},
+							};
+							return '<span class="m-badge ' + status[row.Status].class + ' m-badge--wide">' + status[row.Status].title + '</span>';
+						}
+					}, {
+						field: "Actions",
+						width: 110,
+						title: "Actions",
+						sortable: false,
+						overflow: 'visible',
+						// locked: {right: 'xl'},
+						template: function (row, index, datatable) {
+							var dropup = (datatable.getPageSize() - index) <= 4 ? 'dropup' : '';
+
+							return '\
+								<button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-approve" title="View "><i class="fa fa-check m--font-success"></i></button>\
+								<button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-reject" title="View "><i class="fa fa-times m--font-danger"></i></button>\
+								<a href="exceptiondetails.php" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">\
+		                            <i class="la la-file"></i>\
+		                        </a>\
+							';
+						}
+					}]
+				});
+
+				$('#m_form_status').on('change', function () {
+					datatable.search($(this).val(), 'Status');
+				});
+
+				$('#datablecolumns').on('change', function () {
+					var selectedcols = $(this).val();
+					var _datatable = datatable;
+					console.log("datatable",datatable);
+					var cols = datatable.getColumn();
+					$.each( cols.options.columns, function( key, value ) {
+						if( value.field != "RecordID" && value.field != "Actions" ){
+							_datatable.hideColumn(value.field);
+						}
+					});
+					$.each( selectedcols, function( key, value ) {
+						_datatable.showColumn(value);
+					});	
+					// console.log(selectedcols);
+					// datatable.hideColumn("FeederBranch");
+				});
+
+				var cols = datatable.getColumn();
+			
+				$.each( cols.options.columns, function( key, value ) {
+				  	var field =  value.field;
+				  	var title =  value.title;
+				  
+				  	if( field != "RecordID" && field != "Actions" ){
+				  		$('#datablecolumns').append('<option value="'+field+'">'+title+'</option>');
+				  		$("#datablecolumns").selectpicker("refresh");
+				  	}
+				});
+
+			};
+
+			return {
+				//== Public functions
+				init: function () {
+					// init dmeo
+					atms();
+				}
+			};
+		}();
+
+		//== Class definition
+		var SweetAlert2Demo = function() {
+
+		    //== Demos
+		    var initDemos = function() {
+
+		        $('.btn-approve').click(function(e) {
+		            swal({
+		                title: 'Are you sure?',
+		                text: "You won't be able to revert this!",
+		                type: 'warning',
+		                showCancelButton: true,
+		                confirmButtonText: 'Yes, approve it!',
+		                confirmButtonClass: "btn btn-success m-btn m-btn--pill m-btn--air m-btn--icon",
+		                cancelButtonText: 'No, cancel!',
+		                cancelButtonClass: "btn btn-secondary m-btn m-btn--pill m-btn--icon",
+		                reverseButtons: true
+		            }).then(function(result){
+		                if (result.value) {
+		                    swal(
+		                        'Approved!',
+		                        'Exception data has been approved.',
+		                        'success'
+		                    )
+		                    // result.dismiss can be 'cancel', 'overlay',
+		                    // 'close', and 'timer'
+		                }
+		            });
+		        });
+
+		        $('.btn-reject').click(function(e) {
+		            swal({
+		                title: 'Are you sure?',
+		                text: "You won't be able to revert this!",
+		                type: 'warning',
+		                showCancelButton: true,
+		                confirmButtonText: 'Yes, reject it!',
+		                confirmButtonClass: "btn btn-danger m-btn m-btn--pill m-btn--air m-btn--icon",
+		                cancelButtonText: 'No, cancel!',
+		                cancelButtonClass: "btn btn-secondary m-btn m-btn--pill m-btn--icon",
+		                reverseButtons: true
+		            }).then(function(result){
+		                if (result.value) {
+		                    swal(
+		                        'Rejected!',
+		                        'Exception data has been rejected.',
+		                        'error'
+		                    ).then(function(){
+		                    	$('#rejectdata').modal('hide'); 
+		                    })
+		                    // result.dismiss can be 'cancel', 'overlay',
+		                    // 'close', and 'timer'
+		                }
+		            });
+		        });
+
+				$('.deleteselected').click(function(e) {
+		            swal({
+		                title: 'Are you sure?',
+		                text: "You won't be able to revert this!",
+		                type: 'warning',
+		                showCancelButton: true,
+		                confirmButtonText: 'Yes, delete it!',
+		                confirmButtonClass: "btn btn-danger m-btn m-btn--pill m-btn--air m-btn--icon",
+		                cancelButtonText: 'No, cancel!',
+		                cancelButtonClass: "btn btn-secondary m-btn m-btn--pill m-btn--icon",
+		                reverseButtons: true
+		            }).then(function(result){
+		                if (result.value) {
+		                    swal(
+		                        'Deleted!',
+		                        'Exception data has been deleted.',
+		                        'error'
+		                    )
+		                    // result.dismiss can be 'cancel', 'overlay',
+		                    // 'close', and 'timer'
+		                }
+		            });
+		        });
+		    };
+
+		    return {
+		        //== Init
+		        init: function() {
+		            initDemos();
+		        },
+		    };
+		}();
+
+		var PortletTools = function () {
+			var datableportlet = function() {
+		        // This portlet is lazy initialized using data-portlet="true" attribute. You can access to the portlet object as shown below and override its behavior
+		        var portlet = new mPortlet('m_portlet_tools_1');
+				var atmsdataportlet = new mPortlet('atmsdataportlet');
+
+		        //== Reload event handlers
+		        atmsdataportlet.on('afterFullscreenOn', function(atmsdataportlet) {
+		           datatable.reload();
+		        });
+
+		        atmsdataportlet.on('afterFullscreenOff', function(atmsdataportlet) {
+		           datatable.reload();
+		        });
+		    }
+
+		    return {
+		        //main function to initiate the module
+		        init: function () {
+		            // init demos
+		            datableportlet();
+		        }
+		    };
+		}();
+
+		$(document).ready(function(){
+			$(".m-bootstrap-select").selectpicker();
+			DatatableData_ATMS.init();
+			SweetAlert2Demo.init();
+			PortletTools.init();
+			BootstrapSelect.init();
+		});
+
+		var BootstrapSelect = function () {
+    
+		    //== Private functions
+		    var demos = function () {
+		        // minimum setup
+		        $('.m_selectpicker').selectpicker();
+		    }
+
+		    return {
+		        // public functions
+		        init: function() {
+		            demos(); 
+		        }
+		    };
+		}();
+
+		</script> -->
+
+
+
 </body>
+
+
 </html>

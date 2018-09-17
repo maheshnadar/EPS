@@ -7,16 +7,20 @@
 </header>
 
 <div class="main-content">
-  <div class="d-flex">
-    <div class="sidemenu_container">
+  
+    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-body">
+        <button class="m-aside-left-close  m-aside-left-close--skin-dark " id="m_aside_left_close_btn">
+            <i class="la la-close"></i>
+          </button>
       <app-side-menu ></app-side-menu>
-    </div>
-    <div class="content_container">
-      <router-outlet></router-outlet>
 
+    <div class="m-grid__item m-grid__item--fluid m-wrapper">
+        <router-outlet ></router-outlet>
     </div>
+     
 
-  </div>
+  
+</div>
 
 </div>
 

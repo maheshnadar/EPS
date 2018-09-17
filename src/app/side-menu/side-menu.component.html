@@ -1,7 +1,556 @@
-
+<!-- 
 <ul>
   <li routerLink='main'>menu 1</li>
-  <li>menu 2</li>
+  <li routerLink='exceptions'>Exceptions</li>
   <li>menu 3</li>
 </ul>
 
+<ul >
+  <li routerLink='{{menu.link}}' *ngFor="let menu of sideMenu">{{menu.name}}</li>
+
+</ul> -->
+<div id="m_aside_left" class="m-grid__item	m-aside-left  m-aside-left--skin-dark ">
+
+  <!-- BEGIN: Aside Menu -->
+  <div id="m_ver_menu" class="m-aside-menu m-aside-menu--skin-dark m-aside-menu--submenu-skin-dark m-scroller ps ps--active-y" m-menu-vertical="1" m-menu-scrollable="1" m-menu-dropdown-timeout="500" style="position: relative; height: 362px; overflow: hidden;">
+<ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
+<li class="m-menu__item  " aria-haspopup="true">
+<a href="dashboard.php" class="m-menu__link ">
+<i class="m-menu__link-icon flaticon-line-graph"></i>
+<span class="m-menu__link-title">
+  <span class="m-menu__link-wrap">
+    <span class="m-menu__link-text">Dashboard</span>
+    <!-- <span class="m-menu__link-badge">
+      <span class="m-badge m-badge--danger">2</span>
+    </span> -->
+  </span>
+</span>
+</a>
+</li>
+<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="atms.php" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-suitcase"></i>
+<span class="m-menu__link-text">Master Data</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+<div class="m-menu__submenu ">
+<span class="m-menu__arrow"></span>
+<ul class="m-menu__subnav">
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="atms.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-title">
+        <span class="m-menu__link-wrap">
+          <span class="m-menu__link-text">ATMs</span>
+          <span class="m-menu__link-badge">
+            <span class="m-badge m-badge--danger m-badge--dot"></span>
+          </span>
+        </span>
+      </span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="cyphercode.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Cypher Code</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="cassetteconfigs.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Cassette Configs</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="holidaymaster.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-title">
+        <span class="m-menu__link-wrap">
+          <span class="m-menu__link-text">Holiday Master</span>
+          <span class="m-menu__link-badge">
+            <span class="m-badge m-badge--danger m-badge--dot"></span>
+          </span>
+        </span>
+      </span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="insurancelimit.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Insurance Limit</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="bankcashlimit.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Bank Cash Limit</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="bankwiseuserrolesmatrix.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Bankwise User Roles &amp; Matrix</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="bankemailmaster.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Bank Email Master</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="cras.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">CRAs</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="craemailmaster.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">CRA Email Master</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="craescalationemails.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">CRA Escalation Emails</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="cravaultmaster.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">CRA Vault Master</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="bankc3rreporttemplate.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Bank C3R Report Template</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="bankc3rmistemplate.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Bank C3R MIS Template</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="#" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Audit Frequency</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="#" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Audit Checklist</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+</ul>
+</div>
+</li>
+<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="vaultcash.php" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-layers"></i>
+<span class="m-menu__link-text">Cash Routine Data</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+<div class="m-menu__submenu ">
+<span class="m-menu__arrow"></span>
+<ul class="m-menu__subnav">
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="vaultcash.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Vault Cash</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="imstickets.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">IMS Tickets</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="bankcashbalance.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Bank Cash Balance</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="cashdispense.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Cash Dispense</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="cashloading.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Cash Loading</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="crac3rreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">CRA C3R Report</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="recommendationsheet.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Recommendation Sheet</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="configurableautoapprovals.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Configurable Auto Approvals</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+</ul>
+</div>
+</li>
+<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="javascript:;" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-interface-6"></i>
+<span class="m-menu__link-text">Operations</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+<div class="m-menu__submenu ">
+<span class="m-menu__arrow"></span>
+<ul class="m-menu__subnav">
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="configurablelimits.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Configurable Limits</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="qualifyatms.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Qualify ATMs For Indent</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="indents.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Indents</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="indentsrevisions.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Indent Revisions</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="restartstopindents.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Restart/Stop Indent Batch</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="withdrawl.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Withdrawl</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="loading.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Loading</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="vaulting.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Vaulting</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="diversion.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Diversion</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+</ul>
+</div>
+</li>
+<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="#" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-list"></i>
+<span class="m-menu__link-text">Audit Activity</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+<div class="m-menu__submenu ">
+<span class="m-menu__arrow"></span>
+<ul class="m-menu__subnav">
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="#" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Schedule Cash Audit</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="#" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Perform Audit</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="#" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Approve/Reject Audit</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="#" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Close Audit</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+</ul>
+</div>
+</li>
+<li class="m-menu__item m-menu__item--submenu m-menu__item--active" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="exceptions.php" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-warning"></i>
+<span class="m-menu__link-text">Exceptions</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+</li>
+<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="c3rmisreport.php" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-graphic"></i>
+<span class="m-menu__link-text">Reports</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+<div class="m-menu__submenu ">
+<span class="m-menu__arrow"></span>
+<ul class="m-menu__subnav">
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="c3rmisreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">C3R MIS</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="c3rtobankreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">C3R To Bank</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="dailyloadingreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Daily Loading</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="atmdowntimereport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">ATM Downtime</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="emergencyvaultingreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Emergency Vaulting</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="originalvsrevisedindentsreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Original vs Revised Indents</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="indentvswithdrawlvsloadingreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Indent vs Withdrawl vs Loading</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="exceptionreport.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Exception Report</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+</ul>
+</div>
+</li>
+<li class="m-menu__item m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="users.php" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-user"></i>
+<span class="m-menu__link-text">Users</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+<div class="m-menu__submenu ">
+<span class="m-menu__arrow"></span>
+<ul class="m-menu__subnav">
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="users.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">Users</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+  <li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+    <a href="userroles.php" class="m-menu__link m-menu__toggle">
+      <i class="m-menu__link-bullet m-menu__link-bullet--dot">
+        <span></span>
+      </i>
+      <span class="m-menu__link-text">User Roles</span>
+      <i class="m-menu__ver-arrow la la-angle-right"></i>
+    </a>
+  </li>
+</ul>
+</div>
+</li>
+<li class="m-menu__item  m-menu__item--submenu " aria-haspopup="true" m-menu-submenu-toggle="hover">
+<a href="systemsettings.php" class="m-menu__link m-menu__toggle">
+<i class="m-menu__link-icon flaticon-settings"></i>
+<span class="m-menu__link-text">System Settings</span>
+<i class="m-menu__ver-arrow la la-angle-right"></i>
+</a>
+</li>
+</ul>
+<div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; height: 362px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 279px;"></div></div></div>
+  <!-- END: Aside Menu -->
+</div>

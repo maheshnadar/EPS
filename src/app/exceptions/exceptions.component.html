@@ -1,0 +1,228 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title m-subheader__title--separator">Exceptions</h3>
+        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+          <li class="m-nav__item m-nav__item--home">
+            <a href="#" class="m-nav__link m-nav__link--icon">
+              <i class="m-nav__link-icon la la-home"></i>
+            </a>
+          </li>
+          <li class="m-nav__separator">-</li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">Exceptions</span>
+            </a>
+          </li>
+          <li class="m-nav__separator">-</li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">All Exceptions</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <a href="addexception.php" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+          <span>
+            <i class="la la-plus"></i>
+            <span>Add New Exception</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- END: Subheader -->
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <!--begin::Portlet-->
+
+    <!--end::Portlet-->
+    <div class="m-portlet m-portlet--mobile" id="atmsdataportlet">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title"><h3 class="m-portlet__head-text">All Data</h3></div>
+        </div>
+        <div class="m-portlet__head-tools">
+          <ul class="m-portlet__nav">
+            <li class="m-portlet__nav-item">
+              <a href="#" data-toggle="modal" data-target="#modalfilter" class="m-portlet__nav-link m-portlet__nav-link--icon filters">
+                <i class="la la-filter"></i>
+              </a>
+              <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-filter"></i> Filter Records</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="m-form m-form--fit m-form--label-align-right">
+                        <div class="form-group1 m-form__group">
+                          <label for="exampleInputEmail1">Bank</label>
+                          <div></div>
+                          <div class="dropdown bootstrap-select form-control m-bootstrap-select"><select class="form-control m-bootstrap-select" id="m_form_status" tabindex="-98">
+                            <option value="">All</option>
+                            <option value="1">State Bank of India</option>
+                            <option value="2">Bank of India</option>
+                            <option value="3">Punjab National Bank</option>
+                            <option value="3">Kotak Bank</option>
+                          </select><button type="button" class="btn dropdown-toggle btn-light" data-toggle="dropdown" role="button" data-id="m_form_status" title="State Bank of India"><div class="filter-option"><div class="filter-option-inner">State Bank of India</div></div>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
+                        </div>
+                        <div class="form-group m-form__group">
+                          <label class="">Feeder Branch:</label>
+                          <div class="m-input-icon m-input-icon--right">
+                            <div class="dropdown bootstrap-select form-control m-bootstrap-select"><select class="form-control m-bootstrap-select" tabindex="-98">
+                              <option value="">All</option>
+                              <option value="1">Ghatkopar</option>
+                              <option value="2">Mulund</option>
+                              <option value="3">Bhandup</option>
+                              <option value="3">Matunga</option>
+                              <option value="3">Dadar</option>
+                            </select><button type="button" class="btn dropdown-toggle btn-light" data-toggle="dropdown" role="button" title="Ghatkopar"><div class="filter-option"><div class="filter-option-inner">Ghatkopar</div></div>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="editrecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-edit"></i> Edit Record</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="m-scrollable m-scroller ps" data-scrollbar-shown="true" data-scrollable="true" data-height="300" style="height: 300px; overflow: hidden;">
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                          <div class="form-group m-form__group">
+                            <label for="exampleInputEmail1">ATM ID</label>
+                            <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                          </div>
+                          <div class="form-group m-form__group">
+                            <label for="exampleSelect1">Bank</label>
+                            <select class="form-control m-input m-input--square" id="exampleSelect1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                          <div class="form-group m-form__group">
+                            <label for="exampleSelect1">Feeder Branch</label>
+                            <select class="form-control m-input m-input--square" id="exampleSelect1">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                            </select>
+                          </div>
+                          <div class="form-group m-form__group">
+                            <label for="exampleInputEmail1">CRA</label>
+                            <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                          </div>
+                          <div class="form-group m-form__group">
+                            <label for="exampleInputEmail1">Bank Email</label>
+                            <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                          </div>
+                          <div class="form-group m-form__group">
+                            <label for="exampleInputEmail1">CRA Custodian</label>
+                            <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                          </div>
+                        </form>
+                      <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li class="m-portlet__nav-item">
+              <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon">
+                <i class="la la-angle-down"></i>
+              </a>
+            </li>
+            <li class="m-portlet__nav-item">
+              <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon">
+                <i class="la la-expand"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="m-portlet__body">
+        <!--begin: Search Form -->
+        <div class="m-form m-form--label-align-right m--margin-bottom-30">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="m-input-icon m-input-icon--left">
+                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
+                <span class="m-input-icon__icon m-input-icon__icon--left">
+                  <span>
+                    <i class="la la-search"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-8 m--align-right">
+              <div class="dropdown m-dropdown--inline">
+                <button class="btn btn-brand dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item m--font-primary" href="#">
+                    <i class="fa fa-file-export m--font-primary"></i> Export</a>
+                  <a class="dropdown-item m--font-success btn-approve" href="#">
+                    <i class="fa fa-check m--font-success"></i> Approve Selected</a>
+                  <a class="dropdown-item m--font-danger btn-reject" href="#" data-toggle="modal" data-target="rejectdata">
+                    <i class="fa fa-times m--font-danger"></i> Reject Selected</a>
+                  <a class="dropdown-item m--font-danger deleteselected" href="#">
+                    <i class="fa fa-trash m--font-danger"></i> Deleted Selected</a>
+                </div>
+              </div>
+              <div class="dropdown bootstrap-select show-tick form-control m-bootstrap-select m-dropdown--inline dropup" style="width: 200px;"><select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple="" id="datablecolumns" data-style="btn-metal" tabindex="-98"><option value="" selected="">Select Columns</option><option value="ExceptionID">ID</option><option value="RelatedTo">Related To</option><option value="Subject">Subject</option><option value="CreatedBy">Created By</option><option value="AssignedTo">Assigned To</option><option value="CreatedDate">Created Date</option><option value="LastUpdatedDate">Last Updated Date</option><option value="Status">Status</option></select><button type="button" class="btn dropdown-toggle bs-placeholder btn-metal" data-toggle="dropdown" role="button" data-id="datablecolumns" title="Select Columns"><div class="filter-option"><div class="filter-option-inner">Select Columns</div></div>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu " role="combobox" style="max-height: 247.891px; overflow: hidden; min-height: 122px; min-width: 200px;"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1" style="max-height: 235.891px; overflow-y: auto; min-height: 110px;"><ul class="dropdown-menu inner show"><li class="selected"><a role="option" class="dropdown-item selected" aria-disabled="false" tabindex="0" aria-selected="true"><span class=" bs-ok-default check-mark"></span><span class="text">Select Columns</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">ID</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Related To</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Subject</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Created By</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Assigned To</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Created Date</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Last Updated Date</span></a></li><li><a role="option" class="dropdown-item" aria-disabled="false" tabindex="0" aria-selected="false"><span class=" bs-ok-default check-mark"></span><span class="text">Status</span></a></li></ul></div></div></div>
+            </div>	
+          </div>
+        </div>
+
+        <!--end: Search Form -->
+
+        <!--begin: Datatable -->
+        <!-- <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded m-datatable--scroll" id="local_data" style=""><table class="m-datatable__table" style="display: block; min-height: 300px;"><thead class="m-datatable__head"><tr class="m-datatable__row"><th data-field="RecordID" class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check"><span style="width: 50px;"><label class="m-checkbox m-checkbox--single m-checkbox--all m-checkbox--solid m-checkbox--brand"><input type="checkbox">&nbsp;<span></span></label></span></th><th data-field="ExceptionID" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">ID</span></th><th data-field="RelatedTo" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">Related To</span></th><th data-field="Subject" class="m-datatable__cell m-datatable__cell--sort" data-sort="desc"><span style="width: 400px;">Subject<i class="la la-arrow-down"></i></span></th><th data-field="CreatedBy" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">Created By</span></th><th data-field="AssignedTo" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">Assigned To</span></th><th data-field="CreatedDate" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">Created Date</span></th><th data-field="LastUpdatedDate" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">Last Updated Date</span></th><th data-field="Status" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 100px;">Status</span></th><th data-field="Actions" class="m-datatable__cell m-datatable__cell--sort"><span style="width: 110px;">Actions</span></th></tr></thead><tbody class="m-datatable__body ps ps--active-x" style=""><tr data-row="0" class="m-datatable__row" style="left: 0px;"><td class="m-datatable__cell--center m-datatable__cell m-datatable__cell--check" data-field="RecordID"><span style="width: 50px;"><label class="m-checkbox m-checkbox--single m-checkbox--solid m-checkbox--brand"><input type="checkbox" value="1">&nbsp;<span></span></label></span></td><td data-field="ExceptionID" class="m-datatable__cell"><span style="width: 110px;">54473-251</span></td><td data-field="RelatedTo" class="m-datatable__cell"><span style="width: 110px;">C3R Report</span></td><td class="m-datatable__cell--sorted m-datatable__cell" data-field="Subject"><span style="width: 400px;">Some help text goes here</span></td><td data-field="CreatedBy" class="m-datatable__cell"><span style="width: 110px;">Hitesh Thakkar</span></td><td data-field="AssignedTo" class="m-datatable__cell"><span style="width: 110px;">Jhon Doe</span></td><td data-field="CreatedDate" class="m-datatable__cell"><span style="width: 110px;">5/21/2018</span></td><td data-field="LastUpdatedDate" class="m-datatable__cell"><span style="width: 110px;">5/21/2018</span></td><td data-field="Status" class="m-datatable__cell"><span style="width: 100px;"><span class="m-badge m-badge--metal m-badge--wide">Open</span></span></td><td data-field="Actions" class="m-datatable__cell"><span style="overflow: visible; position: relative; width: 110px;">								<button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-approve" title="View "><i class="fa fa-check m--font-success"></i></button>								<button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-reject" title="View "><i class="fa fa-times m--font-danger"></i></button>								<a href="exceptiondetails.php" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">		                            <i class="la la-file"></i>		                        </a>							</span></td></tr><div class="ps__rail-x" style="width: 947px; left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 590px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></tbody></table><div class="m-datatable__pager m-datatable--paging-loaded clearfix"><ul class="m-datatable__pager-nav" style="display: none;"><li><a title="First" class="m-datatable__pager-link m-datatable__pager-link--first m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-double-left"></i></a></li><li><a title="Previous" class="m-datatable__pager-link m-datatable__pager-link--prev m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-left"></i></a></li><li style="display: none;"><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-prev" data-page="1"><i class="la la-ellipsis-h"></i></a></li><li style="display: none;"><input type="text" class="m-pager-input form-control" title="Page number"></li><li><a class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active" data-page="1" title="1">1</a></li><li style="display: none;"><a title="More pages" class="m-datatable__pager-link m-datatable__pager-link--more-next" data-page="1"><i class="la la-ellipsis-h"></i></a></li><li><a title="Next" class="m-datatable__pager-link m-datatable__pager-link--next m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-right"></i></a></li><li><a title="Last" class="m-datatable__pager-link m-datatable__pager-link--last m-datatable__pager-link--disabled" data-page="1" disabled="disabled"><i class="la la-angle-double-right"></i></a></li></ul><div class="m-datatable__pager-info"><div class="dropdown bootstrap-select m-datatable__pager-size" style="width: 70px;"><select class="selectpicker m-datatable__pager-size" title="Select page size" data-width="70px" data-selected="50" tabindex="-98"><option class="bs-title-option" value="">Select page size</option><option value="10">10</option><option value="20">20</option><option value="30">30</option><option value="50">50</option><option value="100">100</option></select><button type="button" class="btn dropdown-toggle btn-light" data-toggle="dropdown" role="button" title="Select page size"><div class="filter-option"><div class="filter-option-inner">50</div></div>&nbsp;<span class="bs-caret"><span class="caret"></span></span></button><div class="dropdown-menu " role="combobox"><div class="inner show" role="listbox" aria-expanded="false" tabindex="-1"><ul class="dropdown-menu inner show"></ul></div></div></div><span class="m-datatable__pager-detail">Displaying 1 - 1 of 1 records</span></div></div></div>
+            </div>
+          </div>
+        
+        </div> -->
+
+        <table>
+          <tr>
+            <th></th>
+          </tr>
+          <tr *ngFor="let exception of allException">
+            <td>{{exception}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
