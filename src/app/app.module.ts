@@ -18,6 +18,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ExceptionsComponent } from './exceptions/exceptions.component';
 
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ExceptionsComponent } from './exceptions/exceptions.component';
   ],
   imports: [
     BrowserModule,
+    NgxDatatableModule,
     HttpClientModule,
     AppRoutingModule,
     FileUploadModule,

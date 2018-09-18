@@ -213,15 +213,54 @@
           </div>
         
         </div> -->
+<!-- 
+        <ngx-datatable
+        [rows]="allData"
+        [columns]="allTitle"
+        [headerCheckboxable]="true"
+         [checkboxable]="true"
+        >
+      </ngx-datatable> -->
 
-        <table>
-          <tr>
-            <th></th>
-          </tr>
-          <tr *ngFor="let exception of allException">
-            <td>{{exception}}</td>
-          </tr>
-        </table>
+
+
+<ngx-datatable
+          style="width: 100%"
+          class="material"
+          [rows]="rows"
+          [columnMode]="'Flex'"
+          [headerHeight]="50"
+          [footerHeight]="0"
+          [rowHeight]="'auto'"
+          [limit]="5"
+          [selected]="selected"
+          [selectionType]="'checkbox'"
+          [selectAllRowsOnPage]="false"
+          [displayCheck]="displayCheck"
+          (activate)="onActivate($event)"
+          (select)='onSelect($event)'>
+          <ngx-datatable-column
+            [width]="30"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            [headerCheckboxable]="true"
+            [checkboxable]="true">
+          </ngx-datatable-column>
+          <ngx-datatable-column prop="ID" name="ID"></ngx-datatable-column>
+          <ngx-datatable-column name="Related To"></ngx-datatable-column>
+          <ngx-datatable-column prop="subject" name="Subject"></ngx-datatable-column>
+          <ngx-datatable-column name="Created By"></ngx-datatable-column>
+          <ngx-datatable-column name="Assigned To"></ngx-datatable-column>
+          <ngx-datatable-column name="Created Date"></ngx-datatable-column>
+          <ngx-datatable-column name="Last Updated Date"></ngx-datatable-column>
+          <ngx-datatable-column name="Status"></ngx-datatable-column>
+          <ngx-datatable-column name="Actions"></ngx-datatable-column>
+         
+        </ngx-datatable>
+
+
       </div>
     </div>
   </div>
