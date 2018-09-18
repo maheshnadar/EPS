@@ -1,0 +1,152 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title m-subheader__title--separator">Add Exception</h3>
+        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+          <li class="m-nav__item m-nav__item--home">
+            <a href="#" class="m-nav__link m-nav__link--icon">
+              <i class="m-nav__link-icon la la-home"></i>
+            </a>
+          </li>
+          <li class="m-nav__separator">-</li>
+          <li class="m-nav__item">
+            <a href="exceptions.php" class="m-nav__link">
+              <span class="m-nav__link-text">Exceptions</span>
+            </a>
+          </li>
+          <li class="m-nav__separator">-</li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">Add Exception</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- END: Subheader -->
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <!--begin::Portlet-->
+
+    <!--end::Portlet-->
+    <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile m-portlet--sticky" id="main_portlet">
+      <div class="m-portlet__head" style="z-index: 90; top: 70px; left: 285px; right: 30px;">
+        <div class="m-portlet__head-progress">
+
+          <!-- here can place a progress bar-->
+        </div>
+        <div class="m-portlet__head-wrapper">
+          <div class="m-portlet__head-caption">
+            <div class="m-portlet__head-title">
+                Exception Details
+            </div>
+          </div>
+          <div class="m-portlet__head-tools">
+            <a [routerLink]="['/exceptions']" routerLinkActive="router-link-active"  class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+              <span>
+                <i class="la la-arrow-left"></i>
+                <span>Back</span>
+              </span>
+            </a>
+            <button type="button" (click)="save()" class="btn btn-primary btn-submit  m-btn m-btn--icon m-btn--wide m-btn--md">
+              <span>
+                <i class="la la-check"></i>
+                <span>Save</span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="m-portlet__body">
+        <form [formGroup]="creatExcepForm"  class="m-form m-form--label-align-left- m-form--state-" id="m_form" >
+
+          <!--begin: Form Body -->
+          <div class="m-portlet__body">
+            <div class="row">
+              <div class="col-xl-8 offset-xl-2">
+                <div class="m-form__section m-form__section--first">
+                  <div class="m-form__heading">
+                    <h3 class="m-form__heading-title">Ticket Details</h3>
+                  </div>
+                  <div class="form-group m-form__group row">
+                    <label class="col-xl-3 col-lg-3 col-form-label">* Subject:</label>
+                    <div class="col-xl-9 col-lg-9">
+                      <input type="text" name="name" class="form-control m-input" placeholder="" [formControlName]="'subject'">
+                      <span class="m-form__help"></span>
+                    </div>
+                  </div>
+                  <div class="form-group m-form__group row">
+                    <label class="col-xl-3 col-lg-3 col-form-label">* Details:</label>
+                    <div class="col-xl-9 col-lg-9">
+                      <!-- <div class="md-editor" id="1537270519446">
+                        <div class="md-header btn-toolbar"><div class="btn-group">
+                          <button class="btn-default btn-sm btn" type="button" title="Bold" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdBold" data-hotkey="Ctrl+B"><span class="fa fa-bold"></span> </button><button class="btn-default btn-sm btn" type="button" title="Italic" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdItalic" data-hotkey="Ctrl+I"><span class="fa fa-italic"></span> </button><button class="btn-default btn-sm btn" type="button" title="Heading" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdHeading" data-hotkey="Ctrl+H"><span class="fa fa-heading"></span> </button></div><div class="btn-group"><button class="btn-default btn-sm btn" type="button" title="URL/Link" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdUrl" data-hotkey="Ctrl+L"><span class="fa fa-link"></span> </button><button class="btn-default btn-sm btn" type="button" title="Image" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdImage" data-hotkey="Ctrl+G"><span class="fa fa-image"></span> </button></div><div class="btn-group"><button class="btn-default btn-sm btn" type="button" title="Unordered List" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdList" data-hotkey="Ctrl+U"><span class="fa fa-list"></span> </button><button class="btn-default btn-sm btn" type="button" title="Ordered List" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdListO" data-hotkey="Ctrl+O"><span class="fa fa-list-ol"></span> </button><button class="btn-default btn-sm btn" type="button" title="Code" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdCode" data-hotkey="Ctrl+K"><span class="fa fa-code"></span> </button><button class="btn-default btn-sm btn" type="button" title="Quote" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdQuote" data-hotkey="Ctrl+Q"><span class="fa fa-quote-left"></span> </button></div><div class="btn-group"><button class="btn-sm btn btn-primary" type="button" title="Preview" tabindex="-1" data-provider="bootstrap-markdown" data-handler="bootstrap-markdown-cmdPreview" data-hotkey="Ctrl+P" data-toggle="button" aria-pressed="false"><span class="fa fa-search"></span> Preview</button></div><div class="md-controls"><a class="md-control md-control-fullscreen" href="#"><span class="fa fa-expand"></span></a></div></div><textarea name="content" class="form-control md-input" data-provide="markdown" rows="10" style="resize: none;"></textarea><div class="md-fullscreen-controls"><a href="#" class="exit-fullscreen" title="Exit fullscreen"><span class="fa fa-compress"></span></a>
+                          </div>
+                        </div> -->
+
+  <textarea  class="form-control md-input"  name="content" rows="10" style="resize: none;" [formControlName]="'details'"></textarea>
+                    
+                    </div>
+                  </div>
+                </div>
+                <div class="m-separator m-separator--dashed m-separator--lg"></div>
+                <div class="m-form__section">
+                  <div class="m-form__heading">
+                    <h3 class="m-form__heading-title">
+                      Related Information
+                      <i data-toggle="m-tooltip" data-width="auto" class="m-form__heading-help-icon flaticon-info" title="" data-original-title="Some help text goes here"></i>
+                    </h3>
+                  </div>
+                  <div class="form-group m-form__group row">
+                    <label class="col-xl-3 col-lg-3 col-form-label">* Type:</label>
+                    <div class="col-xl-9 col-lg-9">
+                      <select name="type" class="form-control m-input" [formControlName]="'type'">
+                        <option value="">Select</option>
+                        <option value="Master Data" selected="">Master Data</option>
+                        <option value="Cash Routine Activities">Cash Routine Activities</option>
+                        <option value="Operations">Operations</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <span class="m-form__help">Top level Type of the exception</span>
+                    </div>
+                  </div>
+                  <div class="form-group m-form__group row">
+                    <label class="col-xl-3 col-lg-3 col-form-label">* Secondary Type:</label>
+                    <div class="col-xl-9 col-lg-9">
+                      <select name="subtype" class="form-control m-input" [formControlName]="'subtype'" >
+                        <option value="">Select</option>
+                        <option value="ATMs" selected="">ATMs</option>
+                        <option value="Bank Cash Limit">Bank Cash Limit</option>
+                        <option value="Insurance Limit">Insurance Limit</option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <span class="m-form__help">Secondary level Type of the exception</span>
+                    </div>
+                  </div>
+                  <div class="form-group m-form__group row">
+                    <label class="col-xl-3 col-lg-3 col-form-label">* Select ATM:</label>
+                    <div class="col-xl-9 col-lg-9">
+                      <select name="atm" class="form-control m-input" [formControlName]="'atm'">
+                        <option value="">Select</option>
+                        <option value="ATM 1">ATM 1</option>
+                        <option value="ATM 2">ATM 2</option>
+                        <option value="ATM 3">ATM 3</option>
+                        <option value="All">All</option>
+                      </select>
+                      <span class="m-form__help">Select ATM for which you want to create the exception.</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,8 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+
 import { HttpModule } from '@angular/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 //extra
@@ -19,6 +20,7 @@ import { FileUploadModule } from 'ng2-file-upload';
 import { ExceptionsComponent } from './exceptions/exceptions.component';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { CreateExceptionComponent } from './exceptions/create-exception/create-exception.component';
 
 
 @NgModule({
@@ -28,6 +30,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     TopNavbarComponent,
     MainContentComponent,
     ExceptionsComponent,
+    CreateExceptionComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     AppRoutingModule,
     FileUploadModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     TooltipModule.forRoot(),
      
