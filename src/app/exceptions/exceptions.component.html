@@ -226,13 +226,14 @@
 
 <ngx-datatable
           style="width: 100%"
-        
           [rows]="rows"
-          [columnMode]="'force'"
+          [columnMode]="'Flex'"
           [headerHeight]="50"
+     
+          [scrollbarH]="true"
           [footerHeight]="50"
-          [rowHeight]="'auto'"
-          [limit]="10"
+          [rowHeight]="'50'"
+          [limit]="5"
           [selected]="selected"
           [selectionType]="'checkbox'"
           [selectAllRowsOnPage]="false"
@@ -240,7 +241,7 @@
           (activate)="onActivate($event)"
           (select)='onSelect($event)'>
           <ngx-datatable-column
-            [width]="30"
+            [width]="50"
             [sortable]="false"
             [canAutoResize]="false"
             [draggable]="false"
@@ -248,15 +249,49 @@
             [headerCheckboxable]="true"
             [checkboxable]="true">
           </ngx-datatable-column>
-          <ngx-datatable-column prop="ticket_id" name="ID"></ngx-datatable-column>
-          <ngx-datatable-column name="Related To" ></ngx-datatable-column>
-          <ngx-datatable-column prop="subject" name="Subject"></ngx-datatable-column>
-          <ngx-datatable-column name="Created By"></ngx-datatable-column>
-          <ngx-datatable-column name="Assigned To"></ngx-datatable-column>
-          <ngx-datatable-column name="Created Date"></ngx-datatable-column>
-          <ngx-datatable-column name="Last Updated Date"></ngx-datatable-column>
-          <ngx-datatable-column prop="additional_info" name="Status"></ngx-datatable-column>
-          <ngx-datatable-column name="Actions"></ngx-datatable-column>
+          <ngx-datatable-column  [width]="110"
+          prop="ticket_id" name="ID" ></ngx-datatable-column>
+          <ngx-datatable-column  [width]="110"
+          name="Related To" ></ngx-datatable-column>
+          <ngx-datatable-column  [width]="400" 
+          prop="subject" name="Subject"></ngx-datatable-column>
+          <ngx-datatable-column [width]="110"
+          prop="created_by" name="Created By" ></ngx-datatable-column>
+          <ngx-datatable-column [width]="110"
+          name="Assigned To"></ngx-datatable-column>
+          <ngx-datatable-column [width]="110"
+           prop="created_on" name="Created Date"></ngx-datatable-column>
+          <ngx-datatable-column [width]="110"
+          name="Last Updated Date"></ngx-datatable-column>
+          <ngx-datatable-column [width]="110"
+          prop="additional_info" name="Status">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <span class="m-badge m-badge--metal m-badge--wide">{{value}}</span>
+            </ng-template>
+           </ngx-datatable-column>
+          
+          <ngx-datatable-column [width]="110"
+          name="Actions">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <span style="overflow: visible; position: relative; width: 110px;">	
+                  <button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-approve" title="View ">
+                    <i class="fa fa-check m--font-success"></i>
+                  </button>								
+                  <button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-reject" title="View "><i class="fa fa-times m--font-danger"></i>
+                  </button>
+                  <span 
+                   class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">	
+                    <i class="la la-file" [routerLink]="['/viewexception',row.ticket_id]"
+                    routerLinkActive="router-link-active" ></i>	
+                </span>
+              </span>
+            </ng-template>
+         
+
+        </ngx-datatable-column>
+         
+
+
          
         </ngx-datatable>
 
