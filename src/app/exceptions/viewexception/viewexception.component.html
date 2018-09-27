@@ -1,0 +1,167 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+
+    <!-- BEGIN: Subheader -->
+    <div class="m-subheader ">
+      <div class="d-flex align-items-center">
+        <div class="mr-auto">
+          <h3 class="m-subheader__title m-subheader__title--separator">Exception Details</h3>
+          <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+            <li class="m-nav__item m-nav__item--home">
+              <a href="#" class="m-nav__link m-nav__link--icon">
+                <i class="m-nav__link-icon la la-home"></i>
+              </a>
+            </li>
+            <li class="m-nav__separator">-</li>
+            <li class="m-nav__item">
+              <a href="exceptions.php" class="m-nav__link">
+                <span class="m-nav__link-text">Exceptions</span>
+              </a>
+            </li>
+            <li class="m-nav__separator">-</li>
+            <li class="m-nav__item">
+              <a href="" class="m-nav__link">
+                <span class="m-nav__link-text">Exception Details</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- END: Subheader -->
+    <!-- END: Subheader -->
+    <div class="m-content">
+      <!--begin::Portlet-->
+
+      <!--end::Portlet-->
+      <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
+        <div class="m-portlet__head" style="">
+          <div class="m-portlet__head-progress">
+
+            <!-- here can place a progress bar-->
+          </div>
+          <div class="m-portlet__head-wrapper">
+            <div class="m-portlet__head-caption">
+              <div class="m-portlet__head-title">
+                  Exception Details
+              </div>
+            </div>
+            <div class="m-portlet__head-tools">
+              <a  [routerLink]="['/exceptions']" routerLinkActive="router-link-active"  class="btn btn-secondary m-btn m-btn--icon m-btn--wide m-btn--md m--margin-right-10">
+                <span>
+                  <i class="la la-arrow-left"></i>
+                  <span>Back</span>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="m-portlet__body">
+          <form class="m-form m-form--label-align-left- m-form--state-" id="m_form" >
+            <!--begin: Form Body -->
+            <ul class="nav nav-tabs  m-tabs-line m-tabs-line--success" role="tablist">
+              <li class="nav-item m-tabs__item">
+                <a class="nav-link m-tabs__link active" data-toggle="tab" href="#m_tabs_2_1" role="tab">Ticket Details</a>
+              </li>
+              <li class="nav-item m-tabs__item">
+                <a class="nav-link m-tabs__link" data-toggle="tab" href="#m_tabs_2_3" role="tab">Comments</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="m_tabs_2_1" role="tabpanel">
+                <h5>#{{exceptionDetails?.ticket_id}} {{exceptionDetails?.subject}}.</h5>
+                <p>
+                 {{exceptionDetails?.description}}
+                </p>
+
+                <div class="m-separator m-separator--dashed m-separator--sm"></div>
+                <div class="m-form__heading">
+                  <h3 class="m-form__heading-title">Related Information</h3>
+                </div>
+                <p>
+                  Type: {{exceptionDetails?.additional_info?.Type}}, Sub Type: Master Data
+                </p>
+                <div class="m-separator m-separator--dashed m-separator--sm"></div>
+                <div class="m-form__heading">
+                  <h3 class="m-form__heading-title">Manage Ticket</h3>
+                </div>
+                <div class="form-group m-form__group row">
+                  <div class="col-lg-6 m-form__group-sub">
+                    <label class="form-control-label">* Assign To:</label>
+                    <div class="m-checkbox-inline col-lg-6">
+                      <select name="country" class="form-control m-input">
+                        <option value="">Select</option>
+                        <option value="AF" selected="">User 1</option>
+                        <option value="AX">User 2</option>
+                        <option value="AL">User 3</option>
+                        <option value="DZ">User 4</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-lg-6 m-form__group-sub">
+                    <label class="form-control-label">* Status:</label>
+                    <!-- <div class="m-checkbox-inline col-lg-6">
+                      <div class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate" style="width: 150px;"><div class="bootstrap-switch-container" style="width: 224px; margin-left: 0px;">
+                        <span class="bootstrap-switch-handle-on bootstrap-switch-success" style="width: 79.9px;">Open</span>
+                        <span class="bootstrap-switch-label" style="width: 79.9px;">&nbsp;</span>
+                        <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 79.9px;">Closed</span>
+                        <input data-switch="true" type="checkbox" [checked]="status" data-on-text="Open" data-handle-width="50" data-off-text="Closed" data-on-color="success"></div></div>
+                    </div> -->
+                    <div class="m-checkbox-inline col-lg-6">
+                        <div (click)="status = !status" class="bootstrap-switch-on bootstrap-switch bootstrap-switch-wrapper bootstrap-switch-animate custom-checkbox-switch on  {{status ? 'on': 'off'}}" style="width: 150px;">
+                          <div class="bootstrap-switch-container" style="width: 224px; margin-left: 0px;">
+                          <span class="bootstrap-switch-handle-on bootstrap-switch-success" style="width: 79.9px;" (click)="status = !status">Open</span>
+                          <span class="bootstrap-switch-label" style="width: 79.9px;">&nbsp;</span>
+                          <span class="bootstrap-switch-handle-off bootstrap-switch-default" style="width: 79.9px;" (click)="status = !status" >Closed</span>
+                          <input data-switch="true" type="checkbox" [checked]="status"   ></div></div>
+                      </div>
+                  </div>
+                </div>
+                <div class="m-portlet__foot m-portlet__foot--fit">
+                  <div class="m-form__actions m-form__actions">
+                    <button type="reset" class="btn btn-brand" >Save Ticket</button>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="m_tabs_2_3" role="tabpanel">
+                <div class="m-scrollable m-scroller ps" data-scrollable="true" style="height: 200px; overflow: hidden;" id="comment">
+                  <div class="m-widget3">
+                    <div class="m-widget3__item" *ngFor="let comment of exceptionDetails?.ticket_reply_data">
+                      <div class="m-widget3__header">
+                        <div class="m-widget3__info">
+                          <span class="m-widget3__username">
+                           name
+                          </span>
+                          <br>
+                          <span class="m-widget3__time">
+                            time
+                          </span>
+                        </div>
+                      </div>
+                      <div class="m-widget3__body">
+                        <p class="m-widget3__text">
+                            {{comment.replymessage}}
+                        </p>
+                      </div>
+                    </div>
+                 <div *ngIf="exceptionDetails?.ticket_reply_data.length==0">No replay</div>
+                  </div>
+                <div class="ps__rail-x" style="left: 0px; bottom: 0px;"><div class="ps__thumb-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps__rail-y" style="top: 0px; right: 4px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div></div></div>
+                <div class="m-separator m-separator--dashed m-separator--sm"></div>
+                <div class="m-form__heading">
+                  <h3 class="m-form__heading-title">Post Comment</h3>
+                </div>
+             
+                <textarea  class="form-control md-input"  name="content" rows="10" style="resize: none;" [(ngModel)]='reply' ></textarea>
+                    <div class="m-portlet__foot m-portlet__foot--fit">
+                  <div class="m-form__actions m-form__actions">
+                    <button type="reset" class="btn btn-brand" (click)="replyfn(reply,exceptionDetails?.ticket_id)">Submit Comment</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

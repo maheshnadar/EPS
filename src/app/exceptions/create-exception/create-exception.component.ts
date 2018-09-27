@@ -1,7 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,TemplateRef } from '@angular/core';
 import { ApiService } from '../../apiservice.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+
+
+
 
 @Component({
   selector: 'app-create-exception',
@@ -12,8 +19,12 @@ export class CreateExceptionComponent implements OnInit {
   creatExcepForm:FormGroup
 
 
+  //modal
+  createdModal: BsModalRef;
 
-  constructor(private apiservice:ApiService) { }
+
+
+  constructor(private apiservice:ApiService,private modalService: BsModalService) { }
 
 
 
@@ -55,6 +66,12 @@ export class CreateExceptionComponent implements OnInit {
    )
 
 
+  }
+
+
+
+  OpenCreateModal(template: TemplateRef<any>) {
+    this.createdModal = this.modalService.show(template);
   }
 
 

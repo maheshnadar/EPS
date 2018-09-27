@@ -175,7 +175,7 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="m-input-icon m-input-icon--left">
-                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
+                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch"   (keyup)='updateFilter($event)'>
                 <span class="m-input-icon__icon m-input-icon__icon--left">
                   <span>
                     <i class="la la-search"></i>
@@ -225,11 +225,11 @@
 
 
 <ngx-datatable
+          #table
           style="width: 100%"
           [rows]="rows"
           [columnMode]="'Flex'"
           [headerHeight]="50"
-     
           [scrollbarH]="true"
           [footerHeight]="50"
           [rowHeight]="'50'"
@@ -274,11 +274,11 @@
           name="Actions">
           <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
               <span style="overflow: visible; position: relative; width: 110px;">	
-                  <button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-approve" title="View ">
+                  <!-- <button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-approve" title="View ">
                     <i class="fa fa-check m--font-success"></i>
                   </button>								
                   <button type="button" class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill btn-reject" title="View "><i class="fa fa-times m--font-danger"></i>
-                  </button>
+                  </button> -->
                   <span 
                    class="m-portlet__nav-link btn m-btn m-btn--hover-accent m-btn--icon m-btn--icon-only m-btn--pill" title="View ">	
                     <i class="la la-file" [routerLink]="['/viewexception',row.ticket_id]"
@@ -286,9 +286,7 @@
                 </span>
               </span>
             </ng-template>
-         
-
-        </ngx-datatable-column>
+          </ngx-datatable-column>
          
 
 

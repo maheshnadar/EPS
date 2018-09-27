@@ -1,0 +1,76 @@
+<ngx-datatable   #mydatatable
+        class="material"
+        [headerHeight]="50"
+        [limit]="5"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        [rowHeight]="'auto'"
+        [displayCheck]="displayCheck"
+        [selectionType]="'checkbox'"
+        [selectAllRowsOnPage]="false"
+        [rows]="rows">
+
+        <ngx-datatable-column
+        [width]="50"
+        [sortable]="false"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        [headerCheckboxable]="true"
+        [checkboxable]="true">
+      </ngx-datatable-column>
+        <ngx-datatable-column name="ATM ID" prop="atm_id">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Atm Status" prop="atm_status">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">
+            <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-atm_status'] = true"
+              *ngIf="!editing[rowIndex + '-atm_status']">
+              {{value}}
+            </span>
+            <select
+            *ngIf="editing[rowIndex + '-atm_status']"
+            (blur)="editing[rowIndex + '-atm_status'] = false"
+            (change)="updateValue($event, 'atm_status', rowIndex)"
+            [value]="value">
+            <option value="Active">Active</option>
+            <option value="InActive">Inactive</option>
+          </select>
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Cash"  prop="cash">
+          <ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-row="row" let-value="value">
+             <span
+              title="Double click to edit"
+              (dblclick)="editing[rowIndex + '-cash'] = true"
+              *ngIf="!editing[rowIndex + '-cash']">
+              {{value}}
+            </span>
+          
+            <input
+            autofocus
+            (blur)="updateValue($event, 'cash', rowIndex)"
+            *ngIf="editing[rowIndex+ '-cash']"
+            type="text"
+            [value]="value"
+          />
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="Age">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column> -->
+      </ngx-datatable>
+
+      <div class="text-right mr-4">
+        <button class="btn btn-primary" (click)="save()">Save</button>
+      </div>
+      <div>
+        changes value :
+        {{changedvalue | json}}
+      </div>

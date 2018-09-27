@@ -7,8 +7,17 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
+
+
 //extra
+// ngxbootstrap
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { ModalModule } from 'ngx-bootstrap';
+
+
+
+
+
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 import { MainContentComponent } from './main-content/main-content.component';
@@ -21,6 +30,8 @@ import { ExceptionsComponent } from './exceptions/exceptions.component';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CreateExceptionComponent } from './exceptions/create-exception/create-exception.component';
+import { ViewexceptionComponent } from './exceptions/viewexception/viewexception.component';
+import { DatatableComponent } from './datatable/datatable.component';
 
 
 @NgModule({
@@ -31,6 +42,8 @@ import { CreateExceptionComponent } from './exceptions/create-exception/create-e
     MainContentComponent,
     ExceptionsComponent,
     CreateExceptionComponent,
+    ViewexceptionComponent,
+    DatatableComponent,
   ],
   imports: [
     BrowserModule,
@@ -42,6 +55,7 @@ import { CreateExceptionComponent } from './exceptions/create-exception/create-e
     ReactiveFormsModule,
     HttpModule,
     TooltipModule.forRoot(),
+    ModalModule.forRoot()
      
   ],
   providers: [],

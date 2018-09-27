@@ -10,8 +10,6 @@ import { HttpClient } from '@angular/common/http';
 
 
 
-
-
 @Component({
   selector: 'main-content',
   templateUrl: './main-content.component.html',

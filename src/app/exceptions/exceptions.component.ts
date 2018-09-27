@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
+import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatable.component';
+
+
 
 //custom
 import {domain} from '../shared/domain';
@@ -12,22 +15,30 @@ import {ApiService} from '../apiservice.service';
 
 })
 export class ExceptionsComponent implements OnInit {
+  title:string;
+
+
+
+
   allException:object[];
+
   AllRequiredField=['ticket_id','subject','description',
   'additional_info','ticket_category','ticket_status',
-  'created_on','created_by','assigned_to_role','assigned_to_user',
+  'created_on','created_by','assigned_to_role', 'assigned_to_user',
   'assigned_by_user','assigned_on','closed_by_user',
   'closed_on','close_comments']
 requiredField=['ticket_id','subject','ticket_category', 'ticket_status','additional_info','created_by','assigned_to_role','assigned_to_user'];
   selected = [];
   rows = [];
+  temp = [];  // for filter
+ // @ViewChild(DatatableComponent) table: DatatableComponent;
   allTitle = [
     { prop: 'name' },
     { name: 'Gender' },
     { name: 'Company' }
   ];
   constructor (private apiService: ApiService  ) {
-
+this.title="this is tilte";
   }
 
   ngOnInit() {
@@ -42,7 +53,7 @@ requiredField=['ticket_id','subject','ticket_category', 'ticket_status','additio
  getall(){
 
     var param={
-        "access_token": "978DBDSGSWNWHU",
+   
         "required_fields":this.requiredField,
         //  "filter":{
         //   "ticket_category":"UserTicket"
@@ -51,8 +62,9 @@ requiredField=['ticket_id','subject','ticket_category', 'ticket_status','additio
 
     this.apiService.post('ticket/get_all/',param).subscribe(
       data => {
-          var x:any=data;
-         this.rows=JSON.parse(x)
+          var tabledata:any=data;
+         this.rows=tabledata;
+         this.temp = tabledata;
          console.log("POST Request is successful ",this.rows);
       },
       error => {
@@ -92,7 +104,24 @@ update() {
 }
 
 displayCheck(row) {
-  return row.name !== 'Ethel Price';
+  console.log("display check called",row)
+  // return row.name !== 'Ethel Price';
+}
+
+
+
+updateFilter(event) {
+  const val = event.target.value.toLowerCase();
+
+  // filter our data
+  const temp = this.temp.filter(function(d) {
+    return d.subject.toLowerCase().indexOf(val) !== -1 || !val;
+  });
+
+  // update the rows
+  this.rows = temp;
+  // Whenever the filter changes, always go back to the first page
+// this.table.offset = 0;
 }
 
  

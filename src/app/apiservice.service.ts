@@ -17,6 +17,7 @@ export class ApiService {
   constructor( private http: HttpClient) { }
 
   post(url,param){
+    param[ "access_token"]= "978DBDSGSWNWHU";
      return this.http.post(domain+url,param,httpOptions)
 }
 
