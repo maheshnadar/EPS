@@ -7,17 +7,20 @@ import {MainContentComponent} from './main-content/main-content.component';
 
 import {DatatableComponent} from './datatable/datatable.component';
 
-
+import {DashboardComponent} from './dashboard/dashboard.component';
 import {ExceptionsComponent} from './exceptions/exceptions.component';
 import {CreateExceptionComponent} from './exceptions/create-exception/create-exception.component';
-import {ViewexceptionComponent} from './exceptions/viewexception/viewexception.component'
+import {ViewexceptionComponent} from './exceptions/viewexception/viewexception.component';
+
+
 const routes: Routes = [
   { path: 'main', component: MainContentComponent },
   { path:'datatable',component:DatatableComponent},
   { path: 'exceptions', component: ExceptionsComponent },
   { path: 'addexception', component: CreateExceptionComponent },
   { path: 'viewexception/:id', component: ViewexceptionComponent },
-  { path: '', redirectTo: '', pathMatch: 'full' },
+  { path:'dashboard',component:DashboardComponent},
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
 
 @NgModule({

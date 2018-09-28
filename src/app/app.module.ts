@@ -32,6 +32,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { CreateExceptionComponent } from './exceptions/create-exception/create-exception.component';
 import { ViewexceptionComponent } from './exceptions/viewexception/viewexception.component';
 import { DatatableComponent } from './datatable/datatable.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { FooterComponent } from './footer/footer.component';
+import { QuickSidebarComponent } from './quick-sidebar/quick-sidebar.component';
 
 
 @NgModule({
@@ -44,6 +47,9 @@ import { DatatableComponent } from './datatable/datatable.component';
     CreateExceptionComponent,
     ViewexceptionComponent,
     DatatableComponent,
+    DashboardComponent,
+    FooterComponent,
+    QuickSidebarComponent,
   ],
   imports: [
     BrowserModule,
