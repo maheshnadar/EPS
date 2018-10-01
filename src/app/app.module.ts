@@ -13,6 +13,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 // ngxbootstrap
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 
 
@@ -61,9 +62,9 @@ import { QuickSidebarComponent } from './quick-sidebar/quick-sidebar.component';
     ReactiveFormsModule,
     HttpModule,
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
-     
-  ],
+    ModalModule.forRoot(),
+    BsDatepickerModule.forRoot()
+       ],
   providers: [],
   bootstrap: [AppComponent]
 })
