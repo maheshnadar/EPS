@@ -1,7 +1,10 @@
+
+import {MenulistService} from "../menulist.service";
 import {
   Component,
   OnInit
 } from '@angular/core';
+
 
 @Component({
   selector: 'app-side-menu',
@@ -10,7 +13,7 @@ import {
 })
 export class SideMenuComponent implements OnInit {
   sideMenu: object[];
-  constructor() {
+  constructor(private menulist:MenulistService) {
 
     this.sideMenu = [{
       name: "menu 1",
@@ -23,7 +26,10 @@ export class SideMenuComponent implements OnInit {
     link: "menu3"}
   ]
 
+  this.sideMenu=this.menulist.getMenu('Cash Batch Operator');
+  console.log('side menu list',this.sideMenu);
   }
+
 
   ngOnInit() {}
 
