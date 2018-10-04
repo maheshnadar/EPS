@@ -1,0 +1,25 @@
+.daterange-popup{
+    position: absolute;
+    z-index: 30;
+    background: white;
+    right: 50px;
+    ul{
+        width: 210px;
+        li{
+            border-radius: 3px;
+            background: transparent;
+            padding: 8px 12px;
+            margin-bottom: 10px;
+            font-weight: 400;
+            color: grey;
+            &.active{
+                background: #716aca;
+                color: #fff;
+                border: 1px solid #716aca;
+            }
+            &:hover{
+                color: #08c;
+            }
+        }
+    }
+}

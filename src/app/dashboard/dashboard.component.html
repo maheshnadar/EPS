@@ -7,23 +7,46 @@
           <h3 class="m-subheader__title ">Dashboard</h3>
         </div>
         <div>
-          <span class="m-subheader__daterange" id="m_dashboard_daterangepicker">
+            <!-- {{bsRangeValue}} -->
+            <!-- id="m_dashboard_daterangepicker"    below it for opening data -->
+          <span class="m-subheader__daterange" 
+           (click)="showDateRange=!showDateRange"
+        
+          >
             <span class="m-subheader__daterange-label">
               <span class="m-subheader__daterange-title"></span>
-              <span class="m-subheader__daterange-date m--font-brand"></span>
+              <span class="m-subheader__daterange-date m--font-brand">
+                {{bsRangeValue[0] | date : mediumDate }}
+                -  {{bsRangeValue[1] | date : mediumDate }}
+               </span>
             </span>
             <a class="btn btn-sm btn-brand m-btn m-btn--icon m-btn--icon-only m-btn--custom m-btn--pill">
               <i class="la la-angle-down"></i>
             </a>
           </span>
-          <div class="col-xs-12 col-md-5 col-lg-4 ">
+          <div class="ranges daterange-popup" *ngIf="showDateRange">
+            <ul>
+              <li  class="active">Today</li>
+              <li>Yesterday</li>
+              <li  class="">Last 7 Days</li>
+              <li >Last 30 Days</li>
+              <li >This Month</li>
+              <li >Last Month</li>
+              <li (click)="drp.toggle()"   [attr.aria-expanded]="drp.isOpen" >Custom Range</li>
+            </ul>
+            <div class="range_inputs">
+              <button class="applyBtn btn btn-sm btn-success" type="button"  (click)="showDateRange=false">Apply</button> 
+              <button class="cancelBtn btn btn-sm btn-default" type="button"  (click)="showDateRange=false">Cancel</button>
+            </div>
+          </div>
+          <div class=""  style="visibility: hidden; opacity: 0;">
             <input
               class="form-control"
-              [minDate]="minDate"
-              [maxDate]="maxDate"
-              #dpYMD="bsDatepicker"
-              bsDatepicker
-              [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+              #drp="bsDaterangepicker"
+               bsDaterangepicker
+             
+                [(ngModel)]="bsRangeValue"
+              >
           </div>
         </div>
       </div>

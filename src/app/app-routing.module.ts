@@ -8,10 +8,23 @@ import {MainContentComponent} from './main-content/main-content.component';
 import {DatatableComponent} from './datatable/datatable.component';
 
 import {DashboardComponent} from './dashboard/dashboard.component';
+
+
+import {AtmdowntimereportComponent} from './atmdowntimereport/atmdowntimereport.component';
+import {AtmsComponent} from './atms/atms.component';
+import {Bankc3rmistemplateComponent} from './bankc3rmistemplate/bankc3rmistemplate.component';
+import {Bankc3rreporttemplateComponent} from './bankc3rreporttemplate/bankc3rreporttemplate.component';
+import {BankcashbalanceComponent} from './bankcashbalance/bankcashbalance.component';
+import {BankcashlimitComponent} from './bankcashlimit/bankcashlimit.component';
+import {BankemailmasterComponent} from './bankemailmaster/bankemailmaster.component';
+import {BankwiseuserrolesmatrixComponent} from './bankwiseuserrolesmatrix/bankwiseuserrolesmatrix.component';
+
+
+
+
 import {ExceptionsComponent} from './exceptions/exceptions.component';
 import {CreateExceptionComponent} from './exceptions/create-exception/create-exception.component';
 import {ViewexceptionComponent} from './exceptions/viewexception/viewexception.component';
-
 
 const routes: Routes = [
   { path: 'main', component: MainContentComponent },
@@ -20,6 +33,20 @@ const routes: Routes = [
   { path: 'addexception', component: CreateExceptionComponent },
   { path: 'viewexception/:id', component: ViewexceptionComponent },
   { path:'dashboard',component:DashboardComponent},
+  { path:'atmdowntimereport',component:AtmdowntimereportComponent},  
+  { path:'atms',component:AtmsComponent},
+  { path:'bankc3rmistemplate',component:Bankc3rmistemplateComponent},
+  { path:'bankc3rreporttemplate',component:Bankc3rreporttemplateComponent},
+  { path:'bankcashbalance',component:BankcashbalanceComponent},
+  { path:'bankcashlimit',component:BankcashlimitComponent},
+  { path:'bankemailmaster',component:BankemailmasterComponent},
+  { path:'bankwiseuserrolesmatrix',component:BankwiseuserrolesmatrixComponent},
+  
+  
+  
+  
+  
+  
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
 ];
 

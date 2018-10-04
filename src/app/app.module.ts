@@ -36,6 +36,14 @@ import { DatatableComponent } from './datatable/datatable.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { FooterComponent } from './footer/footer.component';
 import { QuickSidebarComponent } from './quick-sidebar/quick-sidebar.component';
+import { AtmsComponent } from './atms/atms.component';
+import { AtmdowntimereportComponent } from './atmdowntimereport/atmdowntimereport.component';
+import { Bankc3rmistemplateComponent } from './bankc3rmistemplate/bankc3rmistemplate.component';
+import { Bankc3rreporttemplateComponent } from './bankc3rreporttemplate/bankc3rreporttemplate.component';
+import { BankcashbalanceComponent } from './bankcashbalance/bankcashbalance.component';
+import { BankcashlimitComponent } from './bankcashlimit/bankcashlimit.component';
+import { BankemailmasterComponent } from './bankemailmaster/bankemailmaster.component';
+import { BankwiseuserrolesmatrixComponent } from './bankwiseuserrolesmatrix/bankwiseuserrolesmatrix.component';
 
 
 @NgModule({
@@ -51,6 +59,14 @@ import { QuickSidebarComponent } from './quick-sidebar/quick-sidebar.component';
     DashboardComponent,
     FooterComponent,
     QuickSidebarComponent,
+    AtmsComponent,
+    AtmdowntimereportComponent,
+    Bankc3rmistemplateComponent,
+    Bankc3rreporttemplateComponent,
+    BankcashbalanceComponent,
+    BankcashlimitComponent,
+    BankemailmasterComponent,
+    BankwiseuserrolesmatrixComponent,
   ],
   imports: [
     BrowserModule,

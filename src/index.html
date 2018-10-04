@@ -65,8 +65,63 @@
 
 
 <script src="assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
-<script src="assets/app/js/dashboard.js" type="text/javascript"></script>
+<!-- <script src="assets/app/js/dashboard.js" type="text/javascript"></script> -->
 
+
+<script>
+var PortletTools = function () {
+  var datableportlet = function() {
+        // This portlet is lazy initialized using data-portlet="true" attribute. You can access to the portlet object as shown below and override its behavior
+        var portlet = new mPortlet('m_portlet_tools_1');
+    var atmsdataportlet = new mPortlet('atmsdataportlet');
+
+		//== Reload event handlers
+		// if(atmsdataportlet){
+		// 	atmsdataportlet.on('afterFullscreenOn', function(atmsdataportlet) {
+		//    //datatable.reload();
+		//    console.log("after full screen ON");
+        // });
+
+        // atmsdataportlet.on('afterFullscreenOff', function(atmsdataportlet) {
+		// //   datatable.reload();
+		// console.log("after full screen OFF");
+        // });
+		// }
+       
+    }
+
+    return {
+        //main function to initiate the module
+        init: function () {
+            // init demos
+            datableportlet();
+        }
+    };
+}();
+
+$(document).ready(function(){
+  $(".m-bootstrap-select").selectpicker();
+  PortletTools.init();
+  BootstrapSelect.init();
+});
+
+var BootstrapSelect = function () {
+
+    //== Private functions
+    var demos = function () {
+        // minimum setup
+        $('.m_selectpicker').selectpicker();
+    }
+
+    return {
+        // public functions
+        init: function() {
+            demos(); 
+        }
+    };
+}();
+
+	</script>
 </body>
 
 
