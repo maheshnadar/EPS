@@ -44,6 +44,13 @@ import { BankcashbalanceComponent } from './bankcashbalance/bankcashbalance.comp
 import { BankcashlimitComponent } from './bankcashlimit/bankcashlimit.component';
 import { BankemailmasterComponent } from './bankemailmaster/bankemailmaster.component';
 import { BankwiseuserrolesmatrixComponent } from './bankwiseuserrolesmatrix/bankwiseuserrolesmatrix.component';
+import { C3rmisreportComponent } from './c3rmisreport/c3rmisreport.component';
+import { C3rtobankreportComponent } from './c3rtobankreport/c3rtobankreport.component';
+import { CashdispenseComponent } from './cashdispense/cashdispense.component';
+import { CashloadingComponent } from './cashloading/cashloading.component';
+import { CassetteconfigsComponent } from './cassetteconfigs/cassetteconfigs.component';
+import { ConfigurabledenominationsComponent } from './configurabledenominations/configurabledenominations.component';
+import { ConfigurablelimitsComponent } from './configurablelimits/configurablelimits.component';
 
 
 @NgModule({
@@ -67,6 +74,13 @@ import { BankwiseuserrolesmatrixComponent } from './bankwiseuserrolesmatrix/bank
     BankcashlimitComponent,
     BankemailmasterComponent,
     BankwiseuserrolesmatrixComponent,
+    C3rmisreportComponent,
+    C3rtobankreportComponent,
+    CashdispenseComponent,
+    CashloadingComponent,
+    CassetteconfigsComponent,
+    ConfigurabledenominationsComponent,
+    ConfigurablelimitsComponent,
   ],
   imports: [
     BrowserModule,

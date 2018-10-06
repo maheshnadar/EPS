@@ -18,7 +18,13 @@ import {BankcashbalanceComponent} from './bankcashbalance/bankcashbalance.compon
 import {BankcashlimitComponent} from './bankcashlimit/bankcashlimit.component';
 import {BankemailmasterComponent} from './bankemailmaster/bankemailmaster.component';
 import {BankwiseuserrolesmatrixComponent} from './bankwiseuserrolesmatrix/bankwiseuserrolesmatrix.component';
-
+import {C3rmisreportComponent} from './c3rmisreport/c3rmisreport.component';
+import {C3rtobankreportComponent} from './c3rtobankreport/c3rtobankreport.component';
+import {CashdispenseComponent} from './cashdispense/cashdispense.component';
+import {CashloadingComponent} from './cashloading/cashloading.component';
+import {CassetteconfigsComponent} from './cassetteconfigs/cassetteconfigs.component';
+import {ConfigurabledenominationsComponent} from './configurabledenominations/configurabledenominations.component';
+import {ConfigurablelimitsComponent} from './configurablelimits/configurablelimits.component';
 
 
 
@@ -41,6 +47,14 @@ const routes: Routes = [
   { path:'bankcashlimit',component:BankcashlimitComponent},
   { path:'bankemailmaster',component:BankemailmasterComponent},
   { path:'bankwiseuserrolesmatrix',component:BankwiseuserrolesmatrixComponent},
+  { path:'c3rmisreport',component:C3rmisreportComponent},
+  { path:'c3rtobankreport',component:C3rtobankreportComponent},
+  { path:'cashdispense',component:CashdispenseComponent},
+  { path:'cashloading',component:CashloadingComponent},
+  { path:'cassetteconfigs',component:CassetteconfigsComponent},
+  { path:'configurabledenominations',component:ConfigurabledenominationsComponent},
+  { path:'configurablelimits',component:ConfigurablelimitsComponent},
+  
   
   
   
