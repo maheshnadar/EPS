@@ -12,3 +12,19 @@
     }
   
 }
+
+.pointer{
+    cursor: pointer;
+}
+
+
+
+
+.m-quick-sidebar-overlay{
+    display: none;
+}
+.m-quick-sidebar--on {
+    .m-quick-sidebar-overlay{
+    display: block;
+}
+}

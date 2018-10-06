@@ -16,7 +16,8 @@ export class MenulistService {
         {
           return [{
             name: "Dashboard",
-            path: "dashboard"
+            path: "dashboard",
+            new:true
           }, {
             name: "exception List",
             submenu: [{
@@ -25,8 +26,10 @@ export class MenulistService {
               },
               {
                 name: "create exception",
-                path: "addexception"
+                path: "addexception",
+                new:true
               }
+              ,
             ]
           }];
          

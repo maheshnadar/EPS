@@ -13,7 +13,7 @@
 						<div class="m-stack__item m-stack__item--middle m-brand__tools">
 	
 							<!-- BEGIN: Left Aside Minimize Toggle -->
-							<a href="javascript:;" id="m_aside_left_minimize_toggle" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block  ">
+							<a href="javascript:;" id="m_aside_left_minimize_toggle"  (click)="minimizeToggle()" class="m-brand__icon m-brand__toggler m-brand__toggler--left m--visible-desktop-inline-block  ">
 								<span></span>
 							</a>
 	
@@ -352,8 +352,8 @@
 										</div>
 									</div>
 								</li>
-								<li id="m_quick_sidebar_toggle" class="m-nav__item">
-									<a href="#" class="m-nav__link m-dropdown__toggle">
+								<li id="m_quick_sidebar_toggle" class="m-nav__item" (click)="quickSideBarToggle()">
+									<a  class="pointer m-nav__link m-dropdown__toggle">
 										<span class="m-nav__link-icon">
 											<i class="flaticon-grid-menu"></i>
 										</span>
