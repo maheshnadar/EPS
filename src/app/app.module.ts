@@ -16,6 +16,10 @@ import { ModalModule } from 'ngx-bootstrap';
 import { BsDatepickerModule } from 'ngx-bootstrap';
 
 
+//time picker
+import { AmazingTimePickerModule } from 'amazing-time-picker';
+
+
 
 
 
@@ -93,7 +97,8 @@ import { ConfigurablelimitsComponent } from './configurablelimits/configurableli
     HttpModule,
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    AmazingTimePickerModule
        ],
   providers: [],
   bootstrap: [AppComponent]

@@ -16,22 +16,36 @@ export class MenulistService {
         {
           return [{
             name: "Dashboard",
-            path: "dashboard",
-            new:true
-          }, {
-            name: "exception List",
+            path: "dashboard"
+         
+          }, 
+          // {
+          //   name: "exception List",
+          //   submenu: [{
+          //       name: "view exception",
+          //       path: "exceptions"
+          //     },
+          //     {
+          //       name: "create exception",
+          //       path: "addexception",
+          //      new:true
+          //     }
+          //     ,
+          //   ]
+          // }
+            {
+            name: "Cash Routine Data",
             submenu: [{
-                name: "view exception",
-                path: "exceptions"
+                name: "Bank Cash Balance",
+                path: "bankcashbalance"
               },
               {
-                name: "create exception",
-                path: "addexception",
-                new:true
-              }
-              ,
-            ]
-          }];
+                name: "Cash Dispense",
+                path: "cashdispense",
+  //             new:true
+              }]
+          }
+        ];
          
         }
 

@@ -28,3 +28,12 @@
     display: block;
 }
 }
+
+
+.custom-scroll{
+overflow: scroll !important;
+}
+
+#time-picker-wrapper{
+    z-index: 1000000 !important;
+}
