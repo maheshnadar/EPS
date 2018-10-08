@@ -17,12 +17,22 @@ export class ApiService {
   constructor( private http: HttpClient) { }
 
   post(url,param){
-    param[ "access_token"]= "978DBDSGSWNWHU";
+    param["access_token"]= "978DBDSGSWNWHU";
      return this.http.post(domain+url,param,httpOptions)
 }
 
 get(url){
   return this.http.get(domain+url)
+}
+
+uploadFile(url,data){
+  data["access_token"]= "978DBDSGSWNWHU";
+  return this.http.post(domain+url, data, {
+    reportProgress: true,
+    observe: 'events'
+  })
+
+
 }
 
 }
