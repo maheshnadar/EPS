@@ -8,9 +8,9 @@
           <li class="m-menu__item"
            [ngClass]="{'m-menu__item--submenu':menu.submenu,'m-menu__item--open':openSubMenu==menu.name}"
             aria-haspopup="true" *ngFor="let menu of sideMenu" 
-            [routerLink]="[menu.path]" routerLinkActive="m-menu__item--active">
+              routerLinkActive="m-menu__item--active">
              <!-- when submenu is not there  -->
-            <a   class="pointer  m-menu__link " *ngIf="!menu.submenu">
+            <a   [routerLink]="[menu.path]" class="pointer  m-menu__link " *ngIf="!menu.submenu">
                 <i class="m-menu__link-icon flaticon-line-graph"></i>
                 <span class="m-menu__link-title">
                   <span class="m-menu__link-wrap">

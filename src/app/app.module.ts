@@ -56,6 +56,25 @@ import { CassetteconfigsComponent } from './cassetteconfigs/cassetteconfigs.comp
 import { ConfigurabledenominationsComponent } from './configurabledenominations/configurabledenominations.component';
 import { ConfigurablelimitsComponent } from './configurablelimits/configurablelimits.component';
 import { LoginComponent } from './login/login.component';
+import { Crac3rreportComponent } from './crac3rreport/crac3rreport.component';
+import { CraemailmasterComponent } from './craemailmaster/craemailmaster.component';
+import { CraescalationemailsComponent } from './craescalationemails/craescalationemails.component';
+import { CrasComponent } from './cras/cras.component';
+import { CravaultmasterComponent } from './cravaultmaster/cravaultmaster.component';
+import { CyphercodeComponent } from './cyphercode/cyphercode.component';
+import { DailyloadingreportComponent } from './dailyloadingreport/dailyloadingreport.component';
+import { DiversionComponent } from './diversion/diversion.component';
+import { EmergencyvaultingreportComponent } from './emergencyvaultingreport/emergencyvaultingreport.component';
+import { ExceptionreportComponent } from './exceptionreport/exceptionreport.component';
+import { HolidaymasterComponent } from './holidaymaster/holidaymaster.component';
+import { ImsticketsComponent } from './imstickets/imstickets.component';
+import { IndentsComponent } from './indents/indents.component';
+import { IndentsrevisionsComponent } from './indentsrevisions/indentsrevisions.component';
+import { IndentvswithdrawlvsloadingreportComponent } from './indentvswithdrawlvsloadingreport/indentvswithdrawlvsloadingreport.component';
+import { InsurancelimitComponent } from './insurancelimit/insurancelimit.component';
+import { LoadingComponent } from './loading/loading.component';
+import { OriginalvsrevisedindentsreportComponent } from './originalvsrevisedindentsreport/originalvsrevisedindentsreport.component';
+
 
 
 @NgModule({
@@ -87,6 +106,25 @@ import { LoginComponent } from './login/login.component';
     ConfigurabledenominationsComponent,
     ConfigurablelimitsComponent,
     LoginComponent,
+    Crac3rreportComponent,
+    CraemailmasterComponent,
+    CraescalationemailsComponent,
+    CrasComponent,
+    CravaultmasterComponent,
+    CyphercodeComponent,
+    DailyloadingreportComponent,
+    DiversionComponent,
+    EmergencyvaultingreportComponent,
+    ExceptionreportComponent,
+    HolidaymasterComponent,
+    ImsticketsComponent,
+    IndentsComponent,
+    IndentsrevisionsComponent,
+    IndentvswithdrawlvsloadingreportComponent,
+    InsurancelimitComponent,
+    LoadingComponent,
+    OriginalvsrevisedindentsreportComponent,
+  
   ],
   imports: [
     BrowserModule,

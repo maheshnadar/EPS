@@ -11,6 +11,7 @@ declare var $:any;
 export class LoginComponent implements OnInit {
 
   constructor(private apiService:ApiService) {
+   
 
     apiService.login().subscribe(data => {
 
