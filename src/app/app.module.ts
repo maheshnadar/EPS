@@ -55,6 +55,7 @@ import { CashloadingComponent } from './cashloading/cashloading.component';
 import { CassetteconfigsComponent } from './cassetteconfigs/cassetteconfigs.component';
 import { ConfigurabledenominationsComponent } from './configurabledenominations/configurabledenominations.component';
 import { ConfigurablelimitsComponent } from './configurablelimits/configurablelimits.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -85,6 +86,7 @@ import { ConfigurablelimitsComponent } from './configurablelimits/configurableli
     CassetteconfigsComponent,
     ConfigurabledenominationsComponent,
     ConfigurablelimitsComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,7 @@ import { ApiService } from '../apiservice.service';
 })
 export class BankcashbalanceComponent implements OnInit {
 public uploadData:any;
-
+ 
 
   constructor(private atp: AmazingTimePickerService,private apiService:ApiService) {
     this.uploadData={};
@@ -43,7 +43,8 @@ onFileChanged(event) {
 }
 
 
-uploadDatafn(){
+uploadDatafn(uploadData){
+  this.uploadData=uploadData;
 console.log("upload clicked",this.uploadData);
 var hours_min=this.uploadData.time.split(":")
 this.uploadData.upload_datetime=new Date(this.uploadData.date);
@@ -54,7 +55,7 @@ console.log("upload clicked",this.uploadData);
 
 
 
-this.apiService.uploadFile("upload",this.uploadData).subscribe(event => {
+this.apiService.uploadFile("upload/",this.uploadData).subscribe(event => {
     console.log(event); // handle event here
   });
 

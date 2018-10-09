@@ -1,0 +1,17 @@
+
+.login{
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    // background: #c8aeae;
+    background-image: url('../../assets/app/media/img//bg/bg-1.jpg');
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: column;
+    color: white;
+    font-size: 15px;
+}

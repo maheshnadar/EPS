@@ -24,6 +24,11 @@ export class ApiService {
 get(url){
   return this.http.get(domain+url)
 }
+login(){
+  // return this.http.get("http://192.168.75.15/")
+   return this.http.get("http://192.168.75.15")
+  
+}
 
 uploadFile(url,data){
   data["access_token"]= "978DBDSGSWNWHU";

@@ -3,12 +3,15 @@ import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 
 
+
+import {AuthCheckService} from './a_core/auth/auth-check.service';
+
+import {LoginComponent} from './login/login.component';
+
+
 import {MainContentComponent} from './main-content/main-content.component';
-
 import {DatatableComponent} from './datatable/datatable.component';
-
 import {DashboardComponent} from './dashboard/dashboard.component';
-
 
 import {AtmdowntimereportComponent} from './atmdowntimereport/atmdowntimereport.component';
 import {AtmsComponent} from './atms/atms.component';
@@ -28,12 +31,13 @@ import {ConfigurablelimitsComponent} from './configurablelimits/configurablelimi
 
 
 
+
 import {ExceptionsComponent} from './exceptions/exceptions.component';
 import {CreateExceptionComponent} from './exceptions/create-exception/create-exception.component';
 import {ViewexceptionComponent} from './exceptions/viewexception/viewexception.component';
 
 const routes: Routes = [
-  { path: 'main', component: MainContentComponent },
+  { path: 'main', component: MainContentComponent, canActivate: [AuthCheckService]},
   { path:'datatable',component:DatatableComponent},
   { path: 'exceptions', component: ExceptionsComponent },
   { path: 'addexception', component: CreateExceptionComponent },
@@ -62,6 +66,7 @@ const routes: Routes = [
   
   
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  {path:'login' ,component:LoginComponent}
 ];
 
 @NgModule({
