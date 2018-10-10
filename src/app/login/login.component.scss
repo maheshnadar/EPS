@@ -6,6 +6,7 @@
     // background: #c8aeae;
     background-image: url('../../assets/app/media/img//bg/bg-1.jpg');
     top: 0;
+    left:0;
     z-index: 1000;
     display: flex;
     justify-content: center;
@@ -14,4 +15,9 @@
     flex-direction: column;
     color: white;
     font-size: 15px;
+
+    img{
+width:350px;
+object-fit: contain;
+    }
 }

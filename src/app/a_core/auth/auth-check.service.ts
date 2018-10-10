@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable} from 'rxjs/Rx';
+import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
 
 
 
@@ -9,6 +10,7 @@ import { Observable} from 'rxjs/Rx';
   providedIn: 'root'
 })
 export class AuthCheckService  implements CanActivate{
+  @LocalStorage() accessToken: String ;
 
 
 // this will check for login status 
@@ -24,16 +26,16 @@ export class AuthCheckService  implements CanActivate{
 //your login check here
 
 
-  //   if (false) {
-  //     return true;
-  //        }
-  // else{
-  // //Redirect the user before denying them access to this route
-  //      this.router.navigate(['/login']);
-  //      return false;
-  // }
+    if (this.accessToken) {
+      return true;
+         }
+  else{
+  //Redirect the user before denying them access to this route
+       this.router.navigate(['/login']);
+       return false;
+  }
 
-  return true;
+ // return true;
 
 
   }

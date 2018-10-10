@@ -19,6 +19,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap';
 //time picker
 import { AmazingTimePickerModule } from 'amazing-time-picker';
 
+//ngx store
+import { WebStorageModule } from 'ngx-store';
 
 
 
@@ -74,6 +76,16 @@ import { IndentvswithdrawlvsloadingreportComponent } from './indentvswithdrawlvs
 import { InsurancelimitComponent } from './insurancelimit/insurancelimit.component';
 import { LoadingComponent } from './loading/loading.component';
 import { OriginalvsrevisedindentsreportComponent } from './originalvsrevisedindentsreport/originalvsrevisedindentsreport.component';
+import { QualifyatmsComponent } from './qualifyatms/qualifyatms.component';
+import { RecommendationsheetComponent } from './recommendationsheet/recommendationsheet.component';
+import { RestartstopindentsComponent } from './restartstopindents/restartstopindents.component';
+import { SubmitindentrevisionsComponent } from './submitindentrevisions/submitindentrevisions.component';
+import { SystemsettingsComponent } from './systemsettings/systemsettings.component';
+import { UserrolesComponent } from './userroles/userroles.component';
+import { UsersComponent } from './users/users.component';
+import { VaultcashComponent } from './vaultcash/vaultcash.component';
+import { VaultingComponent } from './vaulting/vaulting.component';
+import { WithdrawlComponent } from './withdrawl/withdrawl.component';
 
 
 
@@ -124,11 +136,22 @@ import { OriginalvsrevisedindentsreportComponent } from './originalvsrevisedinde
     InsurancelimitComponent,
     LoadingComponent,
     OriginalvsrevisedindentsreportComponent,
+    QualifyatmsComponent,
+    RecommendationsheetComponent,
+    RestartstopindentsComponent,
+    SubmitindentrevisionsComponent,
+    SystemsettingsComponent,
+    UserrolesComponent,
+    UsersComponent,
+    VaultcashComponent,
+    VaultingComponent,
+    WithdrawlComponent,
   
   ],
   imports: [
     BrowserModule,
     NgxDatatableModule,
+    WebStorageModule,
     HttpClientModule,
     AppRoutingModule,
     FileUploadModule,
@@ -138,7 +161,8 @@ import { OriginalvsrevisedindentsreportComponent } from './originalvsrevisedinde
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     BsDatepickerModule.forRoot(),
-    AmazingTimePickerModule
+    AmazingTimePickerModule,
+    
        ],
   providers: [],
   bootstrap: [AppComponent]

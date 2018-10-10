@@ -43,19 +43,25 @@ onFileChanged(event) {
 }
 
 
-uploadDatafn(uploadData){
-  this.uploadData=uploadData;
+uploadDatafn(){
 console.log("upload clicked",this.uploadData);
 var hours_min=this.uploadData.time.split(":")
 this.uploadData.upload_datetime=new Date(this.uploadData.date);
 this.uploadData.upload_datetime.setHours(hours_min[0],hours_min[1])
 console.log("upload clicked",this.uploadData);
-//const uploadData = new FormData();
+const fileData = new FormData();
 //uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
+fileData.append('file', this.uploadData.file,this.uploadData.file.name);
+fileData.append('bank_code', 'BOMH');
+fileData.append('file_type', 'CBR');
+fileData.append('upload_datetime', '2018-09-26 18:16:23');
+console.log("upload clicked formdata",fileData);
 
 
 
-this.apiService.uploadFile("upload/",this.uploadData).subscribe(event => {
+
+
+this.apiService.uploadFile("upload/",fileData).subscribe(event => {
     console.log(event); // handle event here
   });
 

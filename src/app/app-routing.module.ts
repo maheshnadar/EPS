@@ -52,7 +52,16 @@ import {IndentvswithdrawlvsloadingreportComponent} from './indentvswithdrawlvslo
 import {InsurancelimitComponent} from './insurancelimit/insurancelimit.component';
 import {LoadingComponent} from './loading/loading.component';
 import {OriginalvsrevisedindentsreportComponent} from './originalvsrevisedindentsreport/originalvsrevisedindentsreport.component';
-
+import {QualifyatmsComponent} from './qualifyatms/qualifyatms.component';
+import {RecommendationsheetComponent} from './recommendationsheet/recommendationsheet.component';
+import {RestartstopindentsComponent} from './restartstopindents/restartstopindents.component';
+import {SubmitindentrevisionsComponent} from './submitindentrevisions/submitindentrevisions.component';
+import {SystemsettingsComponent} from './systemsettings/systemsettings.component';
+import {UserrolesComponent} from './userroles/userroles.component';
+import {UsersComponent} from './users/users.component';
+import {VaultcashComponent} from './vaultcash/vaultcash.component';
+import {VaultingComponent} from './vaulting/vaulting.component';
+import {WithdrawlComponent} from './withdrawl/withdrawl.component';
 
 const routes: Routes = [
   { path: 'main', component: MainContentComponent, canActivate: [AuthCheckService]},
@@ -98,6 +107,17 @@ const routes: Routes = [
   { path:'insurancelimit',component:InsurancelimitComponent},
   { path:'loading',component:LoadingComponent},
   { path:'originalvsrevisedindentsreport',component:OriginalvsrevisedindentsreportComponent},
+  { path:'qualifyatms',component:QualifyatmsComponent},
+  { path:'recommendationsheet',component:RecommendationsheetComponent},
+  { path:'restartstopindents',component:RestartstopindentsComponent},
+  { path:'submitindentrevisions',component:SubmitindentrevisionsComponent},
+  { path:'systemsettings',component:SystemsettingsComponent},
+  { path:'userroles',component:UserrolesComponent},
+  { path:'users',component:UsersComponent},
+  { path:'vaultcash',component:VaultcashComponent},
+  { path:'vaulting',component:VaultingComponent},
+  { path:'withdrawl',component:WithdrawlComponent},
+  
 
   
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
