@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AmazingTimePickerService } from 'amazing-time-picker';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from '../apiservice.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 
 
@@ -13,9 +14,10 @@ import { ApiService } from '../apiservice.service';
 })
 export class BankcashbalanceComponent implements OnInit {
 public uploadData:any;
- 
+cbruploadForm: FormGroup;
+submitted = false;
 
-  constructor(private atp: AmazingTimePickerService,private apiService:ApiService) {
+  constructor(private atp: AmazingTimePickerService,private apiService:ApiService,private formBuilder: FormBuilder) {
     this.uploadData={};
    }
 
@@ -23,7 +25,26 @@ public uploadData:any;
   ngOnInit() {
     this.uploadData.date = new Date();
     this.uploadData.time="12:00"
+    this.uploadData.file;
+
+
+    this.cbruploadForm = this.formBuilder.group({
+      bank_code: ['', Validators.required],
+      project: ['', Validators.required],
+      // date: ['',  Validators.required],
+      // time: ['',  Validators.required],
+      // file: ['',  Validators.required],
+
+
+        // project: [''],
+      date: [ this.uploadData.date],
+      time: [  this.uploadData.time],
+      // file: [''],
+  });
   }
+
+// convenience getter for easy access to form fields
+get f() { return this.cbruploadForm.controls; }
 
   openTimeSelector() {
     console.log("time picker opened")

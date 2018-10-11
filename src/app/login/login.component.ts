@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../apiservice.service';
 import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
@@ -17,7 +18,7 @@ declare var $:any;
 
 
 export class LoginComponent implements OnInit {
-
+  uid;
 // // it will be stored under ${prefix}viewCounts name
 @LocalStorage() accessToken: String ;
 // // this under name: ${prefix}differentLocalStorageKey
@@ -29,7 +30,13 @@ export class LoginComponent implements OnInit {
 // // it will be stored in a cookie named ${prefix}user_workspaces for 24 hours
 // @CookieStorage({key: 'user_workspaces', expires: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}) userWorkspaces = [];
 
-  constructor(private apiService:ApiService,private router:Router) {
+  constructor(private apiService:ApiService,private router:Router,private activatedRoute: ActivatedRoute) {
+  
+    this.activatedRoute.queryParams.subscribe(paramsId => {
+      console.log(paramsId);
+      this.uid = paramsId.id;
+  });
+  console.log(this.uid);
    
     //----------local storage
     //this.viewCounts++;
@@ -81,7 +88,7 @@ export class LoginComponent implements OnInit {
     if(error['is_login_success']){
       this.accessToken="Bearer "+error['token'];
   
-      this.router.navigate(['./dashboard']);
+   //   this.router.navigate(['./dashboard']);
         }
 
   }
