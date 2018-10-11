@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 //extra
 import {domain} from './shared/domain';
 import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
+import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
 
 
 
@@ -14,7 +15,7 @@ import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
   providedIn: 'root'
 })
 export class ApiService {
-  @LocalStorage() accessToken: String ;
+
 
 
 
@@ -25,18 +26,18 @@ export class ApiService {
   httpOptions={};
 
 
-  constructor( private http: HttpClient) {
-
+  constructor(private localStorageService: LocalStorageService, private http: HttpClient) {
+console.log(this.localStorageService.get('accessToken'),'---------')
 
     this.httpOptionsForm = {
-      headers: new HttpHeaders({'Authorization': ''+this.accessToken}),
+      headers: new HttpHeaders({'Authorization': ''+this.localStorageService.get('accessToken')}),
       reportProgress: true,
       observe: 'events'
     };
 
 
     this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': ''+this.accessToken })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': ''+this.localStorageService.get('accessToken') })
     };
    }
 

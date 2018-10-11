@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { ApiService } from '../apiservice.service';
 import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
+import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
 
 declare var $:any;
 
@@ -18,9 +19,9 @@ declare var $:any;
 
 
 export class LoginComponent implements OnInit {
-  uid;
+  username;
 // // it will be stored under ${prefix}viewCounts name
-@LocalStorage() accessToken: String ;
+// @LocalStorage() accessToken: String ;
 // // this under name: ${prefix}differentLocalStorageKey
 // @LocalStorage('differentLocalStorageKey') userName: string = '';
 // // it will be stored under ${prefix}itWillBeRemovedAfterBrowserClose in session storage
@@ -30,13 +31,13 @@ export class LoginComponent implements OnInit {
 // // it will be stored in a cookie named ${prefix}user_workspaces for 24 hours
 // @CookieStorage({key: 'user_workspaces', expires: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}) userWorkspaces = [];
 
-  constructor(private apiService:ApiService,private router:Router,private activatedRoute: ActivatedRoute) {
-  
+  constructor(   private localStorageService: LocalStorageService,private apiService:ApiService,private router:Router,private activatedRoute: ActivatedRoute) {
+ console.log(localStorageService.get('accessToken'));
     this.activatedRoute.queryParams.subscribe(paramsId => {
       console.log(paramsId);
-      this.uid = paramsId.id;
+      this.username = paramsId.username;
   });
-  console.log(this.uid);
+
    
     //----------local storage
     //this.viewCounts++;
@@ -69,27 +70,24 @@ export class LoginComponent implements OnInit {
         
   // --- end of ad login 
 
-  apiService.get('').subscribe(data1 => {
+  apiService.post('login/',{username:this.username}).subscribe(data1 => {
 
       if(data1['is_login_success']){
-    this.accessToken="Bearer "+data1['token'];
-
+  var accesstoken="Bearer "+data1['token'];
+    this.localStorageService.set('accessToken',accesstoken);
+console.log("new accesstoken",this.localStorageService.get('accessToken'));
     this.router.navigate(['./dashboard']);
       }
     },
   (error) =>{
     console.log(error)
-    error={
-      'is_login_success':true,
-      'token':'aaaaaaaaaaa'
-    }
+  //   error={
+  //     'is_login_success':true,
+  //     'token':'aaaaaaaaaaa'
+  //   }
 
 
-    if(error['is_login_success']){
-      this.accessToken="Bearer "+error['token'];
   
-   //   this.router.navigate(['./dashboard']);
-        }
 
   }
   )
