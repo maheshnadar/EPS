@@ -7,7 +7,7 @@
 
           <li class="m-menu__item"
            [ngClass]="{'m-menu__item--submenu':menu.child,'m-menu__item--open':openSubMenu==menu.display_name}"
-            aria-haspopup="true" *ngFor="let menu of sideMenu" 
+            aria-haspopup="true" *ngFor="let menu of menulist.Menu" 
               routerLinkActive="m-menu__item--active">
              <!-- when submenu is not there  -->
             <a   [routerLink]="[menu.mapped_url]" class="pointer  m-menu__link " *ngIf="!menu.child">

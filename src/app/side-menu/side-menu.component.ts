@@ -16,8 +16,8 @@ export class SideMenuComponent implements OnInit {
   constructor(private menulist:MenulistService) {
 
 
-  this.sideMenu=this.menulist.getMenu();
-  console.log('side menu list',this.sideMenu);
+  this.menulist.getMenu();
+  console.log('side menu list',this.menulist.Menu);
   }
 
 
