@@ -1,296 +1,296 @@
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
-    <!-- BEGIN: Subheader -->
-    <div class="m-subheader ">
-      <div class="d-flex align-items-center">
-        <div class="mr-auto">
-          <h3 class="m-subheader__title m-subheader__title--separator">Cash Dispense Report</h3>
-          <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
-            <li class="m-nav__item m-nav__item--home">
-              <a href="#" class="m-nav__link m-nav__link--icon">
-                <i class="m-nav__link-icon la la-home"></i>
-              </a>
-            </li>
-            <li class="m-nav__separator">-</li>
-            <li class="m-nav__item">
-              <a href="" class="m-nav__link">
-                <span class="m-nav__link-text">Cash Routine Data</span>
-              </a>
-            </li>
-            <li class="m-nav__separator">-</li>
-            <li class="m-nav__item">
-              <a href="" class="m-nav__link">
-                <span class="m-nav__link-text">Cash Dispense Report</span>
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div>
-          <a href="#" data-toggle="modal" data-target="#m_modal_6" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
-            <span>
-              <i class="la la-archive"></i>
-              <span>Upload</span>
-            </span>
-          </a>
-          <div class="modal fade" id="m_modal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Upload Cash Dispense Report Data</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <form class="m-form m-form--fit m-form--label-align-right" name="dispenseform" [formGroup]="dispenseuploadForm">
-                    <div class="m-portlet__body">
-                      <div class="form-group1 m-form__group">
-                        <label for="exampleInputEmail1">Bank</label>
-                        <div></div>
-                        <select class="custom-select form-control" [(ngModel)]="uploadData.bank_code"  name="bank_code"
-                        formControlName="bank_code" >
-                      
-                          <option value="1">BOMH</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-                      <!-- <div class="form-group1 m-form__group">
-                        <label for="exampleInputEmail1">CRA</label>
-                        <div></div>
-                        <select class="custom-select form-control" [(ngModel)]="uploadData.file_type" name="file_type">
-                          <option selected="">Open this select menu</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div> -->
-                      <div class="form-group1 m-form__group">
-                        <label for="exampleInputEmail1">Project</label>
-                        <div></div>
-                        <select class="custom-select form-control" ([ngModel])="uploadData.project" name="project"
-                        formControlName="project">
-                         
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </select>
-                      </div>
-                      <div class="form-group1 m-form__group">
+  <!-- BEGIN: Subheader -->
+  <div class="m-subheader ">
+    <div class="d-flex align-items-center">
+      <div class="mr-auto">
+        <h3 class="m-subheader__title m-subheader__title--separator">Cash Dispense Report</h3>
+        <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
+          <li class="m-nav__item m-nav__item--home">
+            <a href="#" class="m-nav__link m-nav__link--icon">
+              <i class="m-nav__link-icon la la-home"></i>
+            </a>
+          </li>
+          <li class="m-nav__separator">-</li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">Cash Routine Data</span>
+            </a>
+          </li>
+          <li class="m-nav__separator">-</li>
+          <li class="m-nav__item">
+            <a href="" class="m-nav__link">
+              <span class="m-nav__link-text">Cash Dispense Report</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <a href="#" data-toggle="modal" data-target="#m_modal_6" class="btn btn-primary m-btn m-btn--custom m-btn--icon m-btn--pill m-btn--air">
+          <span>
+            <i class="la la-archive"></i>
+            <span>Upload</span>
+          </span>
+        </a>
+        <div class="modal fade" id="m_modal_6" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Upload Cash Dispense Report Data</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form class="m-form m-form--fit m-form--label-align-right" name="dispenseform" [formGroup]="dispenseuploadForm">
+                  <div class="m-portlet__body">
+                    <div class="form-group1 m-form__group">
+                      <label for="exampleInputEmail1">Bank</label>
+                      <div></div>
+                      <select class="custom-select form-control" [(ngModel)]="uploadData.bank_code"  name="bank_code"
+                      formControlName="bank_code" >
+                    
+                        <option value="BOMH">BOMH</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                    <div class="form-group1 m-form__group">
+                      <label for="exampleInputEmail1">CRA</label>
+                      <div></div>
+                      <select class="custom-select form-control " formControlName="cra"
+                       [(ngModel)]="uploadData.cra" name="cra">
+                        <option value="1">one</option>
+                        <option value="2">two</option>
+                        <option value="3">three</option>
+                      </select>
+                    </div>
+                    <div class="form-group1 m-form__group">
+                      <label for="exampleInputEmail1">Project</label>
+                      <div></div>
+                      <select class="custom-select form-control" ([ngModel])="uploadData.project" name="project"
+                      formControlName="project">
+                       
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                      </select>
+                    </div>
+                    <div class="form-group1 m-form__group">
 
-                        <label for="exampleInputEmail1">Date and Time</label>
-  
-                        <input type="text"  formControlName="date" name="date" placeholder="Select Date" class="form-control" [bsValue]="uploadData.date"
-                          placement="right" bsDatepicker>
-                        <input class="form-control" formControlName="time" name="time" placeholder="Select Time" value="{{uploadData.time}}" (click)='openTimeSelector()' />
-                      </div>
-                      <div class="form-group m-form__group">
-                        <label for="exampleInputEmail1">Select File</label>
-                        <div></div>
-                        <div class="custom-file">
-                          <input type="file" class="custom-file-input" (change)="onFileChanged($event)" #fileInput>
-                          <label class="custom-file-label" for="customFile" (click)="fileInput.click()">Choose file</label>
-                        </div>
+                      <label for="exampleInputEmail1">Date and Time</label>
+
+                      <input type="text"  formControlName="date" name="date" placeholder="Select Date" class="form-control" [bsValue]="uploadData.date"
+                        placement="right" bsDatepicker>
+                      <input class="form-control" formControlName="time" name="time" placeholder="Select Time" value="{{uploadData.time}}" (click)='openTimeSelector()' />
+                    </div>
+                    <div class="form-group m-form__group">
+                      <label for="exampleInputEmail1">Select File</label>
+                      <div></div>
+                      <div class="custom-file">
+                        <input type="file" class="custom-file-input" (change)="onFileChanged($event)" #fileInput>
+                        <label class="custom-file-label" for="customFile" (click)="fileInput.click()">Choose file</label>
                       </div>
                     </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" (click)="uploadDatafn()"  
-                  [disabled]="dispenseuploadForm.invalid || !uploadData.file">Submit</button>
-                </div>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" (click)="uploadDatafn()"  
+                [disabled]="dispenseuploadForm.invalid || !uploadData.file">Submit</button>
               </div>
             </div>
           </div>
-
         </div>
+
       </div>
     </div>
+  </div>
 
-    <!-- END: Subheader -->
-    <!-- END: Subheader -->
-    <div class="m-content">
-      <!-- <div class="m-alert m-alert--icon alert alert-success" role="alert">
-        <div class="m-alert__icon">
-          <i class="flaticon-danger"></i>
-        </div>
-        <div class="m-alert__text">
-          <strong>Updated!</strong> New data has been uploaded, awaiting response
-        </div>
-        <div class="m-alert__actions" style="width: 220px;">
-          <button type="button" class="btn btn-outline-light btn-sm m-btn m-btn--hover-brand" data-dismiss="alert1" aria-label="Close">View
-          </button>
-        </div>
-      </div> -->
-      <!--begin::Portlet-->
+  <!-- END: Subheader -->
+  <!-- END: Subheader -->
+  <div class="m-content">
+    <!-- <div class="m-alert m-alert--icon alert alert-success" role="alert">
+      <div class="m-alert__icon">
+        <i class="flaticon-danger"></i>
+      </div>
+      <div class="m-alert__text">
+        <strong>Updated!</strong> New data has been uploaded, awaiting response
+      </div>
+      <div class="m-alert__actions" style="width: 220px;">
+        <button type="button" class="btn btn-outline-light btn-sm m-btn m-btn--hover-brand" data-dismiss="alert1" aria-label="Close">View
+        </button>
+      </div>
+    </div> -->
+    <!--begin::Portlet-->
 
-      <!--end::Portlet-->
-      <div class="m-portlet m-portlet--mobile" id="atmsdataportlet">
-        <div class="m-portlet__head">
-          <div class="m-portlet__head-caption">
-            <div class="m-portlet__head-title"><h3 class="m-portlet__head-text">All Data</h3></div>
-          </div>
-          <div class="m-portlet__head-tools">
-            <ul class="m-portlet__nav">
-              <li class="m-portlet__nav-item">
-                <a href="#" data-toggle="modal" data-target="#modalfilter" class="m-portlet__nav-link m-portlet__nav-link--icon filters">
-                  <i class="la la-filter"></i>
-                </a>
-                <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-filter"></i> Filter Records</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <form class="m-form m-form--fit m-form--label-align-right">
-                          <div class="form-group1 m-form__group">
-                            <label for="exampleInputEmail1">Bank</label>
-                            <div></div>
-                            <select class="form-control m-bootstrap-select" id="m_form_status">
+    <!--end::Portlet-->
+    <div class="m-portlet m-portlet--mobile" id="atmsdataportlet">
+      <div class="m-portlet__head">
+        <div class="m-portlet__head-caption">
+          <div class="m-portlet__head-title"><h3 class="m-portlet__head-text">All Data</h3></div>
+        </div>
+        <div class="m-portlet__head-tools">
+          <ul class="m-portlet__nav">
+            <li class="m-portlet__nav-item">
+              <a href="#" data-toggle="modal" data-target="#modalfilter" class="m-portlet__nav-link m-portlet__nav-link--icon filters">
+                <i class="la la-filter"></i>
+              </a>
+              <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-filter"></i> Filter Records</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="m-form m-form--fit m-form--label-align-right">
+                        <div class="form-group1 m-form__group">
+                          <label for="exampleInputEmail1">Bank</label>
+                          <div></div>
+                          <select class="form-control m-bootstrap-select" id="m_form_status">
+                            <option value="">All</option>
+                            <option value="1">State Bank of India</option>
+                            <option value="2">Bank of India</option>
+                            <option value="3">Punjab National Bank</option>
+                            <option value="3">Kotak Bank</option>
+                          </select>
+                        </div>
+                        <div class="form-group m-form__group">
+                          <label class="">Feeder Branch:</label>
+                          <div class="m-input-icon m-input-icon--right">
+                            <select class="form-control m-bootstrap-select">
                               <option value="">All</option>
-                              <option value="1">State Bank of India</option>
-                              <option value="2">Bank of India</option>
-                              <option value="3">Punjab National Bank</option>
-                              <option value="3">Kotak Bank</option>
+                              <option value="1">Ghatkopar</option>
+                              <option value="2">Mulund</option>
+                              <option value="3">Bhandup</option>
+                              <option value="3">Matunga</option>
+                              <option value="3">Dadar</option>
                             </select>
                           </div>
-                          <div class="form-group m-form__group">
-                            <label class="">Feeder Branch:</label>
-                            <div class="m-input-icon m-input-icon--right">
-                              <select class="form-control m-bootstrap-select">
-                                <option value="">All</option>
-                                <option value="1">Ghatkopar</option>
-                                <option value="2">Mulund</option>
-                                <option value="3">Bhandup</option>
-                                <option value="3">Matunga</option>
-                                <option value="3">Dadar</option>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal fade" id="editrecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-edit"></i> Edit Record</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="300">
+                        <form class="m-form m-form--fit m-form--label-align-right">
+                          <div class="m-portlet__body">
+                            <div class="form-group m-form__group">
+                              <label for="exampleInputEmail1">ATM ID</label>
+                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            </div>
+                            <div class="form-group m-form__group">
+                              <label for="exampleSelect1">Bank</label>
+                              <select class="form-control m-input m-input--square" id="exampleSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
                               </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                              <label for="exampleSelect1">Feeder Branch</label>
+                              <select class="form-control m-input m-input--square" id="exampleSelect1">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                              </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                              <label for="exampleInputEmail1">CRA</label>
+                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            </div>
+                            <div class="form-group m-form__group">
+                              <label for="exampleInputEmail1">Bank Email</label>
+                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
+                            </div>
+                            <div class="form-group m-form__group">
+                              <label for="exampleInputEmail1">CRA Custodian</label>
+                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
                             </div>
                           </div>
                         </form>
                       </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
-                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Submit</button>
                     </div>
                   </div>
                 </div>
-                <div class="modal fade" id="editrecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-edit"></i> Edit Record</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-                        <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="300">
-                          <form class="m-form m-form--fit m-form--label-align-right">
-                            <div class="m-portlet__body">
-                              <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">ATM ID</label>
-                                <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                              </div>
-                              <div class="form-group m-form__group">
-                                <label for="exampleSelect1">Bank</label>
-                                <select class="form-control m-input m-input--square" id="exampleSelect1">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                                </select>
-                              </div>
-                              <div class="form-group m-form__group">
-                                <label for="exampleSelect1">Feeder Branch</label>
-                                <select class="form-control m-input m-input--square" id="exampleSelect1">
-                                  <option>1</option>
-                                  <option>2</option>
-                                  <option>3</option>
-                                  <option>4</option>
-                                  <option>5</option>
-                                </select>
-                              </div>
-                              <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">CRA</label>
-                                <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                              </div>
-                              <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">Bank Email</label>
-                                <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                              </div>
-                              <div class="form-group m-form__group">
-                                <label for="exampleInputEmail1">CRA Custodian</label>
-                                <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Submit</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </li>
-              <li class="m-portlet__nav-item">
-                <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon">
-                  <i class="la la-angle-down"></i>
-                </a>
-              </li>
-              <li class="m-portlet__nav-item">
-                <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon">
-                  <i class="la la-expand"></i>
-                </a>
-              </li>
-            </ul>
+              </div>
+            </li>
+            <li class="m-portlet__nav-item">
+              <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon">
+                <i class="la la-angle-down"></i>
+              </a>
+            </li>
+            <li class="m-portlet__nav-item">
+              <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon">
+                <i class="la la-expand"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="m-portlet__body">
+        <!--begin: Search Form -->
+        <div class="m-form m-form--label-align-right m--margin-bottom-30">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="m-input-icon m-input-icon--left">
+                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
+                <span class="m-input-icon__icon m-input-icon__icon--left">
+                  <span>
+                    <i class="la la-search"></i>
+                  </span>
+                </span>
+              </div>
+            </div>
+            <div class="col-lg-8 m--align-right">
+              <a href="submitindentrevisions.php" class="btn btn-primary"><i class="fa fa-file-export"></i> Export</a>
+              <select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple id="datablecolumns" data-style="btn-metal"><option value="" selected>Select Columns</option></select>
+            </div>	
           </div>
         </div>
-        <div class="m-portlet__body">
-          <!--begin: Search Form -->
-          <div class="m-form m-form--label-align-right m--margin-bottom-30">
-            <div class="row">
-              <div class="col-lg-4">
-                <div class="m-input-icon m-input-icon--left">
-                  <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
-                  <span class="m-input-icon__icon m-input-icon__icon--left">
-                    <span>
-                      <i class="la la-search"></i>
-                    </span>
-                  </span>
-                </div>
-              </div>
-              <div class="col-lg-8 m--align-right">
-                <a href="submitindentrevisions.php" class="btn btn-primary"><i class="fa fa-file-export"></i> Export</a>
-                <select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple id="datablecolumns" data-style="btn-metal"><option value="" selected>Select Columns</option></select>
-              </div>	
+
+        <!--end: Search Form -->
+
+        <!--begin: Datatable -->
+        <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+          <div class="row">
+            <div class="col-sm-12 col-md-12">
+              <div class="m_datatable" id="local_data"></div>
             </div>
           </div>
-
-          <!--end: Search Form -->
-
-          <!--begin: Datatable -->
-          <div id="m_table_1_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-            <div class="row">
-              <div class="col-sm-12 col-md-12">
-                <div class="m_datatable" id="local_data"></div>
-              </div>
-            </div>
-            <!--end: Datatable -->
-            <!-- <div class="row">
-              <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="m_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 50 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="m_table_1_length"><label>Display <select style="width:auto" name="m_table_1_length" aria-controls="m_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="m_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="m_table_1_previous"><a href="#" aria-controls="m_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="m_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item next" id="m_table_1_next"><a href="#" aria-controls="m_table_1" data-dt-idx="6" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div>
-            </div> -->
-          </div>
+          <!--end: Datatable -->
+          <!-- <div class="row">
+            <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="m_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 50 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="m_table_1_length"><label>Display <select style="width:auto" name="m_table_1_length" aria-controls="m_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="m_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="m_table_1_previous"><a href="#" aria-controls="m_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="m_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item next" id="m_table_1_next"><a href="#" aria-controls="m_table_1" data-dt-idx="6" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div>
+          </div> -->
         </div>
       </div>
     </div>
   </div>
+</div>

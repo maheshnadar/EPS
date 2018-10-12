@@ -23,7 +23,9 @@ export class CashdispenseComponent implements OnInit {
 
     this.dispenseuploadForm = this.formBuilder.group({
       bank_code: ['', Validators.required],
+      cra: ['', Validators.required],
       project: ['', Validators.required],
+      
       // date: ['',  Validators.required],
       // time: ['',  Validators.required],
       // file: ['',  Validators.required],
@@ -68,6 +70,7 @@ const fileData = new FormData();
 //uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 fileData.append('file', this.uploadData.file,this.uploadData.file.name);
 fileData.append('bank_code', this.uploadData.bank_code);
+fileData.append('cra', this.uploadData.cra);
 fileData.append('file_type', 'cash_dispense');
 fileData.append('upload_datetime', this.uploadData.upload_datetime);
 console.log("upload clicked formdata",fileData);
