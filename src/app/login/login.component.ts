@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../apiservice.service';
 import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
 import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
+import {MenulistService} from "../menulist.service";
 
 declare var $:any;
 
@@ -31,7 +32,10 @@ export class LoginComponent implements OnInit {
 // // it will be stored in a cookie named ${prefix}user_workspaces for 24 hours
 // @CookieStorage({key: 'user_workspaces', expires: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}) userWorkspaces = [];
 
-  constructor( private sessionStorageService: SessionStorageService,private apiService:ApiService,private router:Router,private activatedRoute: ActivatedRoute) {
+  constructor( private sessionStorageService: SessionStorageService,
+    private apiService:ApiService,private router:Router,
+    private activatedRoute: ActivatedRoute,
+    private menulistservice:MenulistService) {
  console.log(sessionStorageService.get('accessToken'));
     this.activatedRoute.queryParams.subscribe(paramsId => {
       console.log(paramsId);
@@ -76,6 +80,7 @@ export class LoginComponent implements OnInit {
   var accesstoken="Bearer "+data1['token'];
     this.sessionStorageService.set('accessToken',accesstoken);
     this.sessionStorageService.set('menu',data1['menus_data']);
+    this.menulistservice.setMenu( JSON.parse(data1['menus_data']) );
 console.log("new accesstoken",this.sessionStorageService.get('accessToken'));
     this.router.navigate(['./dashboard']);
       }
