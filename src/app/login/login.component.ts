@@ -75,6 +75,7 @@ export class LoginComponent implements OnInit {
       if(data1['is_login_success']){
   var accesstoken="Bearer "+data1['token'];
     this.sessionStorageService.set('accessToken',accesstoken);
+    this.sessionStorageService.set('menu',data1['menus_data']);
 console.log("new accesstoken",this.sessionStorageService.get('accessToken'));
     this.router.navigate(['./dashboard']);
       }

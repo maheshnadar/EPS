@@ -32,7 +32,10 @@ var accesstoken=this.sessionStorageService.get('accessToken');
          }
   else{
   //Redirect the user before denying them access to this route
-       this.router.navigate(['/login']);
+      //  this.router.navigate(['/login']);
+      //this.window.location = "http://www.yoururl.com";
+      window.location.href='http://192.168.75.15:8000/login';
+
        return false;
   }
 

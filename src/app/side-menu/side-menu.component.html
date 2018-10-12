@@ -6,15 +6,15 @@
       <ul class="m-menu__nav  m-menu__nav--dropdown-submenu-arrow ">
 
           <li class="m-menu__item"
-           [ngClass]="{'m-menu__item--submenu':menu.submenu,'m-menu__item--open':openSubMenu==menu.name}"
+           [ngClass]="{'m-menu__item--submenu':menu.child,'m-menu__item--open':openSubMenu==menu.display_name}"
             aria-haspopup="true" *ngFor="let menu of sideMenu" 
               routerLinkActive="m-menu__item--active">
              <!-- when submenu is not there  -->
-            <a   [routerLink]="[menu.path]" class="pointer  m-menu__link " *ngIf="!menu.submenu">
+            <a   [routerLink]="[menu.mapped_url]" class="pointer  m-menu__link " *ngIf="!menu.child">
                 <i class="m-menu__link-icon flaticon-line-graph"></i>
                 <span class="m-menu__link-title">
                   <span class="m-menu__link-wrap">
-                    <span class="m-menu__link-text">{{menu.name}}</span>
+                    <span class="m-menu__link-text">{{menu.display_name}}</span>
                     <!-- <span class="m-menu__link-badge">
                       <span class="m-badge m-badge--danger">2</span>
                     </span> -->
@@ -23,17 +23,18 @@
               </a>
 
               <!-- when submenu is there -->
-              <a  class="m-menu__link m-menu__toggle" *ngIf="menu.submenu" (click)="openSubMenu==menu.name?openSubMenu='none':openSubMenu=menu.name">
+              <a  class="m-menu__link m-menu__toggle" *ngIf="menu.child" 
+              (click)="openSubMenu==menu.display_name?openSubMenu='none':openSubMenu=menu.display_name">
                   <i class="m-menu__link-icon flaticon-suitcase"></i>
-                  <span class="m-menu__link-text">{{menu.name}}</span>
+                  <span class="m-menu__link-text">{{menu.display_name}}</span>
                   <i class="m-menu__ver-arrow la la-angle-right"></i>
                 </a>
                 <div class="m-menu__submenu ">
                   <span class="m-menu__arrow"></span>
                   <ul class="m-menu__subnav">
                     <li class="m-menu__item  m-menu__item--submenu "  
-                    *ngFor="let submenu of menu.submenu" 
-                    [routerLink]="[submenu.path]" routerLinkActive="m-menu__item--active" 
+                    *ngFor="let submenu of menu.child" 
+                    [routerLink]="[submenu.mapped_url]" routerLinkActive="m-menu__item--active" 
                     aria-haspopup="true"
                      m-menu-submenu-toggle="hover">
                       <a  class="m-menu__link m-menu__toggle">
@@ -42,7 +43,7 @@
                         </i>
                         <span class="m-menu__link-title">
                           <span class="m-menu__link-wrap">
-                            <span class="m-menu__link-text">{{submenu.name}}</span>
+                            <span class="m-menu__link-text">{{submenu.display_name}}</span>
                             <span class="m-menu__link-badge">
                               <span class="m-badge m-badge--danger m-badge--dot" *ngIf="submenu.new"></span>
                             </span>
