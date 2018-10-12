@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { Observable} from 'rxjs/Rx';
 import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
+import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
 
 
 
@@ -10,23 +11,23 @@ import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
   providedIn: 'root'
 })
 export class AuthCheckService  implements CanActivate{
-  @LocalStorage() accessToken: String ;
+  
 
 
 // this will check for login status 
 
 
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,private sessionStorageService: SessionStorageService) { }
 
   canActivate(
     
   ): Observable<boolean>|Promise<boolean>|boolean {
 
 //your login check here
+var accesstoken=this.sessionStorageService.get('accessToken');
 
-
-    if (this.accessToken) {
+    if (accesstoken) {
       return true;
          }
   else{

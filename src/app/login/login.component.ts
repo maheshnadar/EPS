@@ -31,8 +31,8 @@ export class LoginComponent implements OnInit {
 // // it will be stored in a cookie named ${prefix}user_workspaces for 24 hours
 // @CookieStorage({key: 'user_workspaces', expires: new Date(new Date().getTime() + 24 * 60 * 60 * 1000)}) userWorkspaces = [];
 
-  constructor(   private localStorageService: LocalStorageService,private apiService:ApiService,private router:Router,private activatedRoute: ActivatedRoute) {
- console.log(localStorageService.get('accessToken'));
+  constructor( private sessionStorageService: SessionStorageService,private apiService:ApiService,private router:Router,private activatedRoute: ActivatedRoute) {
+ console.log(sessionStorageService.get('accessToken'));
     this.activatedRoute.queryParams.subscribe(paramsId => {
       console.log(paramsId);
       this.username = paramsId.username;
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     //----------local storage
     //this.viewCounts++;
     // console.log("view count",this.viewCounts);
-    // this.userName = 'some name stored in localstorage';
+    // this.userName = 'some name stored in localstora         ge';
     // this.previousUserNames.push(this.userName);
     // for (let userName of this.previousUserNames) {
     //   console.log(userName);
@@ -74,8 +74,8 @@ export class LoginComponent implements OnInit {
 
       if(data1['is_login_success']){
   var accesstoken="Bearer "+data1['token'];
-    this.localStorageService.set('accessToken',accesstoken);
-console.log("new accesstoken",this.localStorageService.get('accessToken'));
+    this.sessionStorageService.set('accessToken',accesstoken);
+console.log("new accesstoken",this.sessionStorageService.get('accessToken'));
     this.router.navigate(['./dashboard']);
       }
     },

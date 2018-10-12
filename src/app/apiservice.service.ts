@@ -26,18 +26,18 @@ export class ApiService {
   httpOptions={};
 
 
-  constructor(private localStorageService: LocalStorageService, private http: HttpClient) {
-console.log(this.localStorageService.get('accessToken'),'---------')
+  constructor(private sessionStorageService: SessionStorageService, private http: HttpClient) {
+console.log(this.sessionStorageService.get('accessToken'),'---------')
 
     this.httpOptionsForm = {
-      headers: new HttpHeaders({'Authorization': ''+this.localStorageService.get('accessToken')}),
+      headers: new HttpHeaders({'Authorization': ''+this.sessionStorageService.get('accessToken')}),
       reportProgress: true,
       observe: 'events'
     };
 
 
     this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': ''+this.localStorageService.get('accessToken') })
+      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': ''+this.sessionStorageService.get('accessToken') })
     };
    }
 

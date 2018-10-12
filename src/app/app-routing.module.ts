@@ -92,7 +92,7 @@ const routes: Routes = [
   { path:'cravaultmaster',component:CravaultmasterComponent},
   { path:'cyphercode',component:CyphercodeComponent},
   { path:'dailyloadingreport',component:DailyloadingreportComponent},
-  { path:'dashboard',component:DashboardComponent},
+  { path:'dashboard',component:DashboardComponent , canActivate: [AuthCheckService]},
   { path:'diversion',component:DiversionComponent},
   { path:'emergencyvaultingreport',component:EmergencyvaultingreportComponent},
   { path: 'exceptions', component: ExceptionsComponent }, 
