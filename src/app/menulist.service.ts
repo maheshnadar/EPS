@@ -16,7 +16,7 @@ setMenu(menu:any){
   this.Menu=menu;
 }
  
-updateMenu() {
+  updateMenu() {
     console.log("getting menu from session");
 const menufromsession=this.sessionStorageService.get('menu');
 if(!menufromsession){

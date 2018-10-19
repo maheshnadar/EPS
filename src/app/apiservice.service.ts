@@ -3,11 +3,11 @@ import {HttpHeaders} from "@angular/common/http";
 import { Http } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 //extra
-import {domain} from './shared/domain';
 import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
 import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
 
-
+//export const domain="http://192.168.0.137:8080/"
+export const domain="http://localhost:8080/"
 
 
 

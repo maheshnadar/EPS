@@ -12,7 +12,7 @@ import {
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent implements OnInit {
-//  sideMenu: object[];
+  sideMenu: object[];
   constructor(private menulist:MenulistService) {
 
 
