@@ -58,7 +58,7 @@ uploadDatafn(){
   fileData.append('file', this.uploadData.file,this.uploadData.file.name);
   fileData.append('bank_code', this.uploadData.bank_code);
   fileData.append('cra', this.uploadData.cra);
-  fileData.append('file_type', 'recommendation_sheet');
+  fileData.append('file_type', 'Daily_Loading _Report');
   fileData.append('upload_datetime', this.uploadData.upload_datetime);
   console.log("upload clicked formdata",fileData);
   

@@ -20,7 +20,7 @@ declare var $:any;
 
 
 export class LoginComponent implements OnInit {
-  username;
+  v;
 // // it will be stored under ${prefix}viewCounts name
 // @LocalStorage() accessToken: String ;
 // // this under name: ${prefix}differentLocalStorageKey
@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
  console.log(sessionStorageService.get('accessToken'));
     this.activatedRoute.queryParams.subscribe(paramsId => {
       console.log(paramsId);
-      this.username = paramsId.username;
+      this.v = paramsId.v;
   });
 
    
@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit {
         
   // --- end of ad login 
 
-  apiService.post('login/',{username:this.username}).subscribe(data1 => {
+  apiService.post('login/',{v:this.v}).subscribe(data1 => {
 
       if(data1['is_login_success']){
   var accesstoken="Bearer "+data1['token'];

@@ -30,7 +30,7 @@ export class BankcashbalanceComponent implements OnInit {
 alert:any;
 page = new Page();
 public uploadData:any;
-cbruploadForm: FormGroup;
+uploadForm: FormGroup;
 submitted = false;
 temp = [];
 datePipe;
@@ -61,7 +61,7 @@ datePipe;
     this.uploadData.file;
 
 
-    this.cbruploadForm = this.formBuilder.group({
+    this.uploadForm = this.formBuilder.group({
       bank_code: ['', Validators.required],
       cra: ['', Validators.required],
       project: ['', Validators.required],
@@ -78,7 +78,7 @@ datePipe;
   }
 
 // convenience getter for easy access to form fields
-get f() { return this.cbruploadForm.controls; }
+get f() { return this.uploadForm.controls; }
 
   openTimeSelector() {
     console.log("time picker opened")
@@ -185,6 +185,7 @@ this.apiService.uploadFile("upload/",fileData).subscribe(event => {
 
 
 // ----------view all data ----------------
+
 viewColumns:Object={};
 // selectedViewColumns:any=['all'];
 // viewColumnsOptions:any=['all','atm_id']
@@ -197,7 +198,7 @@ viewColumns:Object={};
 
 rows:any=[];
 tempRows:any=[];
-  
+filtersForAllView:any={};
 
 viewColumnAll:any=[
   {
@@ -312,6 +313,8 @@ console.log("col change",this.selectedColumn,this.viewColumn);
  updateAll(){
   console.log("updarte called");
   this.setPage({ offset: 0 });
+  $('#modalfilter').modal('hide');
+
 }
 
 setPage(pageInfo){
@@ -326,11 +329,14 @@ setPage(pageInfo){
     'page':this.page,
     'file_type':"CBR",
     "bank_code":"ALL",
-    "filters" : {
-      // "datafor_date_time":"",
-      // "datafor_date_time": "2018-10-12T08:00:00Z",
-    //  "atm_id":"APN0712A"
-    }}).subscribe(data =>{
+    "filters" : this.filtersForAllView
+    // {
+    //   // "datafor_date_time":"",
+    //   // "datafor_date_time": "2018-10-12T08:00:00Z",
+    // //  "atm_id":"APN0712A"
+    // }
+  }
+    ).subscribe(data =>{
       console.log("-------get all");
    console.log(data); // handle event here
     //   this.page = pagedData.page;
@@ -425,7 +431,7 @@ var hours_min=this.uploadData.time.split(":")
 
 
   openPreviewModal() {
-  $('#m_modal_6').modal('hide')
+  $('#m_modal_6').modal('hide');
     console.log(this.previewModal);
     this.modalRef = this.modalService.show(this.previewModal, Object.assign({}, { class: 'preview-modal modal-lg' }));
   }

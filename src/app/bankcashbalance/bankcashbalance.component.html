@@ -56,7 +56,7 @@
 
                 
                 <!-- upload form  -->
-                <form class="m-form m-form--fit m-form--label-align-right" name="cbrupload"  [formGroup]="cbruploadForm">
+                <form class="m-form m-form--fit m-form--label-align-right" name="cbrupload"  [formGroup]="uploadForm">
                   <div class="m-portlet__body">
                     <div class="form-group1 m-form__group">
                       <label for="exampleInputEmail1">Bank Code</label>
@@ -71,17 +71,17 @@
                       </select>
                      
                     </div>
-                    <div class="form-group1 m-form__group">
+                    <!-- <div class="form-group1 m-form__group">
                       <label for="exampleInputEmail1">CRA</label>
                       <div></div>
                       <select class="custom-select form-control " formControlName="cra"
                        [(ngModel)]="uploadData.cra" name="cra" [ngClass]="{ 'is-invalid': submitted && f.cra.errors }">
                         
                         <option value="SIS">SIS</option>
-                        <!-- <option value="2">two</option>
-                        <option value="3">three</option> -->
+                         <option value="2">two</option>
+                        <option value="3">three</option> 
                       </select>
-                    </div>
+                    </div> -->
                     <div class="form-group1 m-form__group">
                       <label for="exampleInputEmail1">Project</label>
                       <div></div>
@@ -158,11 +158,12 @@
         </div>
         <div class="m-portlet__head-tools">
           <ul class="m-portlet__nav">
-            <li class="m-portlet__nav-item">
+            <li class="m-portlet__nav-item" [ngClass]="{'filter-applied': filtersForAllView.bank_name || filtersForAllView.feeder_branch}">
               <a href="#" data-toggle="modal" data-target="#modalfilter" class="m-portlet__nav-link m-portlet__nav-link--icon filters">
                 <i class="la la-filter"></i>
               </a>
-              <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+              <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" 
+              aria-labelledby="exampleModalCenterTitle"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
@@ -173,38 +174,45 @@
                       </button>
                     </div>
                     <div class="modal-body">
+                      <!-- filter form for view all data -->
                       <form class="m-form m-form--fit m-form--label-align-right" >
                         <div class="m-portlet__body">
                           <div class="form-group1 m-form__group">
                             <label for="exampleInputEmail1">Bank</label>
                             <div></div>
-                            <select class="form-control m-bootstrap-select" id="m_form_status">
-                              <option value="">All</option>
-                              <option value="1">State Bank of India</option>
-                              <option value="2">Bank of India</option>
-                              <option value="3">Punjab National Bank</option>
-                              <option value="3">Kotak Bank</option>
+                            <select class="form-control m-bootstrap-select" id="m_form_status" 
+                            [(ngModel)]="filtersForAllView.bank_name"
+                            [ngModelOptions]="{standalone: true}" >
+                              <option value="all">All</option>
+                              <option value="State Bank of India">State Bank of India</option>
+                              <option value="Bank of India">Bank of India</option>
+                              <option value="Punjab National Bank">Punjab National Bank</option>
+                              <option value="Kotak Bank">Kotak Bank</option>
                             </select>
                           </div>
                           <div class="form-group m-form__group">
                             <label class="">Feeder Branch:</label>
                             <div class="m-input-icon m-input-icon--right">
-                              <select class="form-control m-bootstrap-select">
-                                <option value="">All</option>
-                                <option value="1">Ghatkopar</option>
-                                <option value="2">Mulund</option>
-                                <option value="3">Bhandup</option>
-                                <option value="3">Matunga</option>
-                                <option value="3">Dadar</option>
+                              <select class="form-control m-bootstrap-select" 
+                              [(ngModel)]="filtersForAllView.feeder_branch"
+                              [ngModelOptions]="{standalone: true}">
+                                <option value="all">All</option>
+                                <option value="Ghatkopar">Ghatkopar</option>
+                                <option value="Mulund">Mulund</option>
+                                <option value="Bhandup">Bhandup</option>
+                                <option value="Matunga">Matunga</option>
+                                <option value="Dadar">Dadar</option>
                               </select>
                             </div>
                           </div>
                         </div>
                       </form>
+                      <!-- filter form for view all data -->
+
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Submit</button>
+                      <button type="button" class="btn btn-primary" (click)="updateAll()">Submit</button>
                     </div>
                   </div>
                 </div>
@@ -304,10 +312,10 @@
             </div>
             <div class="col-lg-8 m--align-right">
 
-
+<!--  select column in viewallData -->
                 <select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple 
                 data-style="btn-metal" [(ngModel)]="selectedColumn" (change)="columnChangefn()">
-                <!-- <option value="all">All</option> -->
+               
                 <option  
                 *ngFor="let viewCol of viewColumnAll"
                 value="{{viewCol.prop}}"  >
@@ -315,6 +323,7 @@
                 </option>
                 
               </select>
+<!--   select column  in viewallData -->
               
             </div>
           </div>
@@ -449,16 +458,79 @@
     </button>
   </div>
   <div class="modal-body">
-     <div class="m-input-icon m-input-icon--left">
-                <input type="text" class="form-control m-input" placeholder="Search..."
-                 [(ngModel)]="previewFilter"   (keyup)='previewSearch($event)'
-                 >
-                <span class="m-input-icon__icon m-input-icon__icon--left">
-                  <span>
-                    <i class="la la-search"></i>
-                  </span>
-                </span>
+    <div class="row">
+        <div class="m-input-icon m-input-icon--left col-10">
+            <input type="text" class="form-control m-input" placeholder="Search..."
+             [(ngModel)]="previewFilter"   (keyup)='previewSearch($event)'
+             >
+            <span class="m-input-icon__icon m-input-icon__icon--left">
+              <span>
+                <i class="la la-search"></i>
+              </span>
+            </span>
+          </div>
+          <ul class="m-portlet__nav col-2">
+            <li class="m-portlet__nav-item" [ngClass]="{'filter-applied': filtersForAllView.bank_name || filtersForAllView.feeder_branch}">
+              <a href="#" data-toggle="modal" data-target="#modalfilter" class="m-portlet__nav-link m-portlet__nav-link--icon filters">
+                <i class="la la-filter"></i>
+              </a>
+              <div class="modal fade" id="modalfilter1" tabindex="-1" role="dialog" 
+              aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle1"><i class="la la-filter"></i> Filter Records</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <form class="m-form m-form--fit m-form--label-align-right" >
+                        <div class="m-portlet__body">
+                          <div class="form-group1 m-form__group">
+                            <label for="exampleInputEmail1">Bank</label>
+                            <div></div>
+                            <select class="form-control m-bootstrap-select" id="m_form_status" 
+                            [(ngModel)]="filtersForAllView.bank_name"
+                            [ngModelOptions]="{standalone: true}" >
+                              <option value="all">All</option>
+                              <option value="State Bank of India">State Bank of India</option>
+                              <option value="Bank of India">Bank of India</option>
+                              <option value="Punjab National Bank">Punjab National Bank</option>
+                              <option value="Kotak Bank">Kotak Bank</option>
+                            </select>
+                          </div>
+                          <div class="form-group m-form__group">
+                            <label class="">Feeder Branch:</label>
+                            <div class="m-input-icon m-input-icon--right">
+                              <select class="form-control m-bootstrap-select" 
+                              [(ngModel)]="filtersForAllView.feeder_branch"
+                              [ngModelOptions]="{standalone: true}">
+                                <option value="all">All</option>
+                                <option value="Ghatkopar">Ghatkopar</option>
+                                <option value="Mulund">Mulund</option>
+                                <option value="Bhandup">Bhandup</option>
+                                <option value="Matunga">Matunga</option>
+                                <option value="Dadar">Dadar</option>
+                              </select>
+                            </div>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="updateAll()">Submit</button>
+                    </div>
+                  </div>
+                </div>
               </div>
+             
+            </li>
+          </ul>
+    </div>
+  
     <div class="table">
       
     <ngx-datatable   #previewData
