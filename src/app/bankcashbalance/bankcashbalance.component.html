@@ -114,6 +114,9 @@
                     </div>
                   </div>
                 </form>
+
+
+
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -291,7 +294,7 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="m-input-icon m-input-icon--left">
-                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch" >
+                <input type="text" class="form-control m-input" (keyup)='viewSearch($event)' placeholder="Search..." id="generalSearch" >
                 <span class="m-input-icon__icon m-input-icon__icon--left">
                   <span>
                     <i class="la la-search"></i>
@@ -300,10 +303,19 @@
               </div>
             </div>
             <div class="col-lg-8 m--align-right">
-              <select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple id="datablecolumns"
-                data-style="btn-metal">
-                <option value="" selected>Select Columns</option>
+
+
+                <select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple 
+                data-style="btn-metal" [(ngModel)]="selectedColumn" (change)="columnChangefn()">
+                <!-- <option value="all">All</option> -->
+                <option  
+                *ngFor="let viewCol of viewColumnAll"
+                value="{{viewCol.prop}}"  >
+                  {{viewCol.name}}
+                </option>
+                
               </select>
+              
             </div>
           </div>
         </div>
@@ -340,64 +352,186 @@
         [offset]="page.pageNumber"
         [limit]="page.size"
         (page)='setPage($event)' -->
-        <ngx-datatable-column name="ATM ID" prop="atm_id">
+
+
+        <ng-container *ngFor="let viewCol of viewColumn">
+          
+            <ngx-datatable-column   
+           
+            name="{{viewCol.name}}"
+         prop="{{viewCol.prop}}"
+         
+          >
+          <ng-template ngx-datatable-cell-template let-value="value" >
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column> 
+          </ng-container>
+
+        <!-- <ngx-datatable-column name="ATM ID" prop="atm_id" *ngIf="selectedViewColumns && 
+        ( selectedViewColumns.includes('atm_id') || selectedViewColumns.includes('all') )">
           <ng-template ngx-datatable-cell-template let-value="value">
             {{value}}
           </ng-template>
         </ngx-datatable-column>
      
-        <ngx-datatable-column name="Bank name" prop="bank_name">
+        <ngx-datatable-column name="Bank name" prop="bank_name"
+         *ngIf="selectedViewColumns && (selectedViewColumns.includes('bank_name') || selectedViewColumns.includes('all') )">
           <ng-template ngx-datatable-cell-template let-value="value">
             {{value}}
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Project" prop="project_id">
+        <ngx-datatable-column name="Project" prop="project_id" 
+        *ngIf="selectedViewColumns && (selectedViewColumns.includes('project_id') || selectedViewColumns.includes('all') )">
           <ng-template ngx-datatable-cell-template let-value="value">
             {{value}}
           </ng-template>
         </ngx-datatable-column>
-        <ngx-datatable-column name="Bank Code" prop="bank_name">
+        <ngx-datatable-column name="Bank Code" prop="bank_name" 
+        *ngIf="selectedViewColumns && ( selectedViewColumns.includes('bank_code')  || selectedViewColumns.includes('all') )">
           <ng-template ngx-datatable-cell-template let-value="value">
             {{value}}
           </ng-template>
         </ngx-datatable-column>
-        <!-- <ngx-datatable-column name="Feeder Branch" prop="atm_id">
+        <ngx-datatable-column name="Date & Time" prop="modified_on"  
+        *ngIf="selectedViewColumns && ( selectedViewColumns.includes('modified_on')  || selectedViewColumns.includes('all') )">
           <ng-template ngx-datatable-cell-template let-value="value">
-            Null
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Balance Total" prop="total_remaining_balance"
+         *ngIf="selectedViewColumns && (selectedViewColumns.includes('total_remaining_balance')  || selectedViewColumns.includes('all') )">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Denomination 100" prop="remaining_balance_100" 
+        *ngIf="selectedViewColumns && (selectedViewColumns.includes('remaining_balance_100')  || selectedViewColumns.includes('all') )">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Denomination 200" prop="remaining_balance_200" 
+        *ngIf="selectedViewColumns && selectedViewColumns.includes('remaining_balance_200')">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Denomination 500" prop="remaining_balance_500" *ngIf="selectedViewColumns && selectedViewColumns.includes('remaining_balance_500')">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Denomination 2000" prop="remaining_balance_2000" *ngIf="selectedViewColumns && selectedViewColumns.includes('remaining_balance_2000')">
+          <ng-template ngx-datatable-cell-template let-value="value">
+            {{value}}
           </ng-template>
         </ngx-datatable-column> -->
-        <ngx-datatable-column name="Date & Time" prop="modified_on">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Balance Total" prop="total_remaining_balance">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Denomination 100" prop="remaining_balance_100">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Denomination 200" prop="remaining_balance_200">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Denomination 500" prop="remaining_balance_500">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Denomination 2000" prop="remaining_balance_2000">
-          <ng-template ngx-datatable-cell-template let-value="value">
-            {{value}}
-          </ng-template>
-        </ngx-datatable-column>
       </ngx-datatable>
       </div>
     </div>
+
+
+
+
+    
+
   </div>
+  
 </div>
+
+
+<ng-template #previewModal class="modal-lg  preview-modal">
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Preview</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+     <div class="m-input-icon m-input-icon--left">
+                <input type="text" class="form-control m-input" placeholder="Search..."
+                 [(ngModel)]="previewFilter"   (keyup)='previewSearch($event)'
+                 >
+                <span class="m-input-icon__icon m-input-icon__icon--left">
+                  <span>
+                    <i class="la la-search"></i>
+                  </span>
+                </span>
+              </div>
+    <div class="table">
+      
+    <ngx-datatable   #previewData
+    class="material"
+    [headerHeight]="50"
+    [limit]="10"
+    [columnMode]="'force'"
+    [footerHeight]="50"
+    [rowHeight]="'60'"
+    [rows]="previewRows"
+    [scrollbarH]="true"
+    
+    >
+    <!-- [externalPaging]="true"
+    [count]="page.totalElements"
+    [offset]="page.pageNumber"
+    [limit]="page.size"
+    (page)='setPage($event)' -->
+    <ngx-datatable-column name="Term Id" prop="term_id">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+ 
+    <ngx-datatable-column name="Acceptor Name" prop="acceptorname">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Project Id" prop="project_id">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Cassette 1" prop="cassette1">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Cassette 2" prop="cassette2">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="Cassette 3" prop="cassette3">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+      <ngx-datatable-column name="Cassette 4" prop="cassette4">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+     <ngx-datatable-column name="Cassette 4" prop="cassette4">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+
+    <ngx-datatable-column name="Total Cash" prop="tot_cash">
+      <ng-template ngx-datatable-cell-template let-value="value">
+        {{value}}
+      </ng-template>
+    </ngx-datatable-column>
+   
+  
+ 
+  </ngx-datatable>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="btn btn-primary"  name="submit" (click)="approvePreviewFn()">Approve</button>
+  </div>
+</ng-template>

@@ -5,7 +5,6 @@ import {DatatableComponent} from '@swimlane/ngx-datatable/src/components/datatab
 
 
 //custom
-import {domain} from '../shared/domain';
 import {ApiService} from '../apiservice.service';
 
 @Component({
