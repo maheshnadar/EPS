@@ -19,6 +19,10 @@
 
 
 
+.ngx-datatable .datatable-footer .datatable-pager .pager, .ngx-datatable .datatable-footer .datatable-pager .pager li{
+    padding: 4px !important;
+}
+
 
 .m-quick-sidebar-overlay{
     display: none;
@@ -36,4 +40,37 @@ overflow: scroll !important;
 
 #time-picker-wrapper{
     z-index: 1000000 !important;
+}
+
+
+
+// form validation
+.is-invalid{
+border:1px solid red;
+}
+
+
+//------ modal scss
+
+.preview-modal{
+    max-width: 80vw !important;
+    .modal-body{
+        max-height: 65vh;
+    overflow: scroll;
+    }
+
+    .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell{
+    text-align:center;
+    }
+    .ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell{
+    text-align:center;
+    }
+}
+
+
+
+.filter-applied{
+    background: #5867dd;
+    border-radius: 5px;
+    color: white;
 }

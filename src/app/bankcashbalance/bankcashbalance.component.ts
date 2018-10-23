@@ -100,8 +100,8 @@ onFileChanged(event) {
 uploadDatafn(){
 
 
-this.updatePreview();
-    this.openPreviewModal();
+// this.updatePreview();
+//     this.openPreviewModal();
 
 
   console.log("upload clicked----------",this.uploadData);
@@ -124,9 +124,9 @@ fileData.append('file', this.uploadData.file,this.uploadData.file.name);
 fileData.append('bank_code', this.uploadData.bank_code);
 fileData.append('project_id', this.uploadData.project);
 // fileData.append('project_id', "MOF");
-fileData.append('cra', this.uploadData.cra);
+// fileData.append('cra', this.uploadData.cra);
 fileData.append('file_type', 'CBR');
-fileData.append('upload_datetime', date);
+fileData.append('upload_datatime', date);
 console.log("upload clicked formdata",fileData);
 
 
@@ -152,11 +152,17 @@ this.apiService.uploadFile("upload/",fileData).subscribe(event => {
    // this.updateAll();
     if(response.body.status_text=="Consolidation Successful"){
 
-     // this.alert.text=" "+ response.body.status_text;
-     // this.alert.class="success"
+      this.alert.isvisible=true;
+      this.alert.type="Upload";
+        this.alert.class="danger"
+        // this.alert.text=" "+ response.body.status_text;
+     this.alert.text=" "+ response.body.status_text;
+     this.alert.class="success"
+     $('#m_modal_6').modal('hide')
 
-    this.updatePreview();
-    this.openPreviewModal();
+
+    // this.updatePreview();
+    // this.openPreviewModal();
     }
     else{
      this.alert.isvisible=true;
