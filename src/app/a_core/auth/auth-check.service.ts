@@ -5,6 +5,7 @@ import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
 import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
 
 
+declare var isProduction :any;   // check for productions
 
 
 @Injectable({
@@ -26,6 +27,13 @@ export class AuthCheckService  implements CanActivate{
 
 //your login check here
 var accesstoken=this.sessionStorageService.get('accessToken');
+
+//if production false
+console.log('production variable',isProduction);
+if(!isProduction){
+console.log('not in production so able to access');
+  return true
+}
 
     if (accesstoken) {
       return true;

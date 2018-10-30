@@ -13,64 +13,23 @@ export class MenulistService {
   }
 
 setMenu(menu:any){
+  
   this.Menu=menu;
 }
  
   updateMenu() {
+    
     console.log("getting menu from session");
 const menufromsession=this.sessionStorageService.get('menu');
 if(!menufromsession){
  // window.location.href='http://192.168.75.15:8000/login';
+}else{
+  console.log(menufromsession,"----menu",JSON.parse(menufromsession));
+  this.Menu=JSON.parse(menufromsession);
 }
-console.log(menufromsession,"----menu",JSON.parse(menufromsession));
-this.Menu=JSON.parse(menufromsession);
-    console.log()
-    // return JSON.parse(menufromsession);
-  //   switch (role) {
-  //     case 'Cash Batch Operator':
-  //       {
-  //         return [{
-  //           name: "Dashboard",
-  //           path: "dashboard"
-         
-  //         }, 
-  //         // {
-  //         //   name: "exception List",
-  //         //   submenu: [{
-  //         //       name: "view exception",
-  //         //       path: "exceptions"
-  //         //     },
-  //         //     {
-  //         //       name: "create exception",
-  //         //       path: "addexception",
-  //         //      new:true
-  //         //     }
-  //         //     ,
-  //         //   ]
-  //         // }
-  //           {
-  //           name: "Cash Routine Data",
-  //           submenu: [{
-  //               name: "Bank Cash Balance",
-  //               path: "bankcashbalance"
-  //             },
-  //             {
-  //               name: "Cash Dispense",
-  //               path: "cashdispense",
-  // //             new:true
-  //             }]
-  //         }
-  //       ];
-         
-  //       }
-
-  //     case "none":
-  //       {
-  //         return
-  //       }
-  //   }
 
 
+    
   }
 
 

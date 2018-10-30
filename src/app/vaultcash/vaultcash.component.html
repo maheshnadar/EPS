@@ -50,10 +50,7 @@
                       <div></div>
                       <select class="custom-select form-control" [(ngModel)]="uploadData.bank_code"  name="bank_code"
                       formControlName="bank_code" >
-                        <!-- <option selected="">Open this select menu</option> -->
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="ALL">ALL</option>
                       </select>
                     </div>
                     <div class="form-group1 m-form__group">
@@ -62,20 +59,20 @@
                       <select class="custom-select form-control" formControlName="cra"
                       [(ngModel)]="uploadData.cra" name="cra">
                         <!-- <option selected="">Open this select menu</option> -->
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="SIS">SIS</option>
+                        <!-- <option value="2">Two</option>
+                        <option value="3">Three</option> -->
                       </select>
                     </div>
                     <div class="form-group1 m-form__group">
                       <label for="exampleInputEmail1">Project</label>
                       <div></div>
                       <select class="custom-select form-control"  formControlName="project"
-                      ([ngModel])="uploadData.project" name="project">
+                      [(ngModel)]="uploadData.project" name="project">
                         <!-- <option selected="">Open this select menu</option> -->
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option value="MOF">MOF</option>
+                        <!-- <option value="2">Two</option>
+                        <option value="3">Three</option> -->
                       </select>
                     </div>
                     <div class="form-group1 m-form__group">
@@ -113,18 +110,18 @@
   <!-- END: Subheader -->
   <!-- END: Subheader -->
   <div class="m-content">
-    <!-- <div class="m-alert m-alert--icon alert alert-success" role="alert">
-      <div class="m-alert__icon">
-        <i class="flaticon-danger"></i>
-      </div>
-      <div class="m-alert__text">
-        <strong>Updated!</strong> New data has been uploaded, awaiting response
-      </div>
-      <div class="m-alert__actions" style="width: 220px;">
-        <button type="button" class="btn btn-outline-light btn-sm m-btn m-btn--hover-brand" data-dismiss="alert1" aria-label="Close">View
-        </button>
-      </div>
-    </div> -->
+      <div class="m-alert m-alert--icon alert  alert-{{alert.class}}" role="alert" *ngIf="alert.isvisible">
+          <div class="m-alert__icon">
+            <i class="flaticon-danger"></i>
+          </div>
+          <div class="m-alert__text">
+            <strong>{{alert.type}}!</strong> {{alert.text}}
+          </div>
+          <div class="m-alert__actions" style="width: 220px;">
+            <button type="button" class="btn btn-outline-light btn-sm m-btn m-btn--hover-brand" (click)="alert.isvisible=false" aria-label="Close">Close
+            </button>
+          </div>
+        </div>
     <!--begin::Portlet-->
     <div class="m-portlet m-portlet--tabs" id="m_portlet_tools_1">
       <div class="m-portlet__head">

@@ -16,7 +16,7 @@ import {AtmdowntimereportComponent} from './atmdowntimereport/atmdowntimereport.
 import {AtmsComponent} from './atms/atms.component';
 import {Bankc3rmistemplateComponent} from './bankc3rmistemplate/bankc3rmistemplate.component';
 import {Bankc3rreporttemplateComponent} from './bankc3rreporttemplate/bankc3rreporttemplate.component';
-import {BankcashbalanceComponent} from './bankcashbalance/bankcashbalance.component';
+import {BankcashbalanceComponent} from './bankcashbalance/bankcashbalance.component' ;
 import {BankcashlimitComponent} from './bankcashlimit/bankcashlimit.component';
 import {BankemailmasterComponent} from './bankemailmaster/bankemailmaster.component';
 import {BankwiseuserrolesmatrixComponent} from './bankwiseuserrolesmatrix/bankwiseuserrolesmatrix.component';
@@ -74,7 +74,7 @@ const routes: Routes = [
   { path:'atms',component:AtmsComponent},
   { path:'bankc3rmistemplate',component:Bankc3rmistemplateComponent},
   { path:'bankc3rreporttemplate',component:Bankc3rreporttemplateComponent},
-  { path:'bankcashbalance',component:BankcashbalanceComponent ,canActivate: [AuthCheckService]},
+  { path:'bankcashbalance',component:BankcashbalanceComponent , canActivate: [AuthCheckService]},
   { path:'bankcashlimit',component:BankcashlimitComponent},
   { path:'bankemailmaster',component:BankemailmasterComponent},
   { path:'bankwiseuserrolesmatrix',component:BankwiseuserrolesmatrixComponent},

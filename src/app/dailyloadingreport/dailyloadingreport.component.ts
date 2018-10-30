@@ -20,7 +20,7 @@ declare var $ :any;   // not required
   styleUrls: ['./dailyloadingreport.component.scss']
 })
 export class DailyloadingreportComponent implements OnInit {
-filetype="Daily_Loading _Report";
+filetype="Daily_Loading_Report";
 
   @ViewChild('previewModal') previewModal: ElementRef;
   
@@ -114,8 +114,8 @@ var hours_min=this.uploadData.time.split(":")
 const fileData = new FormData();
 //uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 fileData.append('file', this.uploadData.file,this.uploadData.file.name);
-// fileData.append('bank_code', this.uploadData.bank_code);
-fileData.append('bank_code', "ALL");
+fileData.append('bank_code', this.uploadData.bank_code);
+// fileData.append('bank_code', "ALL");
 
 fileData.append('project_id', this.uploadData.project);
 // fileData.append('project_id', "MOF");
@@ -147,11 +147,16 @@ this.apiService.uploadFile("upload/",fileData).subscribe(event => {
    // this.updateAll();
     if(response.body.status_text=="Consolidation Successful"){
 
-     // this.alert.text=" "+ response.body.status_text;
-     // this.alert.class="success"
+      this.alert.isvisible=true;
+      this.alert.type="Upload";
+        this.alert.class="danger"
+        // this.alert.text=" "+ response.body.status_text;
+     this.alert.text=" "+ response.body.status_text;
+     this.alert.class="success"
+     $('#m_modal_6').modal('hide')
 
-    this.updatePreview();
-    this.openPreviewModal();
+    // this.updatePreview();
+    // this.openPreviewModal();
     }
     else{
      this.alert.isvisible=true;

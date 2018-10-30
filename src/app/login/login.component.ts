@@ -77,7 +77,7 @@ export class LoginComponent implements OnInit {
   apiService.post('login/',{v:this.v}).subscribe(data1 => {
 
       if(data1['is_login_success']){
-  var accesstoken="Bearer "+data1['token'];
+  var accesstoken="Bearer "+data1['jwt_token'];
     this.sessionStorageService.set('accessToken',accesstoken);
     this.sessionStorageService.set('menu',data1['menus_data']);
     this.menulistservice.setMenu( JSON.parse(data1['menus_data']) );

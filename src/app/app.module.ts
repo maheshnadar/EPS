@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { Bankcashbalance } from './bankcashbalance/bankcashbalance';
 
 
 
@@ -164,7 +164,7 @@ import { WithdrawlComponent } from './withdrawl/withdrawl.component';
     AmazingTimePickerModule,
     
        ],
-  providers: [],
+  providers: [Bankcashbalance],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ import {DatePipe} from '@angular/common';
 import {Page} from '../a_core/paging/page';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Bankcashbalance } from './bankcashbalance';
 
 
 declare var jquery:any;   // not required
@@ -25,62 +26,71 @@ declare var $ :any;   // not required
 export class BankcashbalanceComponent implements OnInit {
 
 @ViewChild('previewModal') previewModal: ElementRef;
-  
   modalRef: BsModalRef;
 alert:any;
 page = new Page();
+previewPage = new Page();
+
 public uploadData:any;
 uploadForm: FormGroup;
 submitted = false;
 temp = [];
 datePipe;
+dropdownValue:any;
+filterDropDownValue:any;
+previewColList:any;
+public colList : Bankcashbalance;
 
 
-  constructor(private atp: AmazingTimePickerService,private apiService:ApiService,private formBuilder: FormBuilder,private modalService: BsModalService) {
-    
+  constructor(private atp: AmazingTimePickerService,private apiService:ApiService,private formBuilder: FormBuilder,private modalService: BsModalService, private cashBalanceList : Bankcashbalance) {
     this.datePipe = new DatePipe('en-US');
-    
     this.uploadData={};
     this.alert={};
     this.alert.isvisible=false;
-
-
     this.page.pageNumber = 0;
-    // this.page.totalElements=2000;
     this.page.size = 20;
-    this.populateSelectColumn();
+
+    this.previewPage.pageNumber=0;
+    this.previewPage.size=20
+    this.dropdownValue={}
+    this.filterDropDownValue={}
    }
 
 
   ngOnInit() {
-    this.setPage({ offset: 0 });
-
     this.uploadData.date = new Date();
     this.uploadData.time="12:00"
-    // this.uploadData.project;
     this.uploadData.file;
-
-
     this.uploadForm = this.formBuilder.group({
       bank_code: ['', Validators.required],
       cra: ['', Validators.required],
       project: ['', Validators.required],
-      // date: ['',  Validators.required],
-      // time: ['',  Validators.required],
-      // file: ['',  Validators.required],
       date: [ this.uploadData.date],
       time: [  this.uploadData.time],
-      // file: [''],
   });
 
 
-  // this.updateAll();
+    this.updateViewAll();
+    this.populateSelectColumn();
+this.populateDropDown();
   }
+
+
+
+
+
+
+
+
+
+
+
+  // ----------------------- upload file ------------------------------------
 
 // convenience getter for easy access to form fields
 get f() { return this.uploadForm.controls; }
 
-  openTimeSelector() {
+openTimeSelector() {
     console.log("time picker opened")
     const amazingTimePicker = this.atp.open();
     amazingTimePicker.afterClose().subscribe(time => {
@@ -92,20 +102,16 @@ get f() { return this.uploadForm.controls; }
 
 
 onFileChanged(event) {
+
   //const file = event.target.files[0]
-  this.uploadData.file = event.target.files[0]
-  }
+  this.uploadData.file = event.target.files[0];
+}
 
 
 uploadDatafn(){
 
-
-// this.updatePreview();
-//     this.openPreviewModal();
-
-
   console.log("upload clicked----------",this.uploadData);
-  
+  this.previewColList = this.cashBalanceList.columnConfig.filter(x => x.datafor == 'CBR' && x.bankcode == this.uploadData.bank_code.bank_id);
    this.submitted = true;
 
   // stop here if form is invalid
@@ -114,64 +120,41 @@ uploadDatafn(){
   }
 
 // console.log("upload clicked------------",this.uploadData);
-var hours_min=this.uploadData.time.split(":")
+  var hours_min=this.uploadData.time.split(":")
   this.uploadData.upload_datetime=new Date(this.uploadData.date);
   this.uploadData.upload_datetime.setHours(hours_min[0],hours_min[1])
   var date=this.datePipe.transform(this.uploadData.upload_datetime, 'yyyy-MM-dd HH:mm:ss');
-const fileData = new FormData();
+let fileData = new FormData();
 //uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
 fileData.append('file', this.uploadData.file,this.uploadData.file.name);
-fileData.append('bank_code', this.uploadData.bank_code);
-fileData.append('project_id', this.uploadData.project);
+fileData.append('bank_code', this.uploadData.bank_code.bank_id);
+fileData.append('project_id', this.uploadData.project.project_id);
 // fileData.append('project_id', "MOF");
 // fileData.append('cra', this.uploadData.cra);
 fileData.append('file_type', 'CBR');
 fileData.append('upload_datatime', date);
 console.log("upload clicked formdata",fileData);
-
-
-
-
-
 this.apiService.uploadFile("upload/",fileData).subscribe(event => {
     console.log(event); // handle event here
     var response:any=event;
-  //  if(response && response.type==undefined){
-  //   // alert("uplode");
-  //   this.alert.isvisible=true;
-  //   this.alert.type="Uploaded";
-  //   this.alert.text= "success desc -"+response.status+ " "+response.statusText;
-  //   this.alert.class="success"
-
-  //  }
-
    if(response && response.body){
      console.log("resonse",response.body)
-    
-   
-   // this.updateAll();
-    if(response.body.status_text=="Consolidation Successful"){
-
+    if(response.body.status_text=="Data Validation Successful" || response.body.status_text=="Partial Valid File"){
       this.alert.isvisible=true;
       this.alert.type="Upload";
-        this.alert.class="danger"
-        // this.alert.text=" "+ response.body.status_text;
+      this.alert.class="danger"
      this.alert.text=" "+ response.body.status_text;
      this.alert.class="success"
      $('#m_modal_6').modal('hide')
-
-
-    // this.updatePreview();
-    // this.openPreviewModal();
+    this.updatePreview();
+    this.openPreviewModal();
     }
     else{
-     this.alert.isvisible=true;
-    this.alert.type="Upload";
+      this.alert.isvisible=true;
+      this.alert.type="Upload";
       this.alert.class="danger"
       this.alert.text=" "+ response.body.status_text;
-
     }
-  
    }
   },(error =>{
     // alert("Error - "+ error.status+ " "+error.statusText);
@@ -181,32 +164,34 @@ this.apiService.uploadFile("upload/",fileData).subscribe(event => {
     this.alert.type="Error";
     this.alert.text="error desc- " +error.status+ " "+error.statusText;
     this.alert.class="danger"
-
-
-
   }));
 
 }
+
+// ------------------------------ upload end -----------------------------------
+
+
+
+
+
 
 
 
 // ----------view all data ----------------
 
 viewColumns:Object={};
-// selectedViewColumns:any=['all'];
-// viewColumnsOptions:any=['all','atm_id']
-// selectViewColumn(key){
-//   // this.viewColumns[key]= ! this.viewColumns[key];
-//   // console.log( this.viewColumns);
-//   console.log( this.selectedViewColumns,key);
-// }
-
-
 rows:any=[];
 tempRows:any=[];
-filtersForAllView:any={};
+filtersForAllView:any={
+  "record_status":"Active"
+
+};
 
 viewColumnAll:any=[
+  {
+    name:"ID",
+    prop:"id"
+  },
   {
     name:"ATM ID",
     prop:"atm_id"
@@ -252,7 +237,6 @@ viewColumn:any=(JSON.parse(JSON.stringify(this.viewColumnAll)));
 selectedColumn:any=[];
 columnChange:any=[];
 
-
 populateSelectColumn(){
   this.viewColumnAll.filter( (col) => {
     this.selectedColumn.push(col.prop);
@@ -260,79 +244,43 @@ populateSelectColumn(){
 }
 
 columnChangefn(){
-const isAll=this.selectedColumn.includes('all');
-
-// if(isAll){
-//   this.selectedColumn=['all']
 this.viewColumn=this.viewColumnAll.filter( (col) => {
-  
   return this.selectedColumn.includes(col.prop);
 })
 // }
-
 console.log("col change",this.selectedColumn,this.viewColumn);
-
 }
 
 
 
-
-
-
-
-
-
-  viewSearch(event) {
+viewSearch(event) {
       console.log("updateing");
         const val = event.target.value.toLowerCase();
-      
-        // filter our data
+
         const temp = this.tempRows.filter(function(d) {
-        var search_atm_id=d.atm_id.toLowerCase().indexOf(val) !== -1;
-        var search_bank_name=d.bank_name.toLowerCase().indexOf(val) !== -1;
-        var search_project_id=d.project_id.toLowerCase().indexOf(val) !== -1;
-      
-      
-        return search_atm_id || search_bank_name || search_project_id || !val ;
-      
-        //  var obj = {a: 1, b: 2};
-      // for (var key in d) {
-      //  if (d.hasOwnProperty(key)) {
-      //   var val = d[key];
-      //    console.log(val);
-      //    console.log(key)
-      //  return val+"".toLowerCase().indexOf(val) !== -1 || !val;
-      //
-      //  }
-      //}
-      
-      
-        });
-      
-        // update the rows
+            var search_atm_id=d.atm_id.toLowerCase().indexOf(val) !== -1;
+            var search_bank_name=d.bank_name.toLowerCase().indexOf(val) !== -1;
+            var search_project_id=d.project_id.toLowerCase().indexOf(val) !== -1;
+           return search_atm_id || search_bank_name || search_project_id || !val ;      
+           });
+
         this.rows = temp;
-        // Whenever the filter changes, always go back to the first page
-        // this.table.offset = 0;
-      }
+}
    
 
- updateAll(){
+updateViewAll(){
   console.log("updarte called");
+  console.log('filter parameter',this.filtersForAllView);
   this.setPage({ offset: 0 });
   $('#modalfilter').modal('hide');
-
 }
 
 setPage(pageInfo){
-  console.log("page clicked");
-  this.page.pageNumber = pageInfo.offset;
-  // this.serverResultsService.getResults(this.page).subscribe(pagedData => {
-  //   this.page = pagedData.page;
-  //   this.rows = pagedData.data;
-  // });
+  // console.log("page clicked");
+  console.log("page clicked",pageInfo);
 
-  this.apiService.post("view/",{
-    'page':this.page,
+  this.page.pageNumber = pageInfo.offset;
+  this.apiService.post("view/?page="+(this.page.pageNumber+1)+"&"+"page_size="+this.page.size,{
     'file_type':"CBR",
     "bank_code":"ALL",
     "filters" : this.filtersForAllView
@@ -345,12 +293,14 @@ setPage(pageInfo){
     ).subscribe(data =>{
       console.log("-------get all");
    console.log(data); // handle event here
+   var response:any=data;
     //   this.page = pagedData.page;
     // this.temp = [...data];
 
     // push our inital complete list
-  this.rows = data;
-   this.tempRows=data;
+  this.rows = response.results;
+   this.tempRows= response.results;
+   this.page.totalElements=response.count;
   })
 }
 
@@ -364,78 +314,156 @@ setPage(pageInfo){
 
 
   // --------preview modal ----------
-
 previewRows:any=[];
 tempPreviewRow:any=[];
 previewFilter:any;
+
 previewSearch(event) {
 console.log("updateing");
   const val = event.target.value.toLowerCase();
-
   // filter our data
-  const temp = this.tempPreviewRow.filter(function(d) {
-  var searchacceptorname=d.acceptorname.toLowerCase().indexOf(val) !== -1;
-  var searchterm_id=d.term_id.toLowerCase().indexOf(val) !== -1;
-  var searchproject_id=d.project_id.toLowerCase().indexOf(val) !== -1;
+  let filterParam:any[] = [];
 
-
-  return searchacceptorname || searchterm_id || searchproject_id || !val ;
-
-  //  var obj = {a: 1, b: 2};
-// for (var key in d) {
-//  if (d.hasOwnProperty(key)) {
-//   var val = d[key];
-//    console.log(val);
-//    console.log(key)
-//  return val+"".toLowerCase().indexOf(val) !== -1 || !val;
-//
-//  }
-//}
-
-
+  this.previewColList.forEach(x => {
+    filterParam.push([x.table_column,val]);
   });
+  
+  const temp = this.searchFilter(filterParam);
 
   // update the rows
   this.previewRows = temp;
-  // Whenever the filter changes, always go back to the first page
-  // this.table.offset = 0;
+}
+
+searchFilter(filters):any[] {
+  let returnVal:any[] = [];
+  let columnName : string;
+  let val : string;
+    this.tempPreviewRow.forEach(x => {
+        for(var i = 0; i < filters.length; i++){
+          if(filters != undefined){
+            columnName = filters[i][0];
+            val = filters[i][1].toString();
+            if(x[columnName].toString().toLowerCase().indexOf(val) !== -1){
+              if(returnVal.indexOf(x) == -1)
+                returnVal.push(x);
+            }
+          }
+        } 
+    });
+  return returnVal;
 }
   
+
+
+
+setPreviewPage(pageInfo){
+  console.log("page clicked");
+  this.previewPage.pageNumber = pageInfo.offset;
+
+  this.updatePreview()
+}
+
 
 updatePreview(){
 var hours_min=this.uploadData.time.split(":")
   this.uploadData.upload_datetime=new Date(this.uploadData.date);
   this.uploadData.upload_datetime.setHours(hours_min[0],hours_min[1])
   var date=this.datePipe.transform(this.uploadData.upload_datetime, 'yyyy-MM-dd HH:mm:ss');
-    this.apiService.post("view/",{
+
+
+  // fileData.append('file', this.uploadData.file,this.uploadData.file.name);
+  // fileData.append('bank_code', this.uploadData.bank_code);
+  // fileData.append('project_id', this.uploadData.project);
+  // // fileData.append('project_id', "MOF");
+  // // fileData.append('cra', this.uploadData.cra);
+  // fileData.append('file_type', 'CBR');
+  // fileData.append('upload_datatime', date);
+  // console.log("upload clicked formdata",fileData);
+
+
+    this.apiService.post("view/?page="+(this.previewPage.pageNumber+1)+"&"+"page_size="+this.previewPage.size,{
       'page':this.page,
       'file_type':"CBR",
-      "bank_code":this.uploadData.bank_code,
+      "bank_code":this.uploadData.bank_code.bank_id,
       "filters" : {
-         "datafor_date_time":"2018-09-26 18:16:23",
-       //  "datafor_date_time": date,
-      
+        //  "datafor_date_time":"2018-09-26 18:16:23",
+        "datafor_date_time": date,
+        "project_id": this.uploadData.project.project_id,
+"record_status":"Approval Pending",      
       }}).subscribe(data =>{
-        console.log("-------get all");
+        console.log("-------get all preview");
      console.log(data); // handle event here
+
+     var response:any=data;
       //   this.page = pagedData.page;
       // this.temp = [...data];
-  
+      
       // push our inital complete list
       // this.rows = data;
-      this.tempPreviewRow=data;
-     this.previewRows=data;
+
+      this.tempPreviewRow=response.results;
+
+     this.previewRows=response.results;
+     this.previewPage.totalElements=response.count;
+
+    // this.tempPreviewRow.push(response.results);
+    this.tempPreviewRow = [...response.results]
+    // this.previewRows=[];
+    // this.previewRows.push(response.results);
+     this.previewRows = [...response.results]
+    // this.previewRows = this.previewRows[0]
+
+     console.log('prevew data',this.previewRows);
     })
   }
 
 
-  approvePreviewFn(){
+  approvePreviewFn(status){
+    var hours_min=this.uploadData.time.split(":")
+    this.uploadData.upload_datetime=new Date(this.uploadData.date);
+    this.uploadData.upload_datetime.setHours(hours_min[0],hours_min[1])
+    var date=this.datePipe.transform(this.uploadData.upload_datetime, 'yyyy-MM-dd HH:mm:ss');
 
-
-
+    this.apiService.post("status/",{
+      'file_type':"CBR",
+      "bank_code":this.uploadData.bank_code.bank_id,
+      "project_id": this.uploadData.project.project_id,
+      "datafor_date_time":date,
+      "status":status,
+      // "filters" : {
+      //   //  "datafor_date_time":"2018-09-26 18:16:23",
+      //   // "datafor_date_time": date,
+      //   // "record_status":"Approval Pending"
+      // }
+    }).subscribe(data =>{
+        console.log("-------approved ");
+     console.log(data); // handle event here
+     var response:any=data;
+     if(status=="Approved"){
+      this.alert.isvisible=true;
+      this.alert.type="Upload";
+     this.alert.class="success"
+     this.alert.text=" Data Approved";
+     }
+     if(status=="Rejected"){
+      this.alert.isvisible=true;
+      this.alert.type="Upload";
+     this.alert.class="success"
+     this.alert.text=" Data Rejected";
+     }
+     
+  // $('#modalfilter').modal('hide');
+  this.modalRef.hide()
+    },(error) =>{
+      console.log("error",error)
+      this.alert.isvisible=true;
+      this.alert.type="Upload";
+     this.alert.class="danger"
+     this.alert.text=" Something Went Wrong";
+    })
   }
 
-
+  
   openPreviewModal() {
   $('#m_modal_6').modal('hide');
     console.log(this.previewModal);
@@ -446,4 +474,60 @@ var hours_min=this.uploadData.time.split(":")
   // ------- end of preview modal ----------
 
 
+
+
+  // --------------- drop down value --------------
+  populateDropDown(){
+    
+
+// --------- for upload dropdown
+    this.apiService.post("bankinfo/",{
+      'file_type':"CBR",
+    'routine_info':"ROUTINE_DATA_INFO"
+    }).subscribe(data =>{
+        console.log("------- dropdown value ");
+       var response:any=data;
+    
+       console.log("-------dropdown",response.data);
+     this.dropdownValue=[response.data]; 
+     console.log(this.dropdownValue); // handle event here
+
+    },(error) =>{
+      console.log("error in dropdown value",error)
+     
+    })
+    // --------------- end of upload dropdown 
+
+    // filter dropdown
+    this.apiService.post("bankFeederCommonInfo/",{
+      'file_type':"CBR",
+    'common_bankfeeder_info':"common_bankfeeder_info"
+    }).subscribe(data =>{
+        console.log("------- dropdown value ");
+       var response:any=data;
+    
+       this.filterDropDownValue=response;
+       console.log("------- filter dropdown ",this.filterDropDownValue);
+
+    //  this.dropdownValue=[response.data]; 
+    //  console.log(this.dropdownValue); // handle event here
+
+    },(error) =>{
+      console.log("error in filter dropdown value",error)
+     
+    })
+    // end of filter dropdown
+  }
+
+
+  
+  clicked(data){
+    console.log(data)
+  }
+
+
+  
+  calculateTotalPage(rowcount,rowsize){
+    return Math.ceil(rowcount/rowsize);
+      }
 }

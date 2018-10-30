@@ -7,7 +7,7 @@ import { CookieStorage, LocalStorage, SessionStorage } from 'ngx-store';
 import { CookiesStorageService, LocalStorageService, SessionStorageService, SharedStorageService } from 'ngx-store';
 
 //export const domain="http://192.168.0.137:8080/"
-export const domain="http://localhost:8080/"
+export const domain="http://localhost:8081/"
 
 
 
@@ -42,8 +42,11 @@ console.log(this.sessionStorageService.get('accessToken'),'---------')
    }
 
 
-
-  post(url,param){
+post(url,param){
+  if(!this.sessionStorageService.get('accessToken')){
+    console.log("reloading accesstoken not found")
+    window.location.reload();
+  }
 
      return this.http.post(domain+url,param,this.httpOptions)
 }

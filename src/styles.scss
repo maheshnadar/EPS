@@ -1,5 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
+
+@font-face {
+    font-family: 'Poppins';
+    src:url('/assets/theme/font/Poppins/Poppins-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src:url('/assets/theme/font/Poppins/Poppins-ExtraBold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+
+@font-face {
+    font-family: 'Roboto';
+    src:url('/assets/theme/font/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 @import "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss";
+@import '..//node_modules/@swimlane/ngx-datatable/release/themes/material.css';
+
 .icon-gradient{
     .fa{
 
@@ -56,7 +81,16 @@ border:1px solid red;
     max-width: 80vw !important;
     .modal-body{
         max-height: 65vh;
-    overflow: scroll;
+        padding: 5px 25px !important;
+    // overflow: scroll;
+    .table{
+        // overflow: scroll;
+        // height: 55vh;
+    }
+    datatable-body{
+        height: 40vh !important;
+        overflow: scroll;
+    }
     }
 
     .ngx-datatable.fixed-row .datatable-scroll .datatable-body-row .datatable-body-cell{
@@ -73,4 +107,67 @@ border:1px solid red;
     background: #5867dd;
     border-radius: 5px;
     color: white;
+}
+
+
+.datatable-header{
+    font-weight: 600;
+    color: #6f727d;
+}
+
+
+.ngx-datatable .datatable-footer .datatable-pager .pager .active a{
+color:black;
+}
+
+
+
+.ngx-datatable {
+    .custom-pagination-select{
+        min-width: 50px !important;
+    min-height: 25px !important;
+    bottom: -12px !important;
+    opacity: 1 !important;
+    border: 0 !important;
+    color: #fff !important;
+    background: #716aca;
+    border-radius: 10px;
+    padding: 0px 5px !important;
+    left: 0;
+    }
+}
+
+
+
+.ngx-datatable.material .datatable-header .datatable-header-cell{
+    color: rgba(17, 17, 17, 0.69);
+ font-family: 'Poppins';
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.m-aside-left.m-aside-left--skin-dark.m-aside-left.m-aside-left--skin-dark{
+    background-color: #2d2c7f;
+}
+
+.m-aside-menu.m-aside-menu--skin-dark .m-menu__nav>.m-menu__item.m-menu__item--expanded{
+    background-color: #000000 !important;
+}
+
+
+.no_style_list{
+    list-style: none;
+}
+
+
+.width100{
+    width:100%;
+}
+
+.form-control{
+    border-color: #c4c5d6 !important;
+}
+
+.modal .modal-content{
+    border: 1px solid lightgrey;
 }
