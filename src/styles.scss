@@ -72,6 +72,7 @@ overflow: scroll !important;
 // form validation
 .is-invalid{
 border:1px solid red;
+border-color:red !important;
 }
 
 
@@ -82,11 +83,7 @@ border:1px solid red;
     .modal-body{
         max-height: 65vh;
         padding: 5px 25px !important;
-    // overflow: scroll;
-    .table{
-        // overflow: scroll;
-        // height: 55vh;
-    }
+   
     datatable-body{
         height: 40vh !important;
         overflow: scroll;

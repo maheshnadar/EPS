@@ -42,69 +42,60 @@
                 </button>
               </div>
               <div class="modal-body">
-                <form class="m-form m-form--fit m-form--label-align-right" name="dispenseform" [formGroup]="dispenseuploadForm">
-                  <div class="m-portlet__body">
-                    <div class="form-group1 m-form__group">
-                      <label for="exampleInputEmail1">Bank</label>
-                      <div></div>
-                      <select class="custom-select form-control" [(ngModel)]="uploadData.bank_code"  name="bank_code"
-                      formControlName="bank_code" >
-                    
-                        <option value="BOMH">BOMH</option>
-                        <option value="SBI">SBI</option>
-                        <option value="CAB">CAB</option>
-                        <option value="UBI">UBI</option>
-                        <option value="RSBL">RSBL</option>
+                 <!-- upload form  -->
+                 <form class="m-form m-form--fit m-form--label-align-right" name="cbrupload"  [formGroup]="uploadForm">
+                    <div class="m-portlet__body">
+                       <div class="form-group1 m-form__group">
+                            <label for="exampleInputEmail1">Project</label>
+                            <div></div>
+                            <select class="custom-select form-control " formControlName="project"
+                             [(ngModel)]="uploadData.project" name="project" [ngClass]="{ 'is-invalid': submitted && f.project.errors }" >
+                              <option *ngFor="let project of dropdownValue " [ngValue]="project">
+                                {{project.project_id}}
+                              </option>
+                            </select>
+                          </div>
+                      <div class="form-group1 m-form__group">
+                        <label for="exampleInputEmail1">Bank Code </label>
+                        <div></div>
+                        <select class="custom-select form-control" [(ngModel)]="uploadData.bank_code"  
+                        name="bank_code"
+                        formControlName="bank_code"  [ngClass]="{ 'is-invalid': submitted && f.bank_code.errors }"> 
 
-
-                        <!-- <option value="2">Two</option>
-                        <option value="3">Three</option> -->
-                      </select>
-                    </div>
-                    <!-- <div class="form-group1 m-form__group">
-                      <label for="exampleInputEmail1">CRA</label>
-                      <div></div>
-                      <select class="custom-select form-control " formControlName="cra"
-                       [(ngModel)]="uploadData.cra" name="cra">
-                        <option value="1">one</option>
-                        <option value="2">two</option>
-                        <option value="3">three</option>
-                      </select>
-                    </div> -->
-                    <div class="form-group1 m-form__group">
-                      <label for="exampleInputEmail1">Project</label>
-                      <div></div>
-                      <select class="custom-select form-control"  [(ngModel)]="uploadData.project" name="project"
-                      formControlName="project">
+                        <option *ngFor="let bank of uploadData.project?.bank" [ngValue]="bank"  >
+                            {{bank?.bank_id}}
+                          </option>
+  
+                     
+                        </select>
                        
-                        <option value="MOF">MOF</option>
-                        <!-- <option value="2">Two</option>
-                        <option value="3">Three</option> -->
-                      </select>
-                    </div>
-                    <div class="form-group1 m-form__group">
-
-                      <label for="exampleInputEmail1">Date and Time</label>
-
-                      <input type="text"  formControlName="date" name="date" placeholder="Select Date" class="form-control" [bsValue]="uploadData.date"
-                        placement="right" bsDatepicker>
-                      <input class="form-control" formControlName="time" name="time" placeholder="Select Time" value="{{uploadData.time}}" (click)='openTimeSelector()' />
-                    </div>
-                    <div class="form-group m-form__group">
-                      <label for="exampleInputEmail1">Select File</label>
-                      <div></div>
-                      <div class="custom-file">
-                        <input type="file" class="custom-file-input" (change)="onFileChanged($event)" #fileInput>
-                        <label class="custom-file-label" for="customFile" (click)="fileInput.click()">Choose file</label>
+                      </div>
+                                    
+                     
+                      <div class="form-group1 m-form__group">
+  
+                        <label for="exampleInputEmail1">Date and Time</label>
+  
+                        <input type="text" formControlName="date" name="date" placeholder="Select Date" class="form-control" [bsValue]="uploadData.date"
+                          placement="right" bsDatepicker >
+                        <input class="form-control" formControlName="time" name="time" placeholder="Select Time"  value="{{uploadData.time}}" (click)='openTimeSelector()' />
+                      </div>
+  
+                      <div class="form-group m-form__group">
+                        <label for="exampleInputEmail1">Select File </label>
+                        <div></div>
+                        <div class="custom-file">
+                          <input type="file"   name="file"  class="custom-file-input"  
+                          (change)="onFileChanged($event)" #fileInput  [ngClass]="{ 'is-invalid': submitted && !uploadData.file }">
+                          <label class="custom-file-label"  (click)="fileInput.click()">Choose file</label>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </form>
+                  </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" (click)="uploadDatafn()"  
-                [disabled]="dispenseuploadForm.invalid || !uploadData.file">Submit</button>
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary"  name="submit" (click)="uploadDatafn()">Submit</button>
               </div>
             </div>
           </div>
@@ -138,127 +129,147 @@
           <div class="m-portlet__head-title"><h3 class="m-portlet__head-text">All Data</h3></div>
         </div>
         <div class="m-portlet__head-tools">
-          <ul class="m-portlet__nav">
-            <li class="m-portlet__nav-item">
-              <a href="#" data-toggle="modal" data-target="#modalfilter" class="m-portlet__nav-link m-portlet__nav-link--icon filters">
-                <i class="la la-filter"></i>
-              </a>
-              <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-filter"></i> Filter Records</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <form class="m-form m-form--fit m-form--label-align-right">
-                        <div class="form-group1 m-form__group">
-                          <label for="exampleInputEmail1">Bank</label>
-                          <div></div>
-                          <select class="form-control m-bootstrap-select" id="m_form_status">
-                            <option value="">All</option>
-                            <option value="1">State Bank of India</option>
-                            <option value="2">Bank of India</option>
-                            <option value="3">Punjab National Bank</option>
-                            <option value="3">Kotak Bank</option>
-                          </select>
+            <ul class="m-portlet__nav">
+                <li class="m-portlet__nav-item" >
+                  <a href="#" data-toggle="modal" data-target="#modalfilter" 
+                  class="filters btn m-btn m-btn--icon m-btn--icon-only m-portlet__nav-link m-portlet__nav-link--icon" [ngClass]="{'btn-primary': filtersForAllView.bank_name || filtersForAllView.feeder_branch}">
+                    <i class="la la-filter"></i>
+                  </a>
+                  <div class="modal fade" id="modalfilter" tabindex="-1" role="dialog" 
+                  aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-filter"></i> Filter Records</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
                         </div>
-                        <div class="form-group m-form__group">
-                          <label class="">Feeder Branch:</label>
-                          <div class="m-input-icon m-input-icon--right">
-                            <select class="form-control m-bootstrap-select">
-                              <option value="">All</option>
-                              <option value="1">Ghatkopar</option>
-                              <option value="2">Mulund</option>
-                              <option value="3">Bhandup</option>
-                              <option value="3">Matunga</option>
-                              <option value="3">Dadar</option>
-                            </select>
-                          </div>
+                        <div class="modal-body">
+                          <!-- filter form for view all data -->
+                          <form class="m-form m-form--fit m-form--label-align-right" >
+                            <div class="m-portlet__body">
+                              <div class="form-group1 m-form__group">
+                                <label for="exampleInputEmail1">Bank</label>
+                                <div></div>
+                                
+                                <select class="form-control p-0" 
+                                [(ngModel)]="filtersForAllView.bank_name"
+                                [ngModelOptions]="{standalone: true}" >
+                                  <!-- <option value="ALL">All</option>
+                                  <option value="ALB">ALB</option>
+                                  <option value="BOMH">BOMH</option>
+                                  <option value="SBI">SBI</option>
+                                   -->
+                                   <option *ngFor="let bank of filterDropDownValue.bank" [ngValue]="bank" >
+                                    {{bank}}
+                                  </option>
+                                 <!-- <option *ngFor="let bank of filtersForAllView.bank" [value]="bank">{{bank}}</option> -->
+                                </select>
+                              </div>
+                              <div class="form-group m-form__group">
+                                <label class="">Feeder Branch:</label>
+                                <div class="m-input-icon m-input-icon--right">
+                                  <select class="form-control p-0" 
+                                  [(ngModel)]="filtersForAllView.feeder_branch"
+                                  [ngModelOptions]="{standalone: true}">
+    
+                                  <option *ngFor="let bank of filterDropDownValue.feederlist" [ngValue]="bank" >
+                                    {{bank}}
+                                  </option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                          <!-- filter form for view all data -->
+    
                         </div>
-                      </form>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Submit</button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="modal fade" id="editrecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-edit"></i> Edit Record</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="300">
-                        <form class="m-form m-form--fit m-form--label-align-right">
-                          <div class="m-portlet__body">
-                            <div class="form-group m-form__group">
-                              <label for="exampleInputEmail1">ATM ID</label>
-                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                            </div>
-                            <div class="form-group m-form__group">
-                              <label for="exampleSelect1">Bank</label>
-                              <select class="form-control m-input m-input--square" id="exampleSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
-                            </div>
-                            <div class="form-group m-form__group">
-                              <label for="exampleSelect1">Feeder Branch</label>
-                              <select class="form-control m-input m-input--square" id="exampleSelect1">
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                              </select>
-                            </div>
-                            <div class="form-group m-form__group">
-                              <label for="exampleInputEmail1">CRA</label>
-                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                            </div>
-                            <div class="form-group m-form__group">
-                              <label for="exampleInputEmail1">Bank Email</label>
-                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                            </div>
-                            <div class="form-group m-form__group">
-                              <label for="exampleInputEmail1">CRA Custodian</label>
-                              <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="">
-                            </div>
-                          </div>
-                        </form>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary" (click)="updateViewAll()">Submit</button>
+                        </div>
                       </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Submit</button>
+                  </div>
+                  <div class="modal fade" id="editrecord" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLongTitle"><i class="la la-edit"></i> Edit Record</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                          <div class="m-scrollable" data-scrollbar-shown="true" data-scrollable="true" data-height="300">
+                            <form class="m-form m-form--fit m-form--label-align-right">
+                              <div class="m-portlet__body">
+                                <div class="form-group m-form__group">
+                                  <label for="exampleInputEmail1">ATM ID</label>
+                                  <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="">
+                                </div>
+                                <div class="form-group m-form__group">
+                                  <label for="exampleSelect1">Bank</label>
+                                  <select class="form-control m-input m-input--square" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                  </select>
+                                </div>
+                                <div class="form-group m-form__group">
+                                  <label for="exampleSelect1">Feeder Branch</label>
+                                  <select class="form-control m-input m-input--square" id="exampleSelect1">
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                  </select>
+                                </div>
+                                <div class="form-group m-form__group">
+                                  <label for="exampleInputEmail1">CRA</label>
+                                  <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="">
+                                </div>
+                                <div class="form-group m-form__group">
+                                  <label for="exampleInputEmail1">Bank Email</label>
+                                  <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="">
+                                </div>
+                                <div class="form-group m-form__group">
+                                  <label for="exampleInputEmail1">CRA Custodian</label>
+                                  <input type="email" class="form-control m-input m-input--square" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" placeholder="">
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="button" class="btn btn-primary">Submit</button>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            </li>
-            <li class="m-portlet__nav-item">
-              <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon">
-                <i class="la la-angle-down"></i>
-              </a>
-            </li>
-            <li class="m-portlet__nav-item">
-              <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon">
-                <i class="la la-expand"></i>
-              </a>
-            </li>
-          </ul>
+                </li>
+                <li class="m-portlet__nav-item">
+                  <a href="#" m-portlet-tool="toggle" class="m-portlet__nav-link m-portlet__nav-link--icon">
+                    <i class="la la-angle-down"></i>
+                  </a>
+                </li>
+                <li class="m-portlet__nav-item">
+                  <a href="#" m-portlet-tool="fullscreen" class="m-portlet__nav-link m-portlet__nav-link--icon">
+                    <i class="la la-expand"></i>
+                  </a>
+                </li>
+              </ul>
         </div>
       </div>
       <div class="m-portlet__body">
@@ -267,7 +278,7 @@
           <div class="row">
             <div class="col-lg-4">
               <div class="m-input-icon m-input-icon--left">
-                <input type="text" class="form-control m-input" placeholder="Search..." id="generalSearch">
+                <input type="text" class="form-control m-input" (keyup)='viewSearch($event)' placeholder="Search..." id="generalSearch" >
                 <span class="m-input-icon__icon m-input-icon__icon--left">
                   <span>
                     <i class="la la-search"></i>
@@ -276,8 +287,20 @@
               </div>
             </div>
             <div class="col-lg-8 m--align-right">
-              <a href="submitindentrevisions.php" class="btn btn-primary"><i class="fa fa-file-export"></i> Export</a>
-              <select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple id="datablecolumns" data-style="btn-metal"><option value="" selected>Select Columns</option></select>
+              <a  href="" class="btn btn-primary"><i class="fa fa-file-export"></i> Export</a>
+             
+<!--  select column in viewallData -->
+<select class="form-control m-bootstrap-select m-dropdown--inline" data-width="200px" multiple 
+data-style="btn-metal" [(ngModel)]="selectedColumn" (change)="columnChangefn()">
+
+<option  
+*ngFor="let viewCol of viewColumnAll"
+value="{{viewCol.prop}}"  >
+  {{viewCol.name}}
+</option>
+
+</select>
+<!--   select column  in viewallData -->
             </div>	
           </div>
         </div>
@@ -292,11 +315,284 @@
             </div>
           </div>
           <!--end: Datatable -->
-          <!-- <div class="row">
-            <div class="col-sm-12 col-md-5"><div class="dataTables_info" id="m_table_1_info" role="status" aria-live="polite">Showing 1 to 10 of 50 entries</div></div><div class="col-sm-12 col-md-7 dataTables_pager"><div class="dataTables_length" id="m_table_1_length"><label>Display <select style="width:auto" name="m_table_1_length" aria-controls="m_table_1" class="custom-select custom-select-sm form-control form-control-sm"><option value="5">5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label></div><div class="dataTables_paginate paging_simple_numbers" id="m_table_1_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="m_table_1_previous"><a href="#" aria-controls="m_table_1" data-dt-idx="0" tabindex="0" class="page-link"><i class="la la-angle-left"></i></a></li><li class="paginate_button page-item active"><a href="#" aria-controls="m_table_1" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="3" tabindex="0" class="page-link">3</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="4" tabindex="0" class="page-link">4</a></li><li class="paginate_button page-item "><a href="#" aria-controls="m_table_1" data-dt-idx="5" tabindex="0" class="page-link">5</a></li><li class="paginate_button page-item next" id="m_table_1_next"><a href="#" aria-controls="m_table_1" data-dt-idx="6" tabindex="0" class="page-link"><i class="la la-angle-right"></i></a></li></ul></div></div>
-          </div> -->
+          <ngx-datatable   #mydatatable
+          class="material"
+          [headerHeight]="50"
+          [columnMode]="'force'"
+          [footerHeight]="100"
+          [rowHeight]="'60'"
+          [rows]="rows"
+          [scrollbarH]="true"
+          [externalPaging]="true"
+          [virtualization]="false"
+  
+          [count]="page.totalElements"
+          [offset]="page.pageNumber"
+          [limit]="page.size"
+          (page)='setPage($event)'
+          >
+          <!-- [externalPaging]="true"
+          [count]="page.totalElements"
+          [offset]="page.pageNumber"
+          [limit]="page.size"
+          (page)='setPage($event)' -->
+  
+  
+          <ng-container *ngFor="let viewCol of viewColumn">
+            
+              <ngx-datatable-column   
+             
+              name="{{viewCol.name}}"
+           prop="{{viewCol.prop}}"
+            >
+            <ng-template ngx-datatable-cell-template let-value="value" >
+              {{value}}
+            </ng-template>
+          </ngx-datatable-column> 
+            </ng-container>
+            <ngx-datatable-footer>
+              <ng-template 
+                ngx-datatable-footer-template 
+                let-rowCount="rowCount"
+                let-pageSize="pageSize"
+                let-selectedCount="selectedCount"
+                let-curPage="curPage"
+                let-offset="offset">
+                <!-- <div style="padding: 5px 10px">
+                  <hr style="width:100%" />
+                  <div>
+                    Rows: {{rowCount}} |
+                    Size: {{pageSize}} |
+                    Current: {{curPage}} |
+                    Offset: {{offset}}
+                    selectedCount : {{selectedCount}}
+                    
+                  </div>
+                </div> -->
+  <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded m-datatable--scroll width100 px-2 ">    <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
+                  <ul class="m-datatable__pager-nav">
+  
+                  <li  (click)="setPage({ 'offset': 0 })"><a title="First" class="m-datatable__pager-link m-datatable__pager-link--first" data-page="1"><i class="la la-angle-double-left"></i></a></li>
+  
+                  <li (click)="setPage({ 'offset': offset-1 })">
+                    <a title="Previous" class="m-datatable__pager-link m-datatable__pager-link--prev" data-page="1"><i class="la la-angle-left"></i></a>
+                                  
+                  <li *ngIf="(calculateTotalPage(rowCount,pageSize)+1) == (curPage+1)" (click)="setPage({ 'offset': offset-1 })" ><a class="m-datatable__pager-link m-datatable__pager-link-number" 
+                    title="{{curPage-1}}">{{curPage-1}} </a></li>
+  
+                  <li (click)="setPage({ 'offset': offset })"><a class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active"  title="{{curPage}}">{{curPage}}</a></li>
+                  
+                  <li *ngIf="!((calculateTotalPage(rowCount,pageSize)+1) == (curPage+1))" (click)="setPage({ 'offset': offset+1 })" ><a class="m-datatable__pager-link m-datatable__pager-link-number" 
+                 title="{{curPage+1}}">{{curPage+1}} </a></li>
+                                
+                  <li (click)="setPage({ 'offset': offset+1 })"><a title="Next" class="m-datatable__pager-link m-datatable__pager-link--next" data-page="2">
+                  <i class="la la-angle-right"></i></a>
+                </li>
+  
+                  <li (click)="setPage({ 'offset': calculateTotalPage(rowCount,pageSize)-1})"><a title="Last" class="m-datatable__pager-link m-datatable__pager-link--last" ><i class="la la-angle-double-right"></i></a></li>
+                </ul>
+                
+                
+                <div class="m-datatable__pager-info">
+                  
+                  <div class="dropdown bootstrap-select m-datatable__pager-size dropup" style="width: 70px;">
+                  
+                  <select class="  custom-pagination-select" 
+                  [(ngModel)]="page.size" title="Select page size" (change)="setPage({ 'offset': 0})">
+                    <!-- <option class="bs-title-option" value="">Select page size</option> -->
+                    <option value="10">10</option><option value="20">20</option>
+                    <option value="30">30</option><option value="50">50</option>
+                  </select>
+                    
+                  
+                  </div>
+                    <span class="m-datatable__pager-detail">Displaying {{curPage}} - 
+                      {{calculateTotalPage(rowCount,pageSize)}} of {{rowCount}} records</span></div></div>
+                    </div>
+              </ng-template>
+            </ngx-datatable-footer>
+  
+  
+        </ngx-datatable>
+    
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #previewModal class="modal-lg  preview-modal">
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Preview</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row m-0">
+          <div class="m-input-icon m-input-icon--left col-12">
+              <input type="text" class="form-control m-input" placeholder="Search..."
+               [(ngModel)]="previewFilter"   (keyup)='previewSearch($event)'
+               >
+              <span class="m-input-icon__icon m-input-icon__icon--left">
+                <span>
+                  <i class="la la-search"></i>
+                </span>
+              </span>
+            </div>
+            <!-- <ul class="no_style_list m-portlet__nav col-2">
+              <li class="m-portlet__nav-item text-center" >
+               
+                <a  class="filters btn btn-primary m-btn m-btn--icon m-btn--icon-onlym-portlet__nav-link m-portlet__nav-link--icon" [ngClass]="{'btn-primary': previewFilter.bank_name || previewFilter.feeder_branch}"data-target="#modalfilter1" data-toggle="modal" href="#"><i class="la la-filter"></i></a>
+                <div class="modal fade" id="modalfilter1" tabindex="-1" role="dialog" 
+                aria-labelledby="exampleModalCenterTitle"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle1"><i class="la la-filter"></i>Preview Filter Records</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form class="m-form m-form--fit m-form--label-align-right" >
+                          <div class="m-portlet__body">
+                            <div class="form-group1 m-form__group">
+                              <label for="exampleInputEmail1">Bank</label>
+                              <div></div>
+                              <select class="form-control" id="m_form_status" 
+                              [(ngModel)]="previewFilter.bank_name"
+                              [ngModelOptions]="{standalone: true}" >
+                              <option *ngFor="let bank of filterDropDownValue.bank" [ngValue]="bank" >
+                                  {{bank}}
+                                </option>
+                              </select>
+                            </div>
+                            <div class="form-group m-form__group">
+                              <label class="">Feeder Branch:</label>
+                              <div class="m-input-icon m-input-icon--right">
+                                <select class="form-control " 
+                                [(ngModel)]="previewFilter.feeder_branch"
+                                [ngModelOptions]="{standalone: true}">
+                                <option *ngFor="let bank of filterDropDownValue.feeder_branch" 
+                                [ngValue]="bank" >
+                                    {{bank}}
+                                  </option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" (click)="updatePreview()">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+               
+              </li>
+            </ul> -->
+      </div>
+    
+      <div class="table">
+        
+      <ngx-datatable   #previewData
+      class="material"
+      [headerHeight]="50"
+    
+      [columnMode]="'force'"
+      [footerHeight]="75"
+      [rowHeight]="'60'"
+      [rows]="previewRows"
+      [scrollbarH]="true"
+      [externalPaging]="true"
+      [count]="previewPage.totalElements"
+      [offset]="previewPage.pageNumber"
+      [limit]="previewPage.size"
+      (page)='setPreviewPage($event)'
+      >
+      <!--  -->
+  
+  
+      <ng-container *ngFor="let col of previewColList">
+        <ngx-datatable-column name="{{col.display_column_name}}" prop="{{col.table_column}}">
+  
+          <ng-template ngx-datatable-cell-template let-value="value" >
+            {{value}}
+          </ng-template>
+  
+        </ngx-datatable-column>
+      </ng-container>
+      <ngx-datatable-footer>
+          <ng-template 
+            ngx-datatable-footer-template 
+            let-rowCount="rowCount"
+            let-pageSize="pageSize"
+            let-selectedCount="selectedCount"
+            let-curPage="curPage"
+            let-offset="offset">
+            <!-- <div style="padding: 5px 10px">
+              <hr style="width:100%" />
+              <div>
+                Rows: {{rowCount}} |
+                Size: {{pageSize}} |
+                Current: {{curPage}} |
+                Offset: {{offset}}
+                selectedCount : {{selectedCount}}
+                
+              </div>
+            </div> -->
+  <div class="m_datatable m-datatable m-datatable--default m-datatable--loaded m-datatable--scroll width100 px-2 ">    <div class="m-datatable__pager m-datatable--paging-loaded clearfix">
+              <ul class="m-datatable__pager-nav">
+  
+              <li  (click)="setPreviewPage({ 'offset': 0 })"><a title="First" class="m-datatable__pager-link m-datatable__pager-link--first" data-page="1"><i class="la la-angle-double-left"></i></a></li>
+  
+              <li (click)="setPreviewPage({ 'offset': offset-1 })">
+                <a title="Previous" class="m-datatable__pager-link m-datatable__pager-link--prev" data-page="1"><i class="la la-angle-left"></i></a>
+                              
+              <li *ngIf="(calculateTotalPage(rowCount,pageSize)+1) == (curPage+1)"
+               (click)="setPreviewPage({ 'offset': offset-1 })" ><a class="m-datatable__pager-link m-datatable__pager-link-number" 
+                title="{{curPage-1}}">{{curPage-1}} </a></li>
+  
+              <li (click)="setPreviewPage({ 'offset': offset })"><a class="m-datatable__pager-link m-datatable__pager-link-number m-datatable__pager-link--active"  title="{{curPage}}">{{curPage}}</a></li>
+              
+              <li *ngIf="!((calculateTotalPage(rowCount,pageSize)+1) == (curPage+1))" (click)="setPage({ 'offset': offset+1 })" ><a class="m-datatable__pager-link m-datatable__pager-link-number" 
+             title="{{curPage+1}}">{{curPage+1}} </a></li>
+                            
+              <li (click)="setPreviewPage({ 'offset': offset+1 })"><a title="Next" class="m-datatable__pager-link m-datatable__pager-link--next" data-page="2">
+              <i class="la la-angle-right"></i></a>
+            </li>
+  
+              <li (click)="setPreviewPage({ 'offset': calculateTotalPage(rowCount,pageSize)-1})"><a title="Last" class="m-datatable__pager-link m-datatable__pager-link--last" ><i class="la la-angle-double-right"></i></a></li>
+            </ul>
+            
+            
+            <div class="m-datatable__pager-info">
+              
+              <div class="dropdown bootstrap-select m-datatable__pager-size dropup" style="width: 70px;">
+              
+              <select class="  custom-pagination-select" 
+              [(ngModel)]="previewPage.size" title="Select page size" (change)="setPreviewPage({ 'offset': 0})">
+                <!-- <option class="bs-title-option" value="">Select page size</option> -->
+                <option value="10">10</option><option value="20">20</option>
+                <option value="30">30</option><option value="50">50</option>
+              </select>
+                
+              
+              </div>
+                <span class="m-datatable__pager-detail">Displaying {{curPage}} - 
+                  {{calculateTotalPage(rowCount,pageSize)}} of {{rowCount}} records</span></div></div>
+                </div>
+          </ng-template>
+        </ngx-datatable-footer>
+    </ngx-datatable>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="modalRef.hide();approvePreviewFn('Rejected')">Reject</button>
+      <button type="button" class="btn btn-primary"  name="submit" (click)="approvePreviewFn('Approved')">Approve</button>
+    </div>
+  </ng-template>

@@ -9,7 +9,7 @@ import {DatePipe} from '@angular/common';
 import {Page} from '../a_core/paging/page';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import { Bankcashbalance } from './bankcashbalance';
+import { ColumnConfig } from '../shared/columnConfig';
 
 
 declare var jquery:any;   // not required
@@ -26,6 +26,8 @@ declare var $ :any;   // not required
 export class BankcashbalanceComponent implements OnInit {
 
 @ViewChild('previewModal') previewModal: ElementRef;
+
+fileType="CBR"
   modalRef: BsModalRef;
 alert:any;
 page = new Page();
@@ -39,10 +41,10 @@ datePipe;
 dropdownValue:any;
 filterDropDownValue:any;
 previewColList:any;
-public colList : Bankcashbalance;
+public colList : ColumnConfig;
 
 
-  constructor(private atp: AmazingTimePickerService,private apiService:ApiService,private formBuilder: FormBuilder,private modalService: BsModalService, private cashBalanceList : Bankcashbalance) {
+  constructor(private atp: AmazingTimePickerService,private apiService:ApiService,private formBuilder: FormBuilder,private modalService: BsModalService, private columnConfig : ColumnConfig) {
     this.datePipe = new DatePipe('en-US');
     this.uploadData={};
     this.alert={};
@@ -109,15 +111,15 @@ onFileChanged(event) {
 
 
 uploadDatafn(){
-
-  console.log("upload clicked----------",this.uploadData);
-  this.previewColList = this.cashBalanceList.columnConfig.filter(x => x.datafor == 'CBR' && x.bankcode == this.uploadData.bank_code.bank_id);
-   this.submitted = true;
+  this.submitted = true;
 
   // stop here if form is invalid
   if (this.uploadData.invalid) {
       return;
   }
+  console.log("upload clicked----------",this.uploadData);
+  this.previewColList = this.columnConfig.columnConfig.filter(x => x.datafor == this.fileType && x.bankcode == this.uploadData.bank_code.bank_id);
+  
 
 // console.log("upload clicked------------",this.uploadData);
   var hours_min=this.uploadData.time.split(":")
@@ -131,11 +133,11 @@ fileData.append('bank_code', this.uploadData.bank_code.bank_id);
 fileData.append('project_id', this.uploadData.project.project_id);
 // fileData.append('project_id', "MOF");
 // fileData.append('cra', this.uploadData.cra);
-fileData.append('file_type', 'CBR');
+fileData.append('file_type', this.fileType);
 fileData.append('upload_datatime', date);
 console.log("upload clicked formdata",fileData);
 this.apiService.uploadFile("upload/",fileData).subscribe(event => {
-    console.log(event); // handle event here
+    console.log("event",event); // handle event here
     var response:any=event;
    if(response && response.body){
      console.log("resonse",response.body)
@@ -157,12 +159,13 @@ this.apiService.uploadFile("upload/",fileData).subscribe(event => {
     }
    }
   },(error =>{
+    console.log("error",error)
     // alert("Error - "+ error.status+ " "+error.statusText);
     $('#m_modal_6').modal('hide')
 
     this.alert.isvisible=true;
     this.alert.type="Error";
-    this.alert.text="error desc- " +error.status+ " "+error.statusText;
+    this.alert.text="Level - " +error.error.level+ "    Status -  "+error.error.status_text;
     this.alert.class="danger"
   }));
 
@@ -281,7 +284,7 @@ setPage(pageInfo){
 
   this.page.pageNumber = pageInfo.offset;
   this.apiService.post("view/?page="+(this.page.pageNumber+1)+"&"+"page_size="+this.page.size,{
-    'file_type':"CBR",
+    'file_type':this.fileType,
     "bank_code":"ALL",
     "filters" : this.filtersForAllView
     // {
@@ -383,7 +386,7 @@ var hours_min=this.uploadData.time.split(":")
 
     this.apiService.post("view/?page="+(this.previewPage.pageNumber+1)+"&"+"page_size="+this.previewPage.size,{
       'page':this.page,
-      'file_type':"CBR",
+      'file_type':this.fileType,
       "bank_code":this.uploadData.bank_code.bank_id,
       "filters" : {
         //  "datafor_date_time":"2018-09-26 18:16:23",
@@ -425,7 +428,7 @@ var hours_min=this.uploadData.time.split(":")
     var date=this.datePipe.transform(this.uploadData.upload_datetime, 'yyyy-MM-dd HH:mm:ss');
 
     this.apiService.post("status/",{
-      'file_type':"CBR",
+      'file_type':this.fileType,
       "bank_code":this.uploadData.bank_code.bank_id,
       "project_id": this.uploadData.project.project_id,
       "datafor_date_time":date,
@@ -482,7 +485,7 @@ var hours_min=this.uploadData.time.split(":")
 
 // --------- for upload dropdown
     this.apiService.post("bankinfo/",{
-      'file_type':"CBR",
+      'file_type':this.fileType,
     'routine_info':"ROUTINE_DATA_INFO"
     }).subscribe(data =>{
         console.log("------- dropdown value ");
@@ -500,7 +503,7 @@ var hours_min=this.uploadData.time.split(":")
 
     // filter dropdown
     this.apiService.post("bankFeederCommonInfo/",{
-      'file_type':"CBR",
+      'file_type':this.fileType,
     'common_bankfeeder_info':"common_bankfeeder_info"
     }).subscribe(data =>{
         console.log("------- dropdown value ");
@@ -519,6 +522,7 @@ var hours_min=this.uploadData.time.split(":")
     // end of filter dropdown
   }
 
+  // --------------- end of drop down value --------------
 
   
   clicked(data){

@@ -29,24 +29,28 @@ export class ApiService {
   constructor(private sessionStorageService: SessionStorageService, private http: HttpClient) {
 console.log(this.sessionStorageService.get('accessToken'),'---------')
 
-    this.httpOptionsForm = {
-      headers: new HttpHeaders({'Authorization': ''+this.sessionStorageService.get('accessToken')}),
-      reportProgress: true,
-      observe: 'events'
-    };
-
-
-    this.httpOptions = {
-      headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': ''+this.sessionStorageService.get('accessToken') })
-    };
+this.headerOptionInit();
    }
 
+headerOptionInit(){
+  this.httpOptionsForm = {
+    headers: new HttpHeaders({'Authorization': ''+this.sessionStorageService.get('accessToken')}),
+    reportProgress: true,
+    observe: 'events'
+  };
+
+
+  this.httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': ''+this.sessionStorageService.get('accessToken') })
+  };
+}
 
 post(url,param){
-  if(!this.sessionStorageService.get('accessToken')){
-    console.log("reloading accesstoken not found")
-    window.location.reload();
-  }
+  // if(!this.sessionStorageService.get('accessToken')){
+  //   console.log("reloading accesstoken not found")
+  //   // window.location.reload();
+  // }
+  this.headerOptionInit();
 
      return this.http.post(domain+url,param,this.httpOptions)
 }
